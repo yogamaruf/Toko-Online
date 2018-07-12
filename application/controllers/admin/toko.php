@@ -10,7 +10,12 @@ class Toko extends CI_Controller {
 	}
 
 	public function index() { 
-		$this->template->tampilan('admin/info/dashboard');
+		$data = array(
+				'produk'   => $this->db->get('produk')->num_rows(),
+				'merk'     => $this->db->get('merk')->num_rows(),
+				'kategori' => $this->db->get('kategori')->num_rows(),
+				'customer' => $this->db->get('customer')->num_rows());
+		$this->template->tampilan('admin/info/dashboard',$data);
 	}
 
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ TAMPIL DATA ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -113,12 +118,31 @@ class Toko extends CI_Controller {
 		$this->load->view('admin/akun/login');
 	}
 
+	public function auth() {
+		/*$l = $this->tokomodel->getlogin($this->input->post('nama'),$this->input->post('password'));
+
+		if($l == 1) {
+			$baris = $this->tokomodel->getdlogin($this->input->post('nama'),$this->input->post('password'));
+			$data = array('logged' => TRUE, 'nama' => $baris->username
+            );
+            $this->session->set_userdata($data);
+
+            redirect(base_url('index.php/admin/toko/'));
+        } else {
+
+            $error = 'username / password salah';
+            $this->index($error);
+        }*/
+	}
+
 	public function register() {
 		$this->load->view('admin/akun/register');
 	}
 
 	public function logout() {
-		$this->load->view('admin/akun/login');
+		 $this->session->sess_destroy();
+        
+        redirect(base_url('index.php/admin/toko/auth'));
 	}
 
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -242,11 +266,11 @@ class Toko extends CI_Controller {
 	public function ubahuser() {
 		$id = $this->input->post('idadmin');
 		$simpan = array(
-					'idadmin'  => $this->input->post('idadmin'),
-					'nama' => $this->input->post('nama'),
-					'namalengkap'  => $this->input->post('namaleng'),
-					'email'     => $this->input->post('email'),
-					'password'  => $this->input->post('pass'));
+					'idadmin'     => $this->input->post('idadmin'),
+					'nama'        => $this->input->post('nama'),
+					'namalengkap' => $this->input->post('namaleng'),
+					'email'       => $this->input->post('email'),
+					'password'    => $this->input->post('pass'));
 
 		$this->tokomodel->getubahuser($simpan, $id);
 		redirect(base_url('index.php/admin/toko/user'));

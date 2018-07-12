@@ -362,6 +362,15 @@ th, td {
     text-align: left;
 }
 
+.aa {
+    color: #555;
+    margin: 20px 10px;
+}
+
+.aa:hover i {
+    background-color: #C90000;
+}
+
 /*==============================================
     MEDIA QUERIES     
     =============================================*/

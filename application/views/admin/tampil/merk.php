@@ -40,7 +40,7 @@
 
                                         <div class='col-md-12'>
 
-                                            <img src='<?php echo base_url(''); ?>assets/gambar/merk/<?php echo $value['gambar']; ?>' class='col-md-12'>
+                                            <img style='width: 160px; height: 80px;' src='<?php echo base_url(''); ?>assets/gambar/merk/<?php echo $value['gambar']; ?>' class='col-md-12'>
 
                                         </div>
 

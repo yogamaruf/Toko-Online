@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      <!-- MORRIS CHART STYLES-->
     <link href="<?php echo base_url(); ?>assets/backend/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
-    <link href="<?php echo base_url(); ?>assets/backend/assets/css/style2.css" rel="stylesheet" />
+    <link href="<?php echo base_url(); ?>assets/backend/assets/css/style3.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>assets/backend/assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />

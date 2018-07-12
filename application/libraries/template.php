@@ -15,4 +15,10 @@ class template {
 		$this->ci->load->view('admin/index.php',$data);
 	}
 
+	function tampil($t=null,$d=null) {
+		$data['content'] = $this->ci->load->view($t,$d,true);
+
+		$this->ci->load->view('customer/index.php',$data);
+	}
+
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 10, 2018 at 05:26 PM
+-- Generation Time: Jul 12, 2018 at 05:01 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -157,9 +157,7 @@ CREATE TABLE `order` (
   `idproduk` int(10) NOT NULL,
   `idcustom` int(10) NOT NULL,
   `tanggal` date NOT NULL,
-  `jumlah` int(5) NOT NULL,
-  `harga` int(10) NOT NULL,
-  `total` int(50) NOT NULL
+  `jumlah` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -205,7 +203,10 @@ CREATE TABLE `produk` (
 INSERT INTO `produk` (`idproduk`, `idkategori`, `idmerk`, `nama`, `warna`, `bahan`, `deskripsi`, `harga`, `foto`) VALUES
 (8, 154683, 6, 'G-Shock GWN 1000B 1 ADR', 'Hitam', 'Resin/ Stainless ste', 'Produk ini cocok untuk man/ pria dengan model analog yang lebih elegan, G-SHOCK ini mampu membuat siapa saja yang memakainya akan merasa percaya diri. Disamping itu untuk menambah kenyaman saat pemakaian G-SHOCK menggunakan resin/ Stainless Steel dan Resin Band. Tak hanya  nyaman saat dipakai G-SHOCK ini mampu bertahan di dalam air dengan kedalaman 200m. Masih banyak fitur didalam G-SHOCK ini seperti Digital compass, Altimeter, Barometer, dan Thermometer.', 6000000, 'G-shock.jpg'),
 (9, 154682, 7, 'Sosis Sapi', 'Merah', 'Daging Sapi', 'Vida sosis sapi isi 6 pcs terbuat dari daging pilihan ', 12500, 'sosis_sapi.jpg'),
-(10, 154678, 9, 'Lounch Sport AA-02', 'Hitam Puti', 'Mesh Upper', 'Lounch Sport AA-02 Sepatu Wanita - Black White, sneaker shoes berbahan mesh upper yang didesain sporty dengan 5 eyelets, neat stitching, dan EVA outsole sehingga nyaman saat dipakai', 102320, 'lounch_sport.jpg');
+(10, 154678, 9, 'Lounch Sport AA-02', 'Hitam Puti', 'Mesh Upper', 'Lounch Sport AA-02 Sepatu Wanita - Black White, sneaker shoes berbahan mesh upper yang didesain sporty dengan 5 eyelets, neat stitching, dan EVA outsole sehingga nyaman saat dipakai', 102320, 'lounch_sport.jpg'),
+(11, 154683, 8, 'Jam tangan rolex pria kw super keren', 'Putih', 'Stainless', 'Automatic tanpa baterai\r\nDiameter 4,5 cm\r\nHarga sudah termasuk box mika (ATC Upgrade box kancing jika ingin ganti box)', 240000, 'Jam-tangan-Rolex.jpg'),
+(12, 154678, 10, 'Jam tangan rado Judile Rose Gold', 'Rosegold p', 'Stainless', 'Spesifikasi :\r\nBody jam berbahan stainless,\r\nMesin tenaga baterai,\r\nRantai pasir,\r\nAda tanggal,\r\nDiameter 3,6 cm\r\n', 240000, 'Rado-sand-rope.jpg'),
+(13, 154679, 11, 'Seiko 5 Sport SKZ255 Men Diver', 'Black inde', 'Stainless', 'Jam Tangan Seiko 5 Sports SKZ255 Men Diver 200m Automatic Original Macho dan Kokoh Untuk Pria yang Gagah serta Stayles\r\n\r\nProduct Description:\r\nBrand : Seiko\r\nModel number : SKZ255\r\nGender : Men Watch\r\nCase Material : stainless steel anti karat dan kelupas\r\nCase Color : Black Indek White\r\nCase Diameter :  Bezel diameter:40.5mm , 50mm (including crown)\r\nBand Material : Stainless Steel Kwalitas Tinggi\r\nBand Color : Full Black\r\nMovement : Automatic  Buatan Japan\r\nMesin dibawah lisensi : Seiko Watch Corporation\r\nDisplay Type : Automatic\r\nFeatur : Menyalah dalam kegelapan ( Lumibrite glow-in-the-dark hands and markers )\r\nWater resistant\r\nOriginal Garansi Resmi Seiko 1 Tahun\r\nTermasuk Box Original Seiko + Buku Panduan + Kartu Garansi Seiko\r\nSangat cocok dipakai dalam segala suasana, resmi maupun santai\r\nDengan Modelnya yang keren ,mewah dan sempurna semakin menonjolkan sisi elegannya\r\nJam Tangan Seiko 5 Sports SKZ255 Men Diver 200m Automatic Original Anda Adalah Produk Berkualitas Tinggi yang memadukan kehalusan teknologi terbaru dari Jepang', 4150000, 'Seiko-5-Sports.jpg');
 
 --
 -- Indexes for dumped tables
@@ -321,7 +322,7 @@ ALTER TABLE `pembayaran`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `idproduk` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idproduk` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

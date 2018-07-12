@@ -33,15 +33,15 @@
                         <strong>   Enter Details To Login </strong>  
                             </div>
                             <div class="panel-body">
-                                <form role="form">
+                                <form role="form" action="<?php echo base_url('index.php/admin/toko/auth'); ?>" method="POST">
                                        <br />
                                         <div class="form-group input-group">
                                             <span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
-                                            <input type="text" class="form-control" placeholder="Your Username " />
+                                            <input type="text" name="username" class="form-control" placeholder="Your Username " required=""/>
                                         </div>
                                         <div class="form-group input-group">
                                             <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
-                                            <input type="password" class="form-control"  placeholder="Your Password" />
+                                            <input type="password" name="password" class="form-control"  placeholder="Your Password" required=""/>
                                         </div>
                                     <div class="form-group">
                                             <label class="checkbox-inline">
