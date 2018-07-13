@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2018 at 05:01 PM
+-- Generation Time: Jul 13, 2018 at 06:56 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `idadmin` int(10) NOT NULL,
-  `nama` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
   `namalengkap` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(10) NOT NULL
@@ -40,8 +40,9 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`idadmin`, `nama`, `namalengkap`, `email`, `password`) VALUES
-(1, 'Yoga', 'Yoga Ma\'ruf', 'yoga@gmail.com', '12345');
+INSERT INTO `admin` (`idadmin`, `username`, `namalengkap`, `email`, `password`) VALUES
+(1, 'yoga', 'Yoga Ma\'ruf', 'yoga@gmail.com', '12345'),
+(2, 'simabur', 'Simabur', 'sisil@gmail.com', 'simabur');
 
 -- --------------------------------------------------------
 
@@ -274,7 +275,7 @@ ALTER TABLE `produk`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `idadmin` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idadmin` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `checkout`

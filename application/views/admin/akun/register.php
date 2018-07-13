@@ -33,15 +33,16 @@
                         <strong>  New User ? Register Yourself </strong>  
                             </div>
                             <div class="panel-body">
-                                <form role="form" action="<?php echo base_url('index.php/admin/toko/tambahuser'); ?>">
-<br/>
+                                <form role="form" action="<?php echo base_url('index.php/admin/login/getregister'); ?>" method="POST">
+                                    <br/>
+                                    <input type="hidden" name="idadmin">
                                         <div class="form-group input-group">
                                             <span class="input-group-addon"><i class="fa fa-circle-o-notch"  ></i></span>
-                                            <input type="text" name="nama" class="form-control" placeholder="Your Name" />
+                                            <input type="text" name="username" class="form-control" placeholder="Your Name" />
                                         </div>
                                      <div class="form-group input-group">
                                             <span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
-                                            <input type="text" name="namaleng" class="form-control" placeholder="Desired Username" />
+                                            <input type="text" name="nama" class="form-control" placeholder="Desired Username" />
                                         </div>
                                          <div class="form-group input-group">
                                             <span class="input-group-addon">@</span>
@@ -56,7 +57,7 @@
                                             <input type="password" name="pass1" class="form-control" placeholder="Retype Password" />
                                         </div>
                                      
-                                     <a href="index.html" class="btn btn-success ">Register Me</a>
+                                     <input type="submit" name="simpan" value="Register">
                                     <hr />
                                     Already Registered ?  <a href="<?php echo base_url('index.php/admin/toko/login'); ?>" >Login here</a>
                                     </form>

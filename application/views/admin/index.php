@@ -34,7 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <a class="navbar-brand" href="index.html">Binary admin</a> 
             </div>
             <div style="color: white;padding: 15px 50px 5px 50px;float: right;font-size: 16px;"> <?php echo date('l, d F Y'); ?>&nbsp; 
-                <a href="<?php echo base_url('index.php/toko/logout');?>" class="btn btn-danger square-btn-adjust">Logout</a> 
+                <a href="<?php echo base_url('index.php/admin/login/logout');?>" class="btn btn-danger square-btn-adjust">Logout</a> 
             </div>
         </nav>   
 

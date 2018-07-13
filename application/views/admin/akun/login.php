@@ -33,7 +33,7 @@
                         <strong>   Enter Details To Login </strong>  
                             </div>
                             <div class="panel-body">
-                                <form role="form" action="<?php echo base_url('index.php/admin/toko/auth'); ?>" method="POST">
+                                <form role="form" action="<?php echo base_url('index.php/admin/login/login'); ?>" method="POST">
                                        <br />
                                         <div class="form-group input-group">
                                             <span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
@@ -52,10 +52,11 @@
                                             </span>
                                         </div>
                                      
-                                     <a href="<?php echo base_url('index.php/admin/toko/'); ?>" class="btn btn-primary ">Login Now</a>
+                                     <input type="submit" name="simpan" value="Login" class="btn btn-primary">
                                     <hr />
-                                    Not register ? <a href="<?php echo base_url('index.php/admin/toko/register'); ?>" >click here </a> 
+                                    Not register ? <a href="<?php echo base_url('index.php/admin/login/register'); ?>" >click here </a> 
                                     </form>
+                                     <?php echo $error; ?>
                             </div>
                            
                         </div>

@@ -60,36 +60,39 @@
 		  </ul>
 
 	</div>
+<div class="span9">
+<div class="well well-small">
 
-	<div class="span9">
-	<div class="well well-small">
-	<h3>Our Products </h3>
-		<div class="row-fluid">
-		  <ul class="thumbnails">
+	<?php foreach ($data->result_array() as $key => $value) { ?>
 
-		  	<?php foreach ($data as $key => $value) { ?>
-
-			<li class="span4">
-			  <div class="thumbnail">
-				<a href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>" class="overlay"></a>
-				<a class="zoomTool" href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>"><img style="height: 200px;" src="<?php echo base_url(); ?>assets/gambar/produk/<?php echo $value['foto']; ?>" alt=""></a>
-				<div class="caption cntr">
-					<p><?php echo $value['nama']; ?></p>
-					<p><strong>Rp. <?php echo number_format($value['harga'],0,'.','.'); ?> </strong></p>
-					<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-					<br class="clr">
-				</div>
-			  </div>
-			</li>
-
-			<?php } ?>
-
-		  </ul>
+	<div class="row-fluid">	
+		<div class="span2">
+			<img src="<?php echo base_url(); ?>assets/gambar/produk/<?php echo $value['foto']; ?>" alt="">
 		</div>
+		<div class="span6">
+			<h5><?php echo $value['nama']; ?></h5>
+			<p>
+			<?php echo substr($value['deskripsi'],0,135).'...'; ?>
+			</p>
+		</div>
+		<div class="span4 alignR">
+		<form class="form-horizontal qtyFrm">
+		<h3>Rp. <?php echo number_format($value['harga'],0,'.','.'); ?></h3>
+		<label class="checkbox">
+			<input type="checkbox">  Adds product to compair
+		</label><br>
+		<div class="btn-group">
+		  <a href="#" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
+		  <a href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>" class="shopBtn">VIEW</a>
+		 </div>
+			</form>
 		</div>
 	</div>
+	<hr class="soften">
 
+	<?php } ?>
+</div>
+</div>
 </div>
 
 <section class="our_client">

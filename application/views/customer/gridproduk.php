@@ -60,24 +60,23 @@
 		  </ul>
 
 	</div>
-
-	<div class="span9">
+		<div class="span9">
 	<div class="well well-small">
 	<h3>Our Products </h3>
 		<div class="row-fluid">
 		  <ul class="thumbnails">
 
-		  	<?php foreach ($data as $key => $value) { ?>
+		  	<?php foreach ($data->result_array() as $key => $value) { ?>
 
 			<li class="span4">
-			  <div class="thumbnail">
+			  <div class="thumbnail" style="height: 350px;">
 				<a href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>" class="overlay"></a>
-				<a class="zoomTool" href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+				<a class="zoomTool" href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>"" title="Detail"><span class="icon-search"></span> QUICK VIEW</a>
 				<a href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>"><img style="height: 200px;" src="<?php echo base_url(); ?>assets/gambar/produk/<?php echo $value['foto']; ?>" alt=""></a>
 				<div class="caption cntr">
 					<p><?php echo $value['nama']; ?></p>
-					<p><strong>Rp. <?php echo number_format($value['harga'],0,'.','.'); ?> </strong></p>
-					<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
+					<p><strong>Rp. <?php echo number_format($value['harga'],0,'.','.'); ?></strong></p>
+					<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4> 
 					<br class="clr">
 				</div>
 			  </div>
@@ -87,10 +86,10 @@
 
 		  </ul>
 		</div>
-		</div>
+	
 	</div>
-
-</div>
+	</div>
+	</div>
 
 <section class="our_client">
 	<hr class="soften"/>

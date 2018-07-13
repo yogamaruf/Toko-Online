@@ -125,7 +125,7 @@
 	<hr class="soften"/>
 	<div class="row">
 
-		<?php foreach ($merk->result_array() as $key => $value) { ?>
+		<?php foreach ($merk as $key => $value) { ?>
 
 			<div class="span2">
 				<a href="<?php echo base_url('index.php/toko/detaillist/').$value['idmerk']; ?>"><img alt="" src="<?php echo base_url(); ?>assets/gambar/merk/<?php echo $value['gambar']; ?>"></a>

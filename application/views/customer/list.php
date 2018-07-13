@@ -172,55 +172,23 @@ New Products
 		  </div>
 		<div class="row-fluid">
 		  <ul class="thumbnails">
+		  	<?php $record = $this->db->query('SELECT * FROM produk LIMIT 3,3'); 
+		  		foreach ($record->result_array() as $key => $value) { ?>
 			<li class="span4">
 			  <div class="thumbnail">
-				 
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="<?php echo base_url(); ?>assets/fronted/assets/img/b.jpg" alt=""></a>
-				<div class="caption cntr">
-					<p>Manicure & Pedicure</p>
-					<p><strong> $22.00</strong></p>
-					<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-					<div class="actionList">
-						<a class="pull-left" href="#">Add to Wish List </a> 
-						<a class="pull-left" href="#"> Add to Compare </a>
-					</div> 
-					<br class="clr">
+				<a class="zoomTool" href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>"" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+				<a  href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>""><img style="height: 200px;" src="<?php echo base_url(); ?>assets/gambar/produk/<?php echo $value['foto']; ?>" alt=""></a>
+				<div class="caption">
+				  <h5><?php echo $value['nama']; ?></h5>
+				  <h4>
+					  <a class="defaultBtn" href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>"" title="Click to view"><span class="icon-zoom-in"></span></a>
+					  <a class="shopBtn" href="#" title="add to cart"><span class="icon-plus"></span></a>
+					  <span class="pull-right">Rp. <?php echo number_format($value['harga'],0,'.','.'); ?></span>
+				  </h4>
 				</div>
 			  </div>
 			</li>
-			<li class="span4">
-			  <div class="thumbnail">
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="<?php echo base_url(); ?>assets/fronted/assets/img/c.jpg" alt=""></a>
-				<div class="caption cntr">
-					<p>Manicure & Pedicure</p>
-					<p><strong> $22.00</strong></p>
-					<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-					<div class="actionList">
-						<a class="pull-left" href="#">Add to Wish List </a> 
-						<a class="pull-left" href="#"> Add to Compare </a>
-					</div> 
-					<br class="clr">
-				</div>
-			  </div>
-			</li>
-			<li class="span4">
-			  <div class="thumbnail">
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="product_details.html"><img src="<?php echo base_url(); ?>assets/fronted/assets/img/a.jpg" alt=""></a>
-				<div class="caption cntr">
-					<p>Manicure & Pedicure</p>
-					<p><strong> $22.00</strong></p>
-					<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-					<div class="actionList">
-						<a class="pull-left" href="#">Add to Wish List </a> 
-						<a class="pull-left" href="#"> Add to Compare </a>
-					</div> 
-					<br class="clr">
-				</div>
-			  </div>
-			</li>
+			<?php } ?>
 		  </ul>
 		</div>
 	</div>
@@ -231,50 +199,30 @@ New Products
 		  <h3><a class="btn btn-mini pull-right" href="products.html" title="View more">VIew More<span class="icon-plus"></span></a> Featured Products  </h3>
 		  <hr class="soften"/>
 		  <div class="row-fluid">
+
+		  	
+
 		  <ul class="thumbnails">
+		  	<?php $record = $this->db->query('SELECT * FROM produk LIMIT 0,3'); 
+		  		foreach ($record->result_array() as $key => $value) { ?>
 			<li class="span4">
 			  <div class="thumbnail">
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a  href="product_details.html"><img src="<?php echo base_url(); ?>assets/fronted/assets/img/d.jpg" alt=""></a>
+				<a class="zoomTool" href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>"" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+				<a  href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>""><img style="height: 200px;" src="<?php echo base_url(); ?>assets/gambar/produk/<?php echo $value['foto']; ?>" alt=""></a>
 				<div class="caption">
-				  <h5>Manicure & Pedicure</h5>
+				  <h5><?php echo $value['nama']; ?></h5>
 				  <h4>
-					  <a class="defaultBtn" href="product_details.html" title="Click to view"><span class="icon-zoom-in"></span></a>
+					  <a class="defaultBtn" href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>"" title="Click to view"><span class="icon-zoom-in"></span></a>
 					  <a class="shopBtn" href="#" title="add to cart"><span class="icon-plus"></span></a>
-					  <span class="pull-right">$22.00</span>
+					  <span class="pull-right">Rp. <?php echo number_format($value['harga'],0,'.','.'); ?></span>
 				  </h4>
 				</div>
 			  </div>
 			</li>
-			<li class="span4">
-			  <div class="thumbnail">
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a  href="product_details.html"><img src="<?php echo base_url(); ?>assets/fronted/assets/img/e.jpg" alt=""></a>
-				<div class="caption">
-				  <h5>Manicure & Pedicure</h5>
-				  <h4>
-					  <a class="defaultBtn" href="product_details.html" title="Click to view"><span class="icon-zoom-in"></span></a>
-					  <a class="shopBtn" href="#" title="add to cart"><span class="icon-plus"></span></a>
-					  <span class="pull-right">$22.00</span>
-				  </h4>
-				</div>
-			  </div>
-			</li>
-			<li class="span4">
-			  <div class="thumbnail">
-				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a  href="product_details.html"><img src="<?php echo base_url(); ?>assets/fronted/assets/img/f.jpg" alt=""/></a>
-				<div class="caption">
-				  <h5>Manicure & Pedicure</h5>
-				  <h4>
-					  <a class="defaultBtn" href="product_details.html" title="Click to view"><span class="icon-zoom-in"></span></a>
-					  <a class="shopBtn" href="#" title="add to cart"><span class="icon-plus"></span></a>
-					  <span class="pull-right">$22.00</span>
-				  </h4>
-				</div>
-			  </div>
-			</li>
-		  </ul>	
+			<?php } ?>
+		  </ul>
+
+		  	
 	</div>
 	</div>
 	
@@ -297,7 +245,7 @@ New Products
 	<hr class="soften"/>
 	<div class="row">
 
-		<?php foreach ($merk->result_array() as $key => $value) { ?>
+		<?php foreach ($merk as $key => $value) { ?>
 
 			<div class="span2">
 				<a href="<?php echo base_url('index.php/toko/detaillist/').$value['idmerk']; ?>"><img alt="" src="<?php echo base_url(); ?>assets/gambar/merk/<?php echo $value['gambar']; ?>"></a>

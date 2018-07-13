@@ -1,8 +1,8 @@
 <div class="row">
-<div id="sidebar" class="span3">
+	<div id="sidebar" class="span3">
 <div class="well well-small">
 	<ul class="nav nav-list">
-
+		
 		<?php foreach ($list->result_array() as $key => $value) { ?>
 
 			<li>
@@ -60,36 +60,60 @@
 		  </ul>
 
 	</div>
-
 	<div class="span9">
-	<div class="well well-small">
-	<h3>Our Products </h3>
-		<div class="row-fluid">
-		  <ul class="thumbnails">
-
-		  	<?php foreach ($data as $key => $value) { ?>
-
-			<li class="span4">
-			  <div class="thumbnail">
-				<a href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>" class="overlay"></a>
-				<a class="zoomTool" href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>"><img style="height: 200px;" src="<?php echo base_url(); ?>assets/gambar/produk/<?php echo $value['foto']; ?>" alt=""></a>
-				<div class="caption cntr">
-					<p><?php echo $value['nama']; ?></p>
-					<p><strong>Rp. <?php echo number_format($value['harga'],0,'.','.'); ?> </strong></p>
-					<h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-					<br class="clr">
+    <ul class="breadcrumb">
+		<li><a href="<?php echo base_url('index.php/toko/');?>">Home</a> <span class="divider">/</span></li>
+		<li class="active">Login</li>
+    </ul>
+	<h3> Login</h3>	
+	<hr class="soft"/>
+	
+	<div class="row">
+		<div class="span4">
+			<div class="well">
+			<h5>CREATE YOUR ACCOUNT</h5><br/>
+			Enter your e-mail address to create an account.<br/><br/><br/>
+			<form>
+			  <div class="control-group">
+				<label class="control-label" for="inputEmail">E-mail address</label>
+				<div class="controls">
+				  <input class="span3"  type="text" placeholder="Email">
 				</div>
 			  </div>
-			</li>
-
-			<?php } ?>
-
-		  </ul>
+			  <div class="controls">
+			  <button type="submit" class="btn block">Create Your Account</button>
+			  </div>
+			</form>
 		</div>
 		</div>
-	</div>
-
+		<div class="span1"> &nbsp;</div>
+		<div class="span4">
+			<div class="well">
+			<h5>ALREADY REGISTERED ?</h5>
+			<form>
+			  <div class="control-group">
+				<label class="control-label" for="inputEmail">Email</label>
+				<div class="controls">
+				  <input class="span3"  type="text" placeholder="Email">
+				</div>
+			  </div>
+			  <div class="control-group">
+				<label class="control-label" for="inputPassword">Password</label>
+				<div class="controls">
+				  <input type="password" class="span3" placeholder="Password">
+				</div>
+			  </div>
+			  <div class="control-group">
+				<div class="controls">
+				  <button type="submit" class="defaultBtn">Sign in</button> <a href="#">Forget password?</a>
+				</div>
+			  </div>
+			</form>
+		</div>
+		</div>
+	</div>	
+	
+</div>
 </div>
 
 <section class="our_client">

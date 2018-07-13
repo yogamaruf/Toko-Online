@@ -33,7 +33,7 @@
 
                             <tr>
                                 <td><?php echo $no; ?></td>
-                                <td><?php echo $value['nama']; ?></td>
+                                <td><?php echo $value['username']; ?></td>
                                 <td><?php echo $value['namalengkap']; ?></td>
                                 <td><?php echo $value['email']; ?></td>
                                 <td><?php echo $value['password']; ?></td>

@@ -91,11 +91,11 @@ Navigation Bar Section
 		  <div class="nav-collapse">
 			<ul class="nav">
 			  <li class=""><a href="<?php echo base_url('index.php/toko/'); ?>">Home	</a></li>
-			  <li class=""><a href="<?php echo base_url('index.php/toko/'); ?>">List View</a></li>
-			  <li class=""><a href="<?php echo base_url('index.php/toko/'); ?>">Grid View</a></li>
-			  <li class=""><a href="<?php echo base_url('index.php/toko/'); ?>">Three Column</a></li>
-			  <li class=""><a href="<?php echo base_url('index.php/toko/'); ?>">Four Column</a></li>
-			  <li class=""><a href="<?php echo base_url('index.php/toko/'); ?>">General Content</a></li>
+			  <li class=""><a href="<?php echo base_url('index.php/toko/daftar'); ?>">List View</a></li>
+			  <li class=""><a href="<?php echo base_url('index.php/toko/grid'); ?>">Grid View</a></li>
+			  <li class=""><a href="<?php echo base_url('index.php/toko/three'); ?>">Three Column</a></li>
+			  <li class=""><a href="<?php echo base_url('index.php/toko/four'); ?>">Four Column</a></li>
+			  <li class=""><a href="<?php echo base_url('index.php/toko/about'); ?>">About</a></li>
 			</ul>
 			<form action="#" class="navbar-search pull-left">
 			  <input type="text" placeholder="Search" class="search-query span2">

@@ -20,7 +20,7 @@
                 <input type="hidden" name="idadmin" value="<?php echo $value['idadmin']; ?>">
             <div class="form-group">
                 <label>Nama</label>
-                <input type="text" class="form-control" name="nama" value="<?php echo $value['nama']; ?>">
+                <input type="text" class="form-control" name="nama" value="<?php echo $value['username']; ?>">
             </div>
             <div class="form-group">
                 <label>Nama Lengkap</label>

@@ -129,4 +129,14 @@ class Tokomodel extends CI_Model {
 
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ LOGIN ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+	public function login($name,$pass) {
+		$this->db->where('nama', $name);
+		$this->db->where('password', $pass);
+		return $this->db->get('admin');
+	}
+
+	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 }
