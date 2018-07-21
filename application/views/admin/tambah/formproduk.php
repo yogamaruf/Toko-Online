@@ -79,6 +79,7 @@
                 <input type="submit" value="Simpan" class="btn btn-default">
                 <a href="<?php echo base_url('index.php/admin/toko/tabelproduk');?>" class="btn btn-danger">Batal</a>
             </div>
+            
             </form>
 
         </div>

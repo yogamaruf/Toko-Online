@@ -20,7 +20,7 @@
 				</li>
 
 			</ul>
-
+			
 		</div>
 
 		<div class="well well-small alert alert-warning cntr">
@@ -78,59 +78,54 @@
 
 	<div class="span9">
 
-		<div class="well well-small">
+    	<ul class="breadcrumb">
+			<li><a href="<?php echo base_url('index.php/toko/');?>">Home</a> <span class="divider">/</span></li>
+			<li class="active">Login</li>
+    	</ul>
 
-			<?php foreach ($data->result_array() as $key => $value) { ?>
+		<h3> Login</h3>	
 
-				<div class="row-fluid">	
+		<hr class="soft"/>
+	
+		<div class="row">
+	
+			<div class="span4">
 
-					<div class="span2">
-						<img src="<?php echo base_url(); ?>assets/gambar/produk/<?php echo $value['foto']; ?>" alt="">
-					</div>
+				<?php  echo $this->session->flashdata("error"); ?>
 
-					<div class="span6">
-						<h5><?php echo $value['nama']; ?></h5>
-						<p>
-						<?php echo substr($value['deskripsi'],0,135).'...'; ?>
-						</p>
-					</div>
+				<div class="well">
+					
+					<h5>ALREADY REGISTERED ?</h5>
 
-					<div class="span4 alignR">
-
-						<div class="form-horizontal qtyFrm">
-
-							<h3>Rp. <?php echo number_format($value['harga'],0,'.','.'); ?></h3>
-							<label class="checkbox">
-								<input type="checkbox">  Adds product to compair
-							</label><br>
-							<div class="btn-group">
-								<form action="<?php echo base_url('index.php/toko/tambahcart'); ?>" method="POST" style="margin: 0;padding: 0;height: 42px;">
-
-									<input type="hidden" name="idcart">
-									<input type="hidden" name="idproduk" value="<?php echo $value['idproduk'];?>">
-									<input type="hidden" name="jumlah" value="1">
-									<input type="hidden" name="foto" value="<?php echo $value['foto'];?>">
-									<input type="hidden" name="desk" value="<?php echo $value['nama'];?>">
-									<input type="hidden" name="harga" value="<?php echo $value['harga'];?>">
-									<h4><button type="submit" class="defaultBtn" title="add to cart"> Add to cart </button> <a href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>" class="shopBtn">VIEW</a></h4> 
-
-								</form>
-		 					</div>
-
-						</div>
-
-					</div>
+					<form action="<?php echo base_url('index.php/login/loginmer'); ?>" method="POST">
+			  			<div class="control-group">
+							<label class="control-label" for="inputEmail">Email</label>
+							<div class="controls">
+				  				<input class="span3" type="text" name="email" placeholder="Email">
+							</div>
+			  			</div>
+			  			<div class="control-group">
+							<label class="control-label" for="inputPassword">Password</label>
+							<div class="controls">
+				  				<input type="password" class="span3" name="password" placeholder="Password">
+							</div>
+			  			</div>
+			  			<div class="control-group">
+							<div class="controls">
+				  				<button type="submit" class="defaultBtn">Sign in</button> 
+				  				<a href="#">Forget password?</a>
+							</div>
+			  			</div>
+					</form>
 
 				</div>
 
-				<hr class="soften">
+			</div>
 
-			<?php } ?>
-
-		</div>
+		</div>	
 
 	</div>
-	
+
 </div>
 
 <section class="our_client">

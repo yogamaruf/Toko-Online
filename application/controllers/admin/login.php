@@ -5,17 +5,15 @@ class Login extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('loginmodel');
+        $this->load->model('customermodel');
+        $this->load->library('template');
     }
 
     public function index($error = NULL) {
-        $data = array(
-            'error' => $error);
-
-        $this->load->view('admin/akun/login', $data);
+        $this->load->view('admin/akun/login');
     }
 
     public function login() {
-        $this->load->model('loginmodel');
         $login = $this->loginmodel->login($this->input->post('username'), $this->input->post('password'))->num_rows();
 
         if ($login == 1) {
@@ -29,8 +27,11 @@ class Login extends CI_Controller {
 
             redirect(base_url('index.php/admin/toko'));
         } else {
-            $error = 'username / password salah';
-            $this->index($error);
+            $this->session->set_flashdata("error","<div class='alert alert-danger alert-dismissable'>
+                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                        <strong>Username atau password salah !!!</strong></div>");
+
+            redirect(base_url('index.php/admin/login'));
         }
     }
 
@@ -45,11 +46,11 @@ class Login extends CI_Controller {
 
     public function getregister() {
         $simpan = array(
-                    'idadmin' => $this->input->post('idadmin'),
-                    'username' => $this->input->post('username'),
+                    'idadmin'     => $this->input->post('idadmin'),
+                    'username'    => $this->input->post('username'),
                     'namalengkap' => $this->input->post('nama'),
-                    'email' => $this->input->post('email'),
-                    'password' => $this->input->post('pass'));
+                    'email'       => $this->input->post('email'),
+                    'password'    => $this->input->post('pass'));
 
         $this->loginmodel->tambah($simpan);
 

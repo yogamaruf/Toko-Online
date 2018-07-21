@@ -36,34 +36,34 @@
 
 			<div class="table-responsive">
 
-			<table class="table table-striped">
-			<tbody>
-				<tr>
-					<td class="td">ID Produk</td>
-					<td class="td"><?php echo $data['idproduk']; ?></td>
-				</tr>
-				<tr>
-					<td class="td">Nama Produk</td>
-					<td class="td"><?php echo $data['nama']; ?></td>
-				</tr>
-				<tr>
-					<td class="td">Kategori</td>
-					<td class="td"><?php echo $data['namakategori']; ?></td>
-				</tr>
-				<tr>
-					<td class="td">Merk</td>
-					<td class="td"><?php echo $data['namamerk']; ?></td>
-				</tr>
-				<tr>
-					<td class="td">Warna</td>
-					<td class="td"><?php echo $data['warna']; ?></td>
-				</tr>
-				<tr>
-					<td class="td">Bahan</td>
-					<td class="td"><?php echo $data['bahan']; ?></td>
-				</tr>
-			</tbody>
-			</table>
+				<table class="table table-striped">
+					<tbody>
+						<tr>
+							<td class="td">ID Produk</td>
+							<td class="td"><?php echo $data['idproduk']; ?></td>
+						</tr>
+						<tr>
+							<td class="td">Nama Produk</td>
+							<td class="td"><?php echo $data['nama']; ?></td>
+						</tr>
+						<tr>
+							<td class="td">Kategori</td>
+							<td class="td"><?php echo $data['namakategori']; ?></td>
+						</tr>
+						<tr>
+							<td class="td">Merk</td>
+							<td class="td"><?php echo $data['namamerk']; ?></td>
+						</tr>
+						<tr>
+							<td class="td">Warna</td>
+							<td class="td"><?php echo $data['warna']; ?></td>
+						</tr>
+						<tr>
+							<td class="td">Bahan</td>
+							<td class="td"><?php echo $data['bahan']; ?></td>
+						</tr>
+					</tbody>
+				</table>
 
 			</div>
 				<p style="border-top: 2px solid #999;"><strong style="float: left;font-size: 25px;color: #888;">Harga</strong><strong style="font-size: 32px;float: right;color: #666;">Rp. <?php echo number_format($data['harga'], 0,".","."); ?></strong></p>
@@ -77,11 +77,14 @@
 <hr>
 
 <div class="row">
+
 	<div class="col-md-12">
+
 		<div class="panel-body">
 			<h3><strong> Deskripsi </strong></h3>
 			<p><?php echo $data['deskripsi']; ?></p>
 		</div>
+		
 	</div>
 	
 </div>

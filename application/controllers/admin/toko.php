@@ -8,75 +8,68 @@ class Toko extends CI_Controller {
 		$this->load->model('tokomodel');
 		$this->load->library('template');
 		if ($this->session->userdata('logged')<>1) {
+				$this->session->set_flashdata("error","<div class='alert alert-danger alert-dismissable'>
+                    	<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                    	<strong>Silahkan login terlebih dahulu !!!</strong></div>");
+
                 redirect(base_url('index.php/admin/login'));
             }
-		
 	}
 
 	public function index() { 
 		$data = array(
-				'produk'   => $this->db->get('produk')->num_rows(),
-				'merk'     => $this->db->get('merk')->num_rows(),
-				'kategori' => $this->db->get('kategori')->num_rows(),
-				'customer' => $this->db->get('customer')->num_rows());
+				'produk'   => $this->db->get('produk')->num_rows(), //Menghitung jumlah baris TABEL PRODUK
+				'merk'     => $this->db->get('merk')->num_rows(), //Menghitung jumlah baris TABEL MERK
+				'kategori' => $this->db->get('kategori')->num_rows(), //Menghitung jumlah baris TABEL KATEGORI
+				'customer' => $this->db->get('customer')->num_rows()); //Menghitung jumlah baris TABEL CUSTOMER
 		$this->template->tampilan('admin/info/dashboard',$data);
 	}
 
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ TAMPIL DATA ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ TAMPIL DATA ~  |
 
 	public function tabelcustomer() { //Tabel Customer
-		$data = array(
-				'data' 	=> $this->tokomodel->getcustomer());
+		$data['data'] 	= $this->tokomodel->getcustomer();
 		$this->template->tampilan('admin/tampil/tabelcustomer', $data);
 	}
 
 	public function detailprofil() { //Form Detail Tabel Customer
 		$id = $this->uri->segment(4);
-		$data = array(
-				'detail' => $this->tokomodel->getedit($id));
+		$data['detail'] = $this->tokomodel->getedit($id);
 		$this->template->tampilan('admin/info/detailprofil', $data);
 	}
 
 	public function detailproduk() { //Form Detail Tabel Produk
 		$id = $this->uri->segment(4);
-		$data = array(
-				'data'   => !empty($id) ? $this->tokomodel->getproduk(array('idproduk' => $id))->row_array() : null);
+		$data['data']   = $this->tokomodel->getproduk(array('idproduk' => $id))->row_array();
 		$this->template->tampilan('admin/info/detailproduk', $data);
 	}
 
 	public function tabelproduk() {	//Tabel Produk
-		$data = array(
-				'data'  => $this->tokomodel->getproduk());
+		$data['data']  = $this->tokomodel->getproduk();
 		$this->template->tampilan('admin/tampil/tabelproduk', $data);
 	}
 
 	public function user() { //Tabel User
-		$data = array(
-				'data'  => $this->tokomodel->getuser());
+		$data['data']  = $this->tokomodel->getuser();
 		$this->template->tampilan('admin/tampil/user', $data);
 	}
 
 	public function hal() { //Form Halaman
-		$data = array(
-				/*'data'  => $this->tokomodel->getproduk()*/);
-		$this->template->tampilan('admin/setting/halaman', $data);
+		$this->template->tampilan('admin/setting/halaman');
 	}
 
 	public function kategori() { //Tabel Kategori
-		$data = array(
-				'data'  => $this->tokomodel->getkategori());
+		$data['data']  = $this->tokomodel->getkategori();
 		$this->template->tampilan('admin/tampil/kategori', $data);
 	}
  	
  	public function merk() { //Tabel Merk
-		$data = array(
-				'data'  => $this->tokomodel->getmerk());
+		$data['data']  = $this->tokomodel->getmerk();
 		$this->template->tampilan('admin/tampil/merk', $data);
 	}
 
 	public function order() { //Tabel Order
-		$data = array(
-				'data'  => $this->tokomodel->getorder());
+		$data['data']  = $this->tokomodel->getorder();
 		$this->template->tampilan('admin/tampil/order', $data);
 	}
 
@@ -84,15 +77,15 @@ class Toko extends CI_Controller {
 		$this->template->tampilan('admin/setting/konfigurasi');
 	}
 
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
 
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ MENAMPILKAN FORM TAMBAH ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ MENAMPILKAN FORM TAMBAH ~  |
 
-	public function formtambahcus() {
+	public function formtambahcus() { //CUSTOMER
 		$this->template->tampilan('admin/tambah/tambahcustomer');
 	}
 
-	public function formproduk($id=null) {
+	public function formproduk($id=null) { //PRODUK
 		$d = array(
 				'title'  => 'Tambah Produk',
 				'title1' => 'Edit Produk',
@@ -102,7 +95,7 @@ class Toko extends CI_Controller {
 		$this->template->tampilan('admin/tambah/formproduk', $d);
 	}
 
-	public function formmerk($id=null) {
+	public function formmerk($id=null) { //MERK
 		$d = array(
 				'title'  => 'Tambah Merk',
 				'title1' => 'Edit Merk',
@@ -114,11 +107,11 @@ class Toko extends CI_Controller {
 		$this->template->tampilan('admin/tambah/tambahkategori');
 	}
 
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
 
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ TAMBAH dan SIMPAN DATA~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ TAMBAH dan SIMPAN DATA ~  |
 
-	public function tambahcustomer() {
+	public function tambahcustomer() { //Tambah data CUSTOMER
 		$simpan = array(
 					'idcustom'  => $this->input->post('user'),
 					'title'     => $this->input->post('title'),
@@ -132,7 +125,7 @@ class Toko extends CI_Controller {
 		redirect(base_url('index.php/admin/toko/tabelcustomer'));
 	}
 
-	public function tambahkategori() {
+	public function tambahkategori() { //Tambah data KATEGORI
 		$simpan = array(
 					'idkategori'   => $this->input->post('idkat'),
 					'namakategori' => $this->input->post('nama'));
@@ -141,7 +134,7 @@ class Toko extends CI_Controller {
 		redirect(base_url('index.php/admin/toko/kategori'));
 	}
 
-	public function simpanmerk() {
+	public function simpanmerk() { //Tambah data dan Edit data MERK
 		$config['upload_path']   = './assets/gambar/merk'; 
 	    $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
 	    $config['max_size']      = '8000';
@@ -169,7 +162,7 @@ class Toko extends CI_Controller {
 		redirect(base_url('index.php/admin/toko/merk'));
 	}
 
-	public function simpanproduk() {
+	public function simpanproduk() { //Tambah data dan Edit data pada PRODUK
 		$config['upload_path']   = './assets/gambar/produk'; 
 	    $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
 	    $config['max_size']      = '8000';
@@ -203,11 +196,11 @@ class Toko extends CI_Controller {
 		redirect(base_url('index.php/admin/toko/tabelproduk'));
 	}	
 
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
 
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ EDIT DATA ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ EDIT DATA ~  |
 
-	public function ubahcustomer() {
+	public function ubahcustomer() { //CUSTOMER
 		$id = $this->input->post('user');
 		$simpan = array(
 					'idcustom'  => $this->input->post('user'),
@@ -222,7 +215,7 @@ class Toko extends CI_Controller {
 		redirect(base_url('index.php/admin/toko/tabelcustomer'));
 	}
 
-	public function ubahkategori() {
+	public function ubahkategori() { //KATEGORI
 		$id = $this->input->post('idkategori');
 		$simpan = array(
 					'idkategori'   => $this->input->post('idkategori'),
@@ -232,11 +225,11 @@ class Toko extends CI_Controller {
 		redirect(base_url('index.php/admin/toko/kategori'));
 	}	
 
-	public function ubahuser() {
+	public function ubahuser() { //USER ( TABEL ADMIN )
 		$id = $this->input->post('idadmin');
 		$simpan = array(
 					'idadmin'     => $this->input->post('idadmin'),
-					'nama'        => $this->input->post('nama'),
+					'username'        => $this->input->post('nama'),
 					'namalengkap' => $this->input->post('namaleng'),
 					'email'       => $this->input->post('email'),
 					'password'    => $this->input->post('pass'));
@@ -245,50 +238,47 @@ class Toko extends CI_Controller {
 		redirect(base_url('index.php/admin/toko/user'));
 	}
 
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
 
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ MENAMPILKAN DATA PADA FORM ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ MENAMPILKAN DATA PADA FORM ~  |
 
-	public function editcustomer() {
+	public function editcustomer() { //CUSTOMER
 		$id = $this->uri->segment(4);
-		$data = array(
-				'data'  => $this->tokomodel->getedit($id));
+		$data['data']  = $this->tokomodel->getedit($id);
 		$this->template->tampilan('admin/edit/editcustomer',$data);
 	}
 
-	public function edituser() {
+	public function edituser() { //USER ( TABEL ADMIN )
 		$id = $this->uri->segment(4);
-		$data = array(
-				'data'  => $this->tokomodel->getedituser($id));
+		$data['data']  = $this->tokomodel->getedituser($id);
 		$this->template->tampilan('admin/edit/edituser',$data);
 	}
 
-	public function editkategori() {
+	public function editkategori() { //KATEGORI
 		$id = $this->uri->segment(4);
-		$data = array(
-				'data'  => $this->tokomodel->geteditkat($id));
+		$data['data']  = $this->tokomodel->geteditkat($id);
 		$this->template->tampilan('admin/edit/editkategori',$data);
 	}
 
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
 
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ HAPUS DATA ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ HAPUS DATA ~  |
 
-	public function hapuscustomer() {
+	public function hapuscustomer() { //Hapus data CUSTOMER
 		$id = $this->uri->segment(4);
 		$this->tokomodel->gethapus($id);
 
 		redirect(base_url('index.php/admin/toko/tabelcustomer'));
 	}
 
-	public function hapuskategori() {
+	public function hapuskategori() { //Hapus data KATEGORI
 		$id = $this->uri->segment(4);
 		$this->tokomodel->gethapuskat($id);
 
 		redirect(base_url('index.php/admin/toko/kategori'));
 	}
 
-	public function hapusmerk() {
+	public function hapusmerk() { //Hapus data MERK
 		$id = $this->uri->segment(4);
 		$img = $this->tokomodel->getmerk(array('idmerk' => $id))->row_array();
 		unlink('assets/gambar/'.$img['gambar']);
@@ -297,7 +287,7 @@ class Toko extends CI_Controller {
 		redirect(base_url('index.php/admin/toko/merk'));
 	}
 
-	public function hapusproduk() {
+	public function hapusproduk() { //Hapus data PRODUK
 		$id = $this->uri->segment(4);
 		$img = $this->tokomodel->getproduk(array('idproduk' => $id))->row_array();
 		unlink('./assets/gambar/'.$img['foto']);
@@ -306,13 +296,13 @@ class Toko extends CI_Controller {
 		redirect(base_url('index.php/admin/toko/tabelproduk'));
 	}
 
-	public function hapusadmin() {
+	public function hapusadmin() { //Hapus data USER ( TABEL ADMIN )
 		$id = $this->uri->segment(4);
 		$this->tokomodel->gethapusadmin($id);
 
 		redirect(base_url('index.php/admin/toko/user'));
 	}
 
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~ |
 
 }

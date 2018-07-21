@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2018 at 06:56 PM
+-- Generation Time: Jul 21, 2018 at 02:26 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -41,8 +41,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`idadmin`, `username`, `namalengkap`, `email`, `password`) VALUES
-(1, 'yoga', 'Yoga Ma\'ruf', 'yoga@gmail.com', '12345'),
-(2, 'simabur', 'Simabur', 'sisil@gmail.com', 'simabur');
+(1, 'yoga', 'Yoga Ma\'ruf Ramadan', 'yoga@gmail.com', '12345');
 
 -- --------------------------------------------------------
 
@@ -52,13 +51,33 @@ INSERT INTO `admin` (`idadmin`, `username`, `namalengkap`, `email`, `password`) 
 
 CREATE TABLE `checkout` (
   `idcheck` int(10) NOT NULL,
+  `kodeorder` int(10) NOT NULL,
+  `idproduk` int(10) NOT NULL,
   `idcustom` int(10) NOT NULL,
+  `jumlah` int(3) NOT NULL,
+  `total` int(10) NOT NULL,
+  `tglorder` date NOT NULL,
   `kdpos` int(10) NOT NULL,
   `negara` varchar(20) NOT NULL,
   `provinsi` varchar(50) NOT NULL,
   `kabupaten` varchar(50) NOT NULL,
-  `alamat` varchar(150) NOT NULL
+  `alamat` varchar(150) NOT NULL,
+  `viabayar` varchar(10) NOT NULL,
+  `norekening` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `checkout`
+--
+
+INSERT INTO `checkout` (`idcheck`, `kodeorder`, `idproduk`, `idcustom`, `jumlah`, `total`, `tglorder`, `kdpos`, `negara`, `provinsi`, `kabupaten`, `alamat`, `viabayar`, `norekening`) VALUES
+(6, 7, 8, 4, 1, 6000000, '2018-07-20', 55185, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'BCA', 2147483647),
+(7, 8, 9, 4, 1, 240000, '2018-07-20', 55185, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'BCA', 2147483647),
+(8, 8, 10, 4, 1, 240000, '2018-07-20', 55185, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'BCA', 2147483647),
+(9, 8, 11, 4, 1, 240000, '2018-07-20', 55185, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'BCA', 2147483647),
+(10, 8, 12, 4, 1, 240000, '2018-07-20', 55185, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'BCA', 2147483647),
+(11, 9, 12, 3, 1, 204640, '2018-07-21', 55183, 'Indonesia', 'Yogyakarta', 'Bantul', 'Sewon', 'BCA', 2147483647),
+(12, 9, 10, 3, 2, 204640, '2018-07-21', 55183, 'Indonesia', 'Yogyakarta', 'Bantul', 'Sewon', 'BCA', 2147483647);
 
 -- --------------------------------------------------------
 
@@ -71,7 +90,7 @@ CREATE TABLE `customer` (
   `title` varchar(5) NOT NULL,
   `firstname` varchar(20) NOT NULL,
   `lastname` varchar(50) NOT NULL,
-  `email` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `date` date NOT NULL,
   `password` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -82,7 +101,8 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`idcustom`, `title`, `firstname`, `lastname`, `email`, `date`, `password`) VALUES
 (2, 'Mr.', 'Febri', 'Indra', 'valentino1234@gmail.', '2018-07-11', '123456'),
-(3, 'Mr.', 'Dadang', 'Agusti', 'Agusti234@gmail.com', '2018-07-08', 'Mikarta');
+(3, 'Mr.', 'Dadang', 'Agusti', 'Agusti234@gmail.com', '2018-07-08', 'Mikarta'),
+(4, 'Mr.', 'Yoga', 'Maruf', 'yoga@gmail.com', '2018-07-18', 'yogamaruf');
 
 -- --------------------------------------------------------
 
@@ -126,6 +146,50 @@ INSERT INTO `kategori` (`idkategori`, `namakategori`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `keranjang`
+--
+
+CREATE TABLE `keranjang` (
+  `idcart` int(10) NOT NULL,
+  `idproduk` int(10) NOT NULL,
+  `idcustomer` int(10) NOT NULL,
+  `fotoproduk` varchar(50) NOT NULL,
+  `deskripsi` text NOT NULL,
+  `harga` int(10) NOT NULL,
+  `jumlah` int(3) NOT NULL,
+  `total` int(10) NOT NULL,
+  `tanggalcart` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `keranjang`
+--
+
+INSERT INTO `keranjang` (`idcart`, `idproduk`, `idcustomer`, `fotoproduk`, `deskripsi`, `harga`, `jumlah`, `total`, `tanggalcart`) VALUES
+(5, 11, 2, 'Jam-tangan-Rolex.jpg', 'Jam tangan rolex pria kw super keren', 240000, 2, 480000, '2018-07-17'),
+(6, 13, 2, 'Seiko-5-Sports.jpg', 'Seiko 5 Sport SKZ255 Men Diver', 4150000, 1, 4150000, '2018-07-17'),
+(16, 9, 2, 'sosis_sapi.jpg', 'Sosis Sapi', 12500, 3, 37500, '2018-07-18'),
+(19, 12, 2, 'Rado-sand-rope.jpg', 'Jam tangan rado Judile Rose Gold', 240000, 1, 240000, '2018-07-19'),
+(21, 10, 2, 'lounch_sport.jpg', 'Lounch Sport AA-02', 102320, 1, 102320, '2018-07-19');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `konfigurasi`
+--
+
+CREATE TABLE `konfigurasi` (
+  `id` int(2) NOT NULL,
+  `nama` varchar(30) NOT NULL,
+  `deskripsi` text NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `telp` varchar(13) NOT NULL,
+  `share` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `merk`
 --
 
@@ -155,29 +219,21 @@ INSERT INTO `merk` (`idmerk`, `namamerk`, `gambar`) VALUES
 
 CREATE TABLE `order` (
   `kodeorder` int(10) NOT NULL,
-  `idproduk` int(10) NOT NULL,
   `idcustom` int(10) NOT NULL,
+  `jumbel` int(2) NOT NULL,
+  `nominal` int(10) NOT NULL,
   `tanggal` date NOT NULL,
-  `jumlah` int(5) NOT NULL
+  `status` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `pembayaran`
+-- Dumping data for table `order`
 --
 
-CREATE TABLE `pembayaran` (
-  `idbayar` int(10) NOT NULL,
-  `idproduk` int(10) NOT NULL,
-  `idcustom` int(10) NOT NULL,
-  `tanggal` date NOT NULL,
-  `harga` int(50) NOT NULL,
-  `jumlah` int(5) NOT NULL,
-  `total` int(50) NOT NULL,
-  `viabayar` varchar(20) NOT NULL,
-  `ket` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `order` (`kodeorder`, `idcustom`, `jumbel`, `nominal`, `tanggal`, `status`) VALUES
+(7, 4, 1, 6000000, '2018-07-20', 'Belum bayar'),
+(8, 4, 1, 594820, '2018-07-20', 'Belum bayar'),
+(9, 3, 2, 444640, '2018-07-21', 'Belum bayar');
 
 -- --------------------------------------------------------
 
@@ -244,6 +300,18 @@ ALTER TABLE `kategori`
   ADD PRIMARY KEY (`idkategori`);
 
 --
+-- Indexes for table `keranjang`
+--
+ALTER TABLE `keranjang`
+  ADD PRIMARY KEY (`idcart`);
+
+--
+-- Indexes for table `konfigurasi`
+--
+ALTER TABLE `konfigurasi`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `merk`
 --
 ALTER TABLE `merk`
@@ -254,12 +322,6 @@ ALTER TABLE `merk`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`kodeorder`);
-
---
--- Indexes for table `pembayaran`
---
-ALTER TABLE `pembayaran`
-  ADD PRIMARY KEY (`idbayar`);
 
 --
 -- Indexes for table `produk`
@@ -275,19 +337,19 @@ ALTER TABLE `produk`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `idadmin` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idadmin` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `checkout`
 --
 ALTER TABLE `checkout`
-  MODIFY `idcheck` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `idcheck` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `idcustom` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idcustom` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `detailprofil`
@@ -302,6 +364,18 @@ ALTER TABLE `kategori`
   MODIFY `idkategori` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154687;
 
 --
+-- AUTO_INCREMENT for table `keranjang`
+--
+ALTER TABLE `keranjang`
+  MODIFY `idcart` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `konfigurasi`
+--
+ALTER TABLE `konfigurasi`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `merk`
 --
 ALTER TABLE `merk`
@@ -311,13 +385,7 @@ ALTER TABLE `merk`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `kodeorder` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `pembayaran`
---
-ALTER TABLE `pembayaran`
-  MODIFY `idbayar` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `kodeorder` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `produk`

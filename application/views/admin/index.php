@@ -127,6 +127,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $('[data-toggle="popover"]').popover();
             });
 
+            $(document).ready(function(){
+                $(".close").alert('close');
+            });
+
             function validasi(form) {
                 if(form.nama.value == "") {
                     sweetAlert('Nama masih kosong!');
@@ -180,6 +184,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </script>
       <!-- CUSTOM SCRIPTS -->
     <script src="<?php echo base_url(); ?>assets/backend/assets/js/custom.js"></script>
+    <script src="<?php echo base_url(); ?>assets/backend/assets/js/shop.js"></script>
     
 </body>
 </html>

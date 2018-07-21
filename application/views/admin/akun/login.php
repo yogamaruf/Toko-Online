@@ -12,7 +12,6 @@
     <link href="<?php echo base_url(); ?>assets/backend/assets/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-
 </head>
 <body>
     <div class="container">
@@ -25,9 +24,10 @@
                  <br />
             </div>
         </div>
-         <div class="row ">
+        <div class="row ">
                
                   <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+                    <?php echo $this->session->flashdata("error"); ?>
                         <div class="panel panel-default">
                             <div class="panel-heading">
                         <strong>   Enter Details To Login </strong>  
@@ -43,7 +43,7 @@
                                             <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
                                             <input type="password" name="password" class="form-control"  placeholder="Your Password" required=""/>
                                         </div>
-                                    <div class="form-group">
+                                        <div class="form-group">
                                             <label class="checkbox-inline">
                                                 <input type="checkbox" /> Remember me
                                             </label>
@@ -52,30 +52,27 @@
                                             </span>
                                         </div>
                                      
-                                     <input type="submit" name="simpan" value="Login" class="btn btn-primary">
-                                    <hr />
-                                    Not register ? <a href="<?php echo base_url('index.php/admin/login/register'); ?>" >click here </a> 
-                                    </form>
-                                     <?php echo $error; ?>
+                                        <input type="submit" name="simpan" value="Login" class="btn btn-primary">
+                                        <hr />
+                                        Not register ? <a href="<?php echo base_url('index.php/admin/login/register'); ?>" >click here </a> 
+                                </form>
                             </div>
                            
                         </div>
-                    </div>
-                
-                
+                    </div>        
         </div>
     </div>
 
 
      <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
-    <script src="assets/js/jquery-1.10.2.js"></script>
+    <script src="<?php echo base_url(); ?>assets/backend/assets/js/jquery-1.10.2.js"></script>
       <!-- BOOTSTRAP SCRIPTS -->
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/backend/assets/js/bootstrap.min.js"></script>
     <!-- METISMENU SCRIPTS -->
-    <script src="assets/js/jquery.metisMenu.js"></script>
+    <script src="<?php echo base_url(); ?>assets/backend/assets/js/jquery.metisMenu.js"></script>
       <!-- CUSTOM SCRIPTS -->
-    <script src="assets/js/custom.js"></script>
+    <script src="<?php echo base_url(); ?>assets/backend/assets/js/custom.js"></script>
    
 </body>
 </html>
