@@ -9,29 +9,20 @@
      <!-- FONTAWESOME STYLES-->
     <link href="<?php echo base_url(); ?>assets/backend/assets/css/font-awesome.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
-    <link href="<?php echo base_url(); ?>assets/backend/assets/css/custom.css" rel="stylesheet" />
+    <link href="<?php echo base_url(); ?>assets/backend/assets/css/style1.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
     <div class="container">
-        <div class="row text-center ">
-            <div class="col-md-12">
-                <br /><br />
-                <h1> Binary Admin : Login</h1>
-               
-                <h5>( Login yourself to get access )</h5>
-                 <br />
-            </div>
-        </div>
+
+        <h1><i class="fa fa-sign-in"></i> LOGIN</h1>
+
         <div class="row ">
                
                   <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
                     <?php echo $this->session->flashdata("error"); ?>
                         <div class="panel panel-default">
-                            <div class="panel-heading">
-                        <strong>   Enter Details To Login </strong>  
-                            </div>
                             <div class="panel-body">
                                 <form role="form" action="<?php echo base_url('index.php/admin/login/login'); ?>" method="POST">
                                        <br />
@@ -52,7 +43,7 @@
                                             </span>
                                         </div>
                                      
-                                        <input type="submit" name="simpan" value="Login" class="btn btn-primary">
+                                        <center><input type="submit" name="simpan" value="Login" class="btn btn-primary"></center>
                                         <hr />
                                         Not register ? <a href="<?php echo base_url('index.php/admin/login/register'); ?>" >click here </a> 
                                 </form>

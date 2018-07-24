@@ -191,12 +191,13 @@ class Toko extends CI_Controller {
 
 	public function checkout() {
 		$id = $this->session->userdata('idcustom');
+		date_default_timezone_set('Asia/Jakarta');
 		$order = array(
 					'kodeorder' => $this->input->post('order'),
 					'idcustom'  => $id,
 					'jumbel'    => $this->input->post('barang'),
 					'nominal'   => $this->input->post('tobayar'),
-					'tanggal'   => date('Y-m-d'),
+					'tanggal'   => date('Y-m-d h:i:s'),
 					'status'    => 'Belum bayar');
 		$this->customermodel->getorder($order);
 		$kode = $this->db->insert_id();
@@ -228,12 +229,50 @@ class Toko extends CI_Controller {
 
 	public function konfirmasi() {
 		$id = $this->session->userdata('idcustom');
+		$w = 'Belum Bayar';
 		$check = array(
 					'merk'  => $this->customermodel->getmerk(),
-					'order' => $this->customermodel->getkonfirmorder($id)->row_array(),
+					'order' => $this->customermodel->getkonfirmorder($id,$w)->row_array(),
 					'check' => $this->customermodel->getcheck($id)->row_array());
-		
+
 		$this->template->tampil('customer/konfirmasi',$check);
+	}
+
+	public function finish() {
+		$id = $this->session->userdata('idcustom');
+		$kode = $this->input->post('kodeorder');
+		if (!empty($kode)||$kode==$this->customermodel->getkonfirmorder($id)) {
+			$simpan['status'] = 'Lunas';
+			$this->customermodel->getlunas($kode,$simpan);
+
+			$data['merk'] = $this->customermodel->getmerk();
+			$this->template->tampil('customer/lunas',$data);
+		} else {
+			$this->session->set_flashdata("error","<div class='alert alert-danger alert-dismissable'>
+                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                        <strong>Nama atau kode Order salah !!!</strong></div>");
+
+			redirect(base_url('index.php/toko/konfirmasi'));
+		}
+	}
+
+	public function tertunda() {
+		$id = $this->session->userdata('idcustom');
+		if ($this->session->userdata('logged')<>1) {
+				$this->session->set_flashdata("error","<div class='alert alert-danger alert-dismissable'>
+                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                        <strong>Silahkan login terlebih dahulu !!!</strong>
+                    </div>");
+
+                redirect(base_url('index.php/login'));
+        } else {
+        		$w = 'Belum Bayar';
+				$data = array(
+							'merk'  => $this->customermodel->getmerk(),
+							'data' => $this->customermodel->getkonfirmorder($id,$w));
+		
+				$this->template->tampil('customer/tertunda',$data);
+		}
 	}
 
 	public function tambahcustomer() {

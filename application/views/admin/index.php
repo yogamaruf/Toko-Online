@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      <!-- MORRIS CHART STYLES-->
     <link href="<?php echo base_url(); ?>assets/backend/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
-    <link href="<?php echo base_url(); ?>assets/backend/assets/css/style3.css" rel="stylesheet" />
+    <link href="<?php echo base_url(); ?>assets/backend/assets/css/style.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>assets/backend/assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
@@ -33,8 +33,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </button>
                 <a class="navbar-brand" href="index.html">Binary admin</a> 
             </div>
-            <div style="color: white;padding: 15px 50px 5px 50px;float: right;font-size: 16px;"> <?php echo date('l, d F Y'); ?>&nbsp; 
-                <a href="<?php echo base_url('index.php/admin/login/logout');?>" class="btn btn-danger square-btn-adjust">Logout</a> 
+            <div style="color: white;padding: 15px 50px 5px 50px;float: right;font-size: 16px;"> 
+                <?php 
+                    date_default_timezone_set('Asia/Jakarta');
+                    echo date('l, d F Y H:i:s'); 
+                ?>&nbsp; 
+                <a href="<?php echo base_url('index.php/admin/login/logout');?>" class="btn btn-danger square-btn-adjust"><i class="fa fa-sign-out"></i> Logout</a> 
             </div>
         </nav>   
 

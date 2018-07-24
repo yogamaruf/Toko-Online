@@ -36,7 +36,7 @@
                                 <td><?php echo $value['nama']; ?></td>
                                 <td><?php echo $value['namamerk']; ?></td>
                                 <td><?php echo $value['namakategori']; ?></td>
-                                <td><?php echo $value['harga']; ?></td>
+                                <td>Rp. <?php echo number_format($value['harga'],0,'.','.'); ?></td>
                                 <td>
                                     <a href="<?php echo base_url('index.php/admin/toko/detailproduk/').$value['idproduk'];?>" class="btn btn-info"><i class="fa fa-info"></i></a>
                                     <a href="<?php echo base_url('index.php/admin/toko/formproduk/').$value['idproduk'];?>" class="btn btn-primary"><i class="fa fa-edit"></i></a>

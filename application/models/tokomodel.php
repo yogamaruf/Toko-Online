@@ -56,7 +56,13 @@ class Tokomodel extends CI_Model {
 	}
 
 	public function getorder() {
-		return $this->db->get('order')->result_array();
+		$this->db->join('customer','customer.idcustom=order.idcustom');
+
+		return $this->db->get('order');
+	}
+
+	public function getkonfig() {
+		return $this->db->get('konfigurasi');
 	}
 
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -77,6 +83,10 @@ class Tokomodel extends CI_Model {
 
 	public function getdetail($id) {
 		return $this->db->get_where('produk',array('idproduk' => $id));
+	}
+
+	public function geteditkonfig($id=null) {
+		return $this->db->get_where('konfigurasi',array('id' => $id));
 	}
 
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -101,6 +111,10 @@ class Tokomodel extends CI_Model {
 
 	public function getubahproduk($simpan,$id) {
 		return $this->db->where('idproduk',$id)->update('produk',$simpan);
+	}
+
+	public function getsimpankonfig($simpan,$id) {
+		return $this->db->where('id',$id)->update('konfigurasi',$simpan);
 	}
 
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>

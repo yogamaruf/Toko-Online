@@ -73,31 +73,31 @@
 					  			<div class="control-group">
 									<label class="control-label" for="inputEmail">Negara <sup>*</sup></label>
 									<div class="controls">
-						  				<input type="text" name="negara" placeholder="Negara">
+						  				<input type="text" name="negara" placeholder="Negara" required="">
 									</div>
 					  			</div>
 					  			<div class="control-group">
 									<label class="control-label" for="inputEmail">Provinsi <sup>*</sup></label>
 									<div class="controls">
-						  				<input type="text" name="provinsi" placeholder="Provinsi">
+						  				<input type="text" name="provinsi" placeholder="Provinsi" required="">
 									</div>
 					  			</div>
 					  			<div class="control-group">
 									<label class="control-label" for="inputEmail">Kabupaten <sup>*</sup></label>
 									<div class="controls">
-						  				<input type="text" name="kabupaten" placeholder="Kabupaten">
+						  				<input type="text" name="kabupaten" placeholder="Kabupaten" required="">
 									</div>
 					  			</div>
 					  			<div class="control-group">
 									<label class="control-label" for="inputPassword">Kode POS <sup>*</sup></label>
 									<div class="controls">
-						  				<input type="text" name="kodepos" placeholder="KODE POS">
+						  				<input type="text" name="kodepos" placeholder="KODE POS" required="">
 									</div>
 					  			</div>
 					  			<div class="control-group">
 									<label class="control-label" for="input">Alamat Lengkap <sup>*</sup></label> 
 									<div class="controls">
-						  				<textarea name="alamat" placeholder="Alamat"></textarea>
+						  				<textarea name="alamat" placeholder="Alamat" required=""></textarea>
 									</div>
 					  			</div>
 					  			<div class="control-group">

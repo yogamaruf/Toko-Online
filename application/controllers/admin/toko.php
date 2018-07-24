@@ -74,7 +74,8 @@ class Toko extends CI_Controller {
 	}
 
 	public function konfig() { //Form Konfigurasi WEB
-		$this->template->tampilan('admin/setting/konfigurasi');
+		$data['set']  = $this->tokomodel->getkonfig()->row_array();
+		$this->template->tampilan('admin/setting/konfigurasi',$data);
 	}
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
@@ -196,6 +197,44 @@ class Toko extends CI_Controller {
 		redirect(base_url('index.php/admin/toko/tabelproduk'));
 	}	
 
+	public function simpankonfig() {
+		$id = $this->input->post('id');
+		$simpan = array(
+					'id'     => $this->input->post('id'),
+					'nama'   => $this->input->post('nama'),
+					'email'  => $this->input->post('email'),
+					'deskripsi'   => $this->input->post('deskripsi'),
+					'telp'   => $this->input->post('telp'),
+					'share1' => $this->input->post('share1'),
+					'share2' => $this->input->post('share2'),
+					'share3' => $this->input->post('share3'));
+
+		$this->tokomodel->getsimpankonfig($simpan,$id);
+		redirect(base_url('index.php/admin/toko/konfig'));
+	}
+
+	public function reset() {
+		$id     = $this->uri->segment(4);
+		$data   = $this->tokomodel->geteditkonfig($id)->row_array();
+		$simpan = array(
+					'id'        => $data['id'],
+					'nama'      => 'Shop Cart',
+					'email'     => 'shopcart@gmail.com',
+					'telp'      => '0800 1234 678 ',
+					'share1'    => 'www.facebook.com',
+					'share2'    => 'twitter.com',
+					'share3'    => 'instagram.com',
+					'deskripsi' => 'The standard chunk of Lorem<br> The standard chunk of 
+									Lorem Ipsum used since the 1500s is reproduced below for 
+									those interested. Sections 1.10.32 and 1.10.33 from "de Finibus 
+									Bonorum et Malorum" by Cicero are also reproduced in their exact 
+									original form, accompanied by English versions from the 1914 
+									translation by H. Rackham.');
+
+		$this->tokomodel->getsimpankonfig($simpan,$id);
+		redirect(base_url('index.php/admin/toko/konfig'));
+	}
+
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ EDIT DATA ~  |
@@ -258,6 +297,12 @@ class Toko extends CI_Controller {
 		$id = $this->uri->segment(4);
 		$data['data']  = $this->tokomodel->geteditkat($id);
 		$this->template->tampilan('admin/edit/editkategori',$data);
+	}
+
+	public function editkonfig() { //KATEGORI
+		$id = $this->uri->segment(4);
+		$data['set']  = $this->tokomodel->geteditkonfig($id)->row_array();
+		$this->template->tampilan('admin/setting/konfig',$data);
 	}
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |

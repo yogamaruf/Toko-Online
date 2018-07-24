@@ -21,8 +21,4 @@ class template {
 		$this->ci->load->view('customer/index.php',$data);
 	}
 
-	function login() {
-		return $this->ci->session->userdata('email');
-	}
-
 }

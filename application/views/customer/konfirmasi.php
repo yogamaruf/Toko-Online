@@ -10,43 +10,53 @@
 
 			<div class="row-fluid">	
 
-				<h4>Data Anda</h4>
+				<h5><center>Silahkan isi form dibawah ini untuk konfirmasi pembayaran</center></h5>
 
-				<form class="form-horizontal" style="margin: 20px;">
-          			<table class="table table-striped">
-						<tbody>
-                			<tr> 
-							 	<td>Nama</td>
-							 	<td><?php echo $check['title'];echo ' '.$check['firstname'];echo ' '.$check['lastname']; ?></td>
-							</tr>
-							<tr>
-							 	<td>Kode ORDER</td>
-							 	<td><?php echo $check['kodeorder']; ?></td>
-							</tr>
-							<tr>
-							 	<td>Nominal</td>
-							 	<td><?php echo $order['nominal']; ?></td>
-							</tr>
-							<tr>
-							 	<td>Tanggal/ Waktu</td>
-							 	<td><?php echo $check['tglorder']; ?></td>
-							</tr>
-							<tr>
-							 	<td>Via Pembayaran</td>
-							 	<td><?php echo $check['viabayar']; ?></td>
-							</tr>
-							<tr>
-							 	<td>Keterangan</td>
-							 	<td><?php echo $order['status']; ?></td>
-							</tr>
-            			</tbody>
-            		</table>
+				<form class="form-horizontal" style="margin: 20px;" action="<?php echo base_url('index.php/toko/finish'); ?>" method="POST">
+          			
+            		<div class="control-group">
+						<label class="control-label" for="input">Nama <sup>*</sup></label> 
+						<div class="controls">
+						  	<input type="text" required="" placeholder="Masukkan nama anda">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="input">Kode ORDER <sup>*</sup></label> 
+						<div class="controls">
+						  	<input type="text" name="kodeorder" required="" placeholder="Masukkan kode order anda">
+						  	<p style="font-style: italic;">( <?php echo $order['kodeorder']; ?> ) *kode order anda</p>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="input">Nominal <sup>*</sup></label> 
+						<div class="controls">
+						  	<input type="text" value="Rp. <?php echo number_format($order['nominal'],0,'.','.'); ?>" readonly>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="input">Tanggal/ Waktu <sup>*</sup></label> 
+						<div class="controls">
+						  	<input type="text" value="<?php echo $order['tanggal']; ?>" readonly>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="input">Via Pembayaran <sup>*</sup></label> 
+						<div class="controls">
+						  	<input type="text" value="<?php echo $check['viabayar']; ?>" readonly>
+						</div>
+					</div>
+            		<div class="control-group">
+						<label class="control-label" for="input">Keterangan <sup>*</sup></label> 
+						<div class="controls">
+						  	<input type="text" value="<?php echo $order['status']; ?>" readonly>
+						</div>
+					</div>
+
+            		<center><button type="submit" class="shopBtn btn-large"><span class="icon-check"></span> Konfirmasi</button></center>
+
         		</form>
 
 			</div>
-
-			<a href="<?php echo base_url('index.php/toko/grid'); ?>" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Kembali Belanja</a>
-			<a href="<?php echo base_url('index.php/toko/'); ?>" class="shopBtn btn-large pull-right"><span class="icon-home"></span> Home </a>
 
 		</div>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2018 at 02:26 AM
+-- Generation Time: Jul 24, 2018 at 03:58 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -77,7 +77,9 @@ INSERT INTO `checkout` (`idcheck`, `kodeorder`, `idproduk`, `idcustom`, `jumlah`
 (9, 8, 11, 4, 1, 240000, '2018-07-20', 55185, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'BCA', 2147483647),
 (10, 8, 12, 4, 1, 240000, '2018-07-20', 55185, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'BCA', 2147483647),
 (11, 9, 12, 3, 1, 204640, '2018-07-21', 55183, 'Indonesia', 'Yogyakarta', 'Bantul', 'Sewon', 'BCA', 2147483647),
-(12, 9, 10, 3, 2, 204640, '2018-07-21', 55183, 'Indonesia', 'Yogyakarta', 'Bantul', 'Sewon', 'BCA', 2147483647);
+(12, 9, 10, 3, 2, 204640, '2018-07-21', 55183, 'Indonesia', 'Yogyakarta', 'Bantul', 'Sewon', 'BCA', 2147483647),
+(13, 10, 9, 3, 1, 12500, '2018-07-21', 55184, 'Indonesia', 'Yogyakarta', 'Bantul', 'Sewon', 'MEGA', 2147483647),
+(14, 11, 10, 3, 1, 102320, '2018-07-21', 55184, 'Indonesia', 'Yogyakarta', 'Bantul', 'Sewon', 'MEGA', 2147483647);
 
 -- --------------------------------------------------------
 
@@ -184,8 +186,17 @@ CREATE TABLE `konfigurasi` (
   `deskripsi` text NOT NULL,
   `email` varchar(30) NOT NULL,
   `telp` varchar(13) NOT NULL,
-  `share` varchar(30) NOT NULL
+  `share1` varchar(30) NOT NULL,
+  `share2` varchar(30) NOT NULL,
+  `share3` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `konfigurasi`
+--
+
+INSERT INTO `konfigurasi` (`id`, `nama`, `deskripsi`, `email`, `telp`, `share1`, `share2`, `share3`) VALUES
+(1, 'Shop Cart', 'The standard chunk of Lorem<br> The standard chunk of \r\n									Lorem Ipsum used since the 1500s is reproduced below for \r\n									those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus \r\n									Bonorum et Malorum\" by Cicero are also reproduced in their exact \r\n									original form, accompanied by English versions from the 1914 \r\n									translation by H. Rackham.', 'shopcart@gmail.com', '0800 1234 678', 'www.facebook.com', 'twitter.com', 'instagram.com');
 
 -- --------------------------------------------------------
 
@@ -222,7 +233,7 @@ CREATE TABLE `order` (
   `idcustom` int(10) NOT NULL,
   `jumbel` int(2) NOT NULL,
   `nominal` int(10) NOT NULL,
-  `tanggal` date NOT NULL,
+  `tanggal` datetime NOT NULL,
   `status` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -231,9 +242,11 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`kodeorder`, `idcustom`, `jumbel`, `nominal`, `tanggal`, `status`) VALUES
-(7, 4, 1, 6000000, '2018-07-20', 'Belum bayar'),
-(8, 4, 1, 594820, '2018-07-20', 'Belum bayar'),
-(9, 3, 2, 444640, '2018-07-21', 'Belum bayar');
+(7, 4, 1, 6000000, '2018-07-20 13:28:10', 'Lunas'),
+(8, 4, 1, 594820, '2018-07-20 18:32:05', 'Lunas'),
+(9, 3, 2, 444640, '2018-07-21 06:39:17', 'Belum bayar'),
+(10, 3, 1, 12500, '2018-07-21 11:18:33', 'Lunas'),
+(11, 3, 1, 102320, '2018-07-21 11:34:10', 'Lunas');
 
 -- --------------------------------------------------------
 
@@ -343,7 +356,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `checkout`
 --
 ALTER TABLE `checkout`
-  MODIFY `idcheck` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idcheck` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -367,13 +380,13 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `idcart` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `idcart` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `konfigurasi`
 --
 ALTER TABLE `konfigurasi`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `merk`
@@ -385,7 +398,7 @@ ALTER TABLE `merk`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `kodeorder` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `kodeorder` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `produk`

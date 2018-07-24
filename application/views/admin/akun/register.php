@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Free Bootstrap Admin Template : Binary Admin</title>
+    <title>Binary Admin : Register</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="<?php echo base_url(); ?>assets/backend/assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -57,9 +57,9 @@
                                             <input type="password" name="pass1" class="form-control" placeholder="Retype Password" />
                                         </div>
                                      
-                                        <input type="submit" name="simpan" value="Register">
+                                        <input type="submit" name="simpan" value="Register" class="btn btn-primary">
                                         <hr />
-                                        Already Registered ?  <a href="<?php echo base_url('index.php/admin/toko/login'); ?>" >Login here</a>
+                                        Already Registered ?  <a href="<?php echo base_url('index.php/admin/login'); ?>" >Login here</a>
                                 </form>
                             </div>
                            

@@ -97,7 +97,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			  		<li class=""><a href="<?php echo base_url('index.php/toko/grid'); ?>">Grid View</a></li>
 			  		<li class=""><a href="<?php echo base_url('index.php/toko/three'); ?>">Three Column</a></li>
 			  		<li class=""><a href="<?php echo base_url('index.php/toko/four'); ?>">Four Column</a></li>
-			  		<li class=""><a href="<?php echo base_url('index.php/toko/about'); ?>">About</a></li>
+			  		<li class=""><a href="<?php echo base_url('index.php/toko/tertunda'); ?>">Tertunda</a></li>
 				</ul>
 
 				<form action="<?php echo base_url('index.php/toko/search'); ?>" class="navbar-search pull-left" method="POST">

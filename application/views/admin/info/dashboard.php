@@ -68,7 +68,7 @@
 
     <div class="col-md-3 col-sm-12 col-xs-12">     
 
-        <div class="panel panel-primary text-center no-boder bg-color-green">
+        <div class="panel panel-primary text-center no-boder bg-color-green" style="background-color: #7c2da7;">
 
             <div class="panel-body">
                 <div class="col-md-6 col-sm-4 col-xs-12">
@@ -86,7 +86,7 @@
                     <i style="border: 1px solid #fff;color: #fff;border-radius: 50px;margin: 0 7px;padding: 2px 4px;" class="fa fa-plus"></i></a>Kategori
                 </p>
             </div>
-            <div style="padding: 0;" class="panel-footer back-footer-green">
+            <div style="padding: 0;background-color: #5d1e7f;" class="panel-footer back-footer-green">
                <a style="text-decoration: none; color: #fff;display: block;padding: 10px 0;" href="<?php echo base_url('index.php/admin/toko/kategori'); ?>">Lebih banyak...</a>    
             </div>
 
@@ -96,7 +96,7 @@
 
     <div class="col-md-3 col-sm-12 col-xs-12">     
 
-        <div class="panel panel-primary text-center no-boder bg-color-green">
+        <div class="panel panel-primary text-center no-boder bg-color-green" style="background-color: #1675c7;">
 
             <div class="panel-body">
                 <div class="col-md-6 col-sm-4 col-xs-12">
@@ -114,7 +114,7 @@
                     <i style="border: 1px solid #fff;color: #fff;border-radius: 50px;margin: 0 7px;padding: 2px 4px;" class="fa fa-plus"></i></a>Customer
                 </p>
             </div>
-            <div style="padding: 0;" class="panel-footer back-footer-green">
+            <div style="padding: 0; background-color: #0c5798;" class="panel-footer back-footer-green">
                <a style="text-decoration: none; color: #fff;display: block;padding: 10px 0;" href="<?php echo base_url('index.php/admin/toko/tabelcustomer'); ?>">Lebih banyak...</a>    
             </div>
 

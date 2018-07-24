@@ -36,10 +36,12 @@ class Customermodel extends CI_Model {
 		return $this->db->get('checkout');
 	}
 
-	public function getkonfirmorder($id) { // ORDER
-		$this->db->where('idcustom',$id);
+	public function getkonfirmorder($id=null,$w=null) { // ORDER
+		if (!empty($id)&&$this->db->where('status',$w)) {
+			$this->db->where('idcustom',$id);
+		}
 
-		return $this->db->get('order');
+		return $this->db->order_by('kodeorder','DESC')->get('order');
 	}
 
 	public function getkat() { // Berdasarkan KATEGORI
@@ -97,6 +99,14 @@ class Customermodel extends CI_Model {
 
 	public function gettambahcart($simpan) { // TABEL KERANJANG
 		return $this->db->insert('keranjang',$simpan);
+	}
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ KONFIRMASI DATA  ~  |
+
+	public function getlunas($kode,$simpan) { // TABEL KERANJANG
+		return $this->db->where('kodeorder',$kode)->update('order',$simpan);
 	}
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
