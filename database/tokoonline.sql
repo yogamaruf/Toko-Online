@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2018 at 03:58 AM
+-- Generation Time: Jul 24, 2018 at 06:24 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -244,7 +244,7 @@ CREATE TABLE `order` (
 INSERT INTO `order` (`kodeorder`, `idcustom`, `jumbel`, `nominal`, `tanggal`, `status`) VALUES
 (7, 4, 1, 6000000, '2018-07-20 13:28:10', 'Lunas'),
 (8, 4, 1, 594820, '2018-07-20 18:32:05', 'Lunas'),
-(9, 3, 2, 444640, '2018-07-21 06:39:17', 'Belum bayar'),
+(9, 3, 2, 444640, '2018-07-21 06:39:17', 'Lunas'),
 (10, 3, 1, 12500, '2018-07-21 11:18:33', 'Lunas'),
 (11, 3, 1, 102320, '2018-07-21 11:34:10', 'Lunas');
 

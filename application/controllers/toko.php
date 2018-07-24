@@ -102,6 +102,24 @@ class Toko extends CI_Controller {
 		$this->template->tampil('customer/fourcolumn',$data);
 	}
 
+	public function histori() {
+		$id = $this->session->userdata('idcustom');
+		if ($this->session->userdata('logged')<>1) {
+				$this->session->set_flashdata("error","<div class='alert alert-danger alert-dismissable'>
+                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                        <strong>Silahkan login terlebih dahulu !!!</strong>
+                    </div>");
+
+                redirect(base_url('index.php/login'));
+        } else {
+				$data = array(
+							'merk'  => $this->customermodel->getmerk(),
+							'data' => $this->customermodel->gethistori($id));
+		
+				$this->template->tampil('customer/histori',$data);
+		}
+	}
+
 	public function konfirm() {
 		$id = $this->session->userdata('idcustom');
 		if ($this->customermodel->getcart($id)->num_rows()==0) {

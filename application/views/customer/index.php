@@ -155,7 +155,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<a href="#">PERSONAL INFORMATION</a><br>
 			<a href="#">ADDRESSES</a><br>
 			<a href="#">DISCOUNT</a><br>
-			<a href="#">ORDER HISTORY</a><br>
+			<a href="<?php echo base_url('index.php/toko/histori'); ?>">ORDER HISTORY</a><br>
 
  		</div>
 

@@ -59,6 +59,12 @@ class Customermodel extends CI_Model {
 		return $this->db->get('keranjang');
 	}
 
+	public function gethistori($id) {
+		$this->db->where('idcustom',$id);
+
+		return $this->db->get('order');
+	}
+
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ Menampilkan Data Pada FORM MY ACCOUNT ~  |
