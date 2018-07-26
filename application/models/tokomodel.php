@@ -65,6 +65,22 @@ class Tokomodel extends CI_Model {
 		return $this->db->get('konfigurasi');
 	}
 
+	public function gethal1() {
+		return $this->db->order_by('idmenu','ASC')->limit(6)->get('halaman');
+	}
+
+	public function gethal2() {
+		return $this->db->order_by('idmenu','DESC')->limit(7)->get('halaman');
+	}
+
+	public function gethalaman($idmenu) {
+		if (!empty($id)) {
+			$this->db->where('idmenu',$idmenu);
+		}
+
+		return $this->db->get('detailhal');
+	}
+
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ FORM EDIT ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -87,6 +103,13 @@ class Tokomodel extends CI_Model {
 
 	public function geteditkonfig($id=null) {
 		return $this->db->get_where('konfigurasi',array('id' => $id));
+	}
+
+	public function getedithal($id=null) {
+		$this->db->join('detailhal','detailhal.idmenu=halaman.idmenu');
+		$this->db->where('detailhal.idmenu',$id);
+
+		return $this->db->get('halaman');
 	}
 
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -117,6 +140,14 @@ class Tokomodel extends CI_Model {
 		return $this->db->where('id',$id)->update('konfigurasi',$simpan);
 	}
 
+	public function getsimpanhalaman($hal,$idmenu) {
+		return $this->db->where('idmenu',$idmenu)->update('halaman',$hal);
+	}
+
+	public function getsimpanhal($detailhal,$id) {
+		return $this->db->where('id',$id)->update('detailhal',$detailhal);
+	}
+
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ HAPUS ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -139,16 +170,6 @@ class Tokomodel extends CI_Model {
 
 	public function gethapusadmin($id) {
 		return $this->db->where('idadmin',$id)->delete('admin');
-	}
-
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ LOGIN ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-	public function login($name,$pass) {
-		$this->db->where('nama', $name);
-		$this->db->where('password', $pass);
-		return $this->db->get('admin');
 	}
 
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>

@@ -26,7 +26,7 @@
                         </thead>
                         <tbody>
 
-                             <?php $no = 1;
+                            <?php $no = 1;
                             foreach ($data as $key => $value) { ?>
 
                             <tr>

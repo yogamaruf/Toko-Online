@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2018 at 06:24 PM
+-- Generation Time: Jul 26, 2018 at 02:28 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -79,7 +79,9 @@ INSERT INTO `checkout` (`idcheck`, `kodeorder`, `idproduk`, `idcustom`, `jumlah`
 (11, 9, 12, 3, 1, 204640, '2018-07-21', 55183, 'Indonesia', 'Yogyakarta', 'Bantul', 'Sewon', 'BCA', 2147483647),
 (12, 9, 10, 3, 2, 204640, '2018-07-21', 55183, 'Indonesia', 'Yogyakarta', 'Bantul', 'Sewon', 'BCA', 2147483647),
 (13, 10, 9, 3, 1, 12500, '2018-07-21', 55184, 'Indonesia', 'Yogyakarta', 'Bantul', 'Sewon', 'MEGA', 2147483647),
-(14, 11, 10, 3, 1, 102320, '2018-07-21', 55184, 'Indonesia', 'Yogyakarta', 'Bantul', 'Sewon', 'MEGA', 2147483647);
+(14, 11, 10, 3, 1, 102320, '2018-07-21', 55184, 'Indonesia', 'Yogyakarta', 'Bantul', 'Sewon', 'MEGA', 2147483647),
+(15, 12, 10, 3, 1, 102320, '2018-07-25', 55185, 'Indonesia', 'Yogyakarta', 'Bantul', 'Bambang', 'MEGA', 2147483647),
+(16, 13, 10, 4, 1, 102320, '2018-07-25', 55185, 'Indonesia', 'Yogyakarta', 'Bantul', 'kasongan', 'MEGA', 2147483647);
 
 -- --------------------------------------------------------
 
@@ -109,6 +111,34 @@ INSERT INTO `customer` (`idcustom`, `title`, `firstname`, `lastname`, `email`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `detailhal`
+--
+
+CREATE TABLE `detailhal` (
+  `id` int(2) NOT NULL,
+  `idmenu` int(2) NOT NULL,
+  `judulhal` varchar(50) NOT NULL,
+  `isi1` varchar(50) NOT NULL,
+  `isi2` varchar(50) NOT NULL,
+  `isi3` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `detailhal`
+--
+
+INSERT INTO `detailhal` (`id`, `idmenu`, `judulhal`, `isi1`, `isi2`, `isi3`) VALUES
+(1, 1, 'New Products', '', '', ''),
+(2, 1, 'Featured Products', '', 'f', 'k'),
+(3, 2, 'My Account', '', '', ''),
+(4, 2, 'Your Personal Details', '', '', 'ff'),
+(5, 3, 'Registration', '', '', ''),
+(6, 3, 'Your Personal Details ', '', '', ''),
+(7, 4, 'Visit Us', '', '', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `detailprofil`
 --
 
@@ -118,6 +148,36 @@ CREATE TABLE `detailprofil` (
   `notelp` varchar(13) NOT NULL,
   `alamat` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `halaman`
+--
+
+CREATE TABLE `halaman` (
+  `idmenu` int(11) NOT NULL,
+  `namamenu` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `halaman`
+--
+
+INSERT INTO `halaman` (`idmenu`, `namamenu`) VALUES
+(1, 'Homeb'),
+(2, 'My Account'),
+(3, 'Free Register'),
+(4, 'Contact Us'),
+(5, 'Items (s)'),
+(6, 'Log Out'),
+(7, 'List View'),
+(8, 'Grid View'),
+(9, 'Three Column'),
+(10, 'Four Column'),
+(11, 'Tertunda'),
+(12, 'Search'),
+(13, 'Log In');
 
 -- --------------------------------------------------------
 
@@ -196,7 +256,7 @@ CREATE TABLE `konfigurasi` (
 --
 
 INSERT INTO `konfigurasi` (`id`, `nama`, `deskripsi`, `email`, `telp`, `share1`, `share2`, `share3`) VALUES
-(1, 'Shop Cart', 'The standard chunk of Lorem<br> The standard chunk of \r\n									Lorem Ipsum used since the 1500s is reproduced below for \r\n									those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus \r\n									Bonorum et Malorum\" by Cicero are also reproduced in their exact \r\n									original form, accompanied by English versions from the 1914 \r\n									translation by H. Rackham.', 'shopcart@gmail.com', '0800 1234 678', 'www.facebook.com', 'twitter.com', 'instagram.com');
+(1, 'Shopping Aja', 'The standard chunk of Lorem<br> The standard chunk of \r\n									Lorem Ipsum used since the 1500s is reproduced below for \r\n									those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus \r\n									Bonorum et Malorum\" by Cicero are also reproduced in their exact \r\n									original form, accompanied by English versions from the 1914 \r\n									translation by H. Rackham.', 'shoppingaja@gmail.com', '0800 1234 678', 'www.facebook.com', 'twitter.com', 'instagram.com');
 
 -- --------------------------------------------------------
 
@@ -246,7 +306,9 @@ INSERT INTO `order` (`kodeorder`, `idcustom`, `jumbel`, `nominal`, `tanggal`, `s
 (8, 4, 1, 594820, '2018-07-20 18:32:05', 'Lunas'),
 (9, 3, 2, 444640, '2018-07-21 06:39:17', 'Lunas'),
 (10, 3, 1, 12500, '2018-07-21 11:18:33', 'Lunas'),
-(11, 3, 1, 102320, '2018-07-21 11:34:10', 'Lunas');
+(11, 3, 1, 102320, '2018-07-21 11:34:10', 'Lunas'),
+(12, 3, 1, 102320, '2018-07-25 10:30:45', 'Lunas'),
+(13, 4, 1, 102320, '2018-07-25 02:23:45', 'Lunas');
 
 -- --------------------------------------------------------
 
@@ -301,10 +363,22 @@ ALTER TABLE `customer`
   ADD PRIMARY KEY (`idcustom`);
 
 --
+-- Indexes for table `detailhal`
+--
+ALTER TABLE `detailhal`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `detailprofil`
 --
 ALTER TABLE `detailprofil`
   ADD PRIMARY KEY (`idd`);
+
+--
+-- Indexes for table `halaman`
+--
+ALTER TABLE `halaman`
+  ADD PRIMARY KEY (`idmenu`);
 
 --
 -- Indexes for table `kategori`
@@ -356,7 +430,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `checkout`
 --
 ALTER TABLE `checkout`
-  MODIFY `idcheck` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idcheck` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -365,10 +439,22 @@ ALTER TABLE `customer`
   MODIFY `idcustom` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `detailhal`
+--
+ALTER TABLE `detailhal`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `detailprofil`
 --
 ALTER TABLE `detailprofil`
   MODIFY `idd` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `halaman`
+--
+ALTER TABLE `halaman`
+  MODIFY `idmenu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -398,7 +484,7 @@ ALTER TABLE `merk`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `kodeorder` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `kodeorder` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `produk`

@@ -52,7 +52,8 @@ class Customermodel extends CI_Model {
 		return $this->db->get('merk')->result_array();
 	}
 
-	public function getcart($id) { // Menampilkan data pada TABEL KERANJANG 
+	public function getcart() { // Menampilkan data pada TABEL KERANJANG 
+		$id = $this->session->userdata('idcustom');
 		$this->db->join('customer','customer.idcustom=keranjang.idcustomer');
 		$this->db->where('idcustom',$id);
 
@@ -65,6 +66,10 @@ class Customermodel extends CI_Model {
 		return $this->db->get('order');
 	}
 
+	public function getheader() {
+		return $this->db->get('konfigurasi');
+	}
+
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ Menampilkan Data Pada FORM MY ACCOUNT ~  |
@@ -75,6 +80,26 @@ class Customermodel extends CI_Model {
 
 		return $this->db->get('customer');
 	}
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ Hitung Harga ~  |
+
+	public function gethitung() {
+		$hitung = 0;
+		$id     = $this->session->userdata('idcustom');
+
+		if (!empty($id)) {
+			$data   = $this->db->get_where('keranjang',array('idcustomer' => $id));
+			foreach ($data->result_array() as $key => $value) {
+				$hitung += str_replace('', '', $value['total']);
+			}
+		} else {
+			$hitung = "0";
+		}
+
+		return $hitung;
+ 	}
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
 

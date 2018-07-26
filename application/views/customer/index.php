@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-    <title>Shopping</title>
+    <title><?php echo $header['nama']; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -29,16 +29,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="alignR">
 
 				<div class="pull-left socialNw">
-					<a href="#"><span class="icon-twitter"></span></a>
-					<a href="#"><span class="icon-facebook"></span></a>
-					<a href="#"><span class="icon-youtube"></span></a>
-					<a href="#"><span class="icon-tumblr"></span></a>
+					<a href="https://<?php echo $header['share2']; ?>"><span class="icon-twitter"></span></a>
+					<a href="https://<?php echo $header['share1']; ?>"><span class="icon-facebook"></span></a>
+					<a href="https://<?php echo $header['share3']; ?>"><span class="icon-instagram"></span></a>
 				</div>
 				<a class="" href="<?php echo base_url('index.php/toko/'); ?>"> <span class="icon-home"></span> Home</a>
 				<a href="<?php echo base_url('index.php/toko/myprofil'); ?>"><span class="icon-user"></span> My Account</a> 
 				<a href="<?php echo base_url('index.php/toko/register'); ?>"><span class="icon-edit"></span> Free Register </a> 
 				<a href="<?php echo base_url('index.php/toko/kontak'); ?>"><span class="icon-envelope"></span> Contact us</a>
-				<a href="<?php echo base_url('index.php/toko/keranjang'); ?>"><span class="icon-shopping-cart"></span>  Item(s) - <span class="badge badge-warning"> Rp. 0 </span></a>
+				<a href="<?php echo base_url('index.php/toko/keranjang'); ?>"><span class="icon-shopping-cart"></span> <?php echo $jumlah; ?>  Item(s) - <span class="badge badge-warning"> Rp. <?php echo number_format($hitung,0,'.','.'); ?> </span></a>
 				<a href="<?php echo base_url('index.php/login/logout'); ?>">Logout</a>
 
 			</div>
@@ -59,16 +58,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 		<div class="span4">
 			<h1>
-				<a class="logo" href="<?php echo base_url('index.php/toko/'); ?>"><span>Twitter Bootstrap ecommerce template</span><img src="<?php echo base_url(); ?>assets/fronted/assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop"></a>
+				<a class="logo" href="<?php echo base_url('index.php/toko/'); ?>"><font style="font-family: 'Stencil',sans-serif;color: #999999a3;"><?php echo $header['nama']; ?></font></a>
 			</h1>
 		</div>
 
 		<div class="span4"></div>
 
 		<div class="span4 alignR">
-			<p><br> <strong> Support (24/7) :  0800 1234 678 </strong><br><br></p>
-			<span class="btn btn-mini">[ 0 ] <span class="icon-shopping-cart"></span></span>
-			<span class="btn btn-warning btn-mini">$</span>
+			<p><br> <strong> E-mail :  <?php echo $header['email']; ?> </strong><br><br></p>
+			<span class="btn btn-mini">[ <?php echo $jumlah; ?> ] <span class="icon-shopping-cart"></span></span>
+			<span class="btn btn-warning btn-mini">Rp</span>
 			<span class="btn btn-mini">&pound;</span>
 			<span class="btn btn-mini">&euro;</span>
 		</div>
@@ -151,9 +150,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			<h5>Your Account</h5>
 
-			<a href="#">YOUR ACCOUNT</a><br>
+			<a href="<?php echo base_url('index.php/toko/myprofil'); ?>">YOUR ACCOUNT</a><br>
 			<a href="#">PERSONAL INFORMATION</a><br>
-			<a href="#">ADDRESSES</a><br>
+			<a href="<?php echo base_url('index.php/toko/kontak'); ?>">ADDRESSES</a><br>
 			<a href="#">DISCOUNT</a><br>
 			<a href="<?php echo base_url('index.php/toko/histori'); ?>">ORDER HISTORY</a><br>
 
@@ -161,13 +160,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 		<div class="span2">
 
-			<h5>Iinformation</h5>
+			<h5>Information</h5>
 
-			<a href="contact.html">CONTACT</a><br>
+			<a href="<?php echo base_url('index.php/toko/kontak'); ?>">CONTACT</a><br>
 			<a href="#">SITEMAP</a><br>
 			<a href="#">LEGAL NOTICE</a><br>
 			<a href="#">TERMS AND CONDITIONS</a><br>
-			<a href="#">ABOUT US</a><br>
+			<a href="<?php echo base_url('index.php/toko/about'); ?>">ABOUT US</a><br>
 
  		</div>
 
@@ -185,12 +184,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
  		<div class="span6">
 
-			<h5>The standard chunk of Lorem</h5>
+			<?php echo $header['deskripsi']; ?>
 
-			The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for
- 			those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et 
- 			Malorum" by Cicero are also reproduced in their exact original form, 
-			accompanied by English versions from the 1914 translation by H. Rackham.
  		</div>
 
  	</div>
@@ -211,7 +206,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<a href="#"><img src="<?php echo base_url(); ?>assets/fronted/assets/img/disc.png" alt="payment"></a>
 		</p>
 
-		<span>Copyright &copy; 2013<br> bootstrap ecommerce shopping template</span>
+		<span>Copyright &copy; 2018<br> Toko Online by Yoga</span>
 
 	</div>
 

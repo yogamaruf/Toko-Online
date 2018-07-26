@@ -16,7 +16,11 @@ class template {
 	}
 
 	function tampil($t=null,$d=null) {
-		$data['content'] = $this->ci->load->view($t,$d,true);
+		$data = array(
+				'content' => $this->ci->load->view($t,$d,true),
+				'hitung'  => $this->ci->customermodel->gethitung($t,$d,true),
+				'jumlah'  => $this->ci->customermodel->getcart($t,$d,true)->num_rows(),
+				'header'  => $this->ci->customermodel->getheader($t,$d,true)->row_array());
 
 		$this->ci->load->view('customer/index.php',$data);
 	}

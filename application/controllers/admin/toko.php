@@ -54,8 +54,18 @@ class Toko extends CI_Controller {
 		$this->template->tampilan('admin/tampil/user', $data);
 	}
 
-	public function hal() { //Form Halaman
+	public function hal() { //Halaman
 		$this->template->tampilan('admin/setting/halaman');
+	}
+
+	public  function halaman1() {
+		$data['hal'] = $this->tokomodel->gethal1();
+		$this->template->tampilan('admin/setting/menu1',$data);
+	}
+
+	public  function halaman2() {
+		$data['hal'] = $this->tokomodel->gethal2();
+		$this->template->tampilan('admin/setting/menu1',$data);
 	}
 
 	public function kategori() { //Tabel Kategori
@@ -235,6 +245,31 @@ class Toko extends CI_Controller {
 		redirect(base_url('index.php/admin/toko/konfig'));
 	}
 
+	public function simpanhal() { //HALAMAN
+		$idmenu  = $this->input->post('idmenu');
+
+		$hal = array(
+				'idmenu'   => $this->input->post('idmenu'),
+				'namamenu' => $this->input->post('nama'));
+		$this->tokomodel->getsimpanhalaman($hal,$idmenu);
+
+		$id   = $this->input->post('id');
+		$data = $this->tokomodel->gethalaman($idmenu);
+		foreach ($data as $key => $value) {
+			$detailhal = array(
+					'id'       => $this->input->post('id'),
+					'idmenu'   => $this->input->post('idmenu'),
+					'judulhal' => $this->input->post('judul'),
+					'isi1'     => $this->input->post('isi1'),
+					'isi2'     => $this->input->post('isi2'),
+					'isi3'     => $this->input->post('des'));
+
+			$this->tokomodel->getsimpanhal($detailhal, $id);
+		}
+		
+		redirect(base_url('index.php/admin/toko/halaman1'));
+	}
+
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ EDIT DATA ~  |
@@ -268,7 +303,7 @@ class Toko extends CI_Controller {
 		$id = $this->input->post('idadmin');
 		$simpan = array(
 					'idadmin'     => $this->input->post('idadmin'),
-					'username'        => $this->input->post('nama'),
+					'username'    => $this->input->post('nama'),
 					'namalengkap' => $this->input->post('namaleng'),
 					'email'       => $this->input->post('email'),
 					'password'    => $this->input->post('pass'));
@@ -303,6 +338,13 @@ class Toko extends CI_Controller {
 		$id = $this->uri->segment(4);
 		$data['set']  = $this->tokomodel->geteditkonfig($id)->row_array();
 		$this->template->tampilan('admin/setting/konfig',$data);
+	}
+
+	public function edithal() { //Halaman
+		$id = $this->uri->segment(4);
+		$data['set']  = $this->tokomodel->getedithal($id)->row_array();
+		$data['data'] = $this->tokomodel->getedithal($id)->result_array();
+		$this->template->tampilan('admin/setting/ubah/edithal1',$data);
 	}
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
