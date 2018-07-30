@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 26, 2018 at 02:28 PM
+-- Generation Time: Jul 30, 2018 at 04:24 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -81,7 +81,16 @@ INSERT INTO `checkout` (`idcheck`, `kodeorder`, `idproduk`, `idcustom`, `jumlah`
 (13, 10, 9, 3, 1, 12500, '2018-07-21', 55184, 'Indonesia', 'Yogyakarta', 'Bantul', 'Sewon', 'MEGA', 2147483647),
 (14, 11, 10, 3, 1, 102320, '2018-07-21', 55184, 'Indonesia', 'Yogyakarta', 'Bantul', 'Sewon', 'MEGA', 2147483647),
 (15, 12, 10, 3, 1, 102320, '2018-07-25', 55185, 'Indonesia', 'Yogyakarta', 'Bantul', 'Bambang', 'MEGA', 2147483647),
-(16, 13, 10, 4, 1, 102320, '2018-07-25', 55185, 'Indonesia', 'Yogyakarta', 'Bantul', 'kasongan', 'MEGA', 2147483647);
+(16, 13, 10, 4, 1, 102320, '2018-07-25', 55185, 'Indonesia', 'Yogyakarta', 'Bantul', 'kasongan', 'MEGA', 2147483647),
+(17, 14, 8, 4, 1, 12500, '2018-07-27', 55185, 'Indonesia', 'Yogyakarta', 'Bantul', 'kkkk', 'MEGA', 2147483647),
+(18, 14, 9, 4, 1, 12500, '2018-07-27', 55185, 'Indonesia', 'Yogyakarta', 'Bantul', 'kkkk', 'MEGA', 2147483647),
+(19, 14, 9, 4, 1, 12500, '2018-07-27', 55185, 'Indonesia', 'Yogyakarta', 'Bantul', 'kkkk', 'MEGA', 2147483647),
+(20, 15, 10, 4, 1, 102320, '2018-07-27', 55185, 'Indonesia', 'Yogyakarta', 'Bantul', 'kasongan', 'BCA', 2147483647),
+(21, 16, 9, 4, 1, 12500, '2018-07-27', 55185, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'MEGA', 2147483647),
+(22, 17, 10, 4, 1, 102320, '2018-07-28', 55185, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'MEGA', 2147483647),
+(23, 18, 11, 4, 1, 240000, '2018-07-28', 55185, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'MEGA', 2147483647),
+(24, 19, 9, 4, 1, 102320, '2018-07-28', 55185, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'SYARIAH', 2147483647),
+(25, 19, 10, 4, 1, 102320, '2018-07-28', 55185, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'SYARIAH', 2147483647);
 
 -- --------------------------------------------------------
 
@@ -118,23 +127,23 @@ CREATE TABLE `detailhal` (
   `id` int(2) NOT NULL,
   `idmenu` int(2) NOT NULL,
   `judulhal` varchar(50) NOT NULL,
-  `isi1` varchar(50) NOT NULL,
-  `isi2` varchar(50) NOT NULL,
-  `isi3` text NOT NULL
+  `subjudul` varchar(50) NOT NULL,
+  `deskripsi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detailhal`
 --
 
-INSERT INTO `detailhal` (`id`, `idmenu`, `judulhal`, `isi1`, `isi2`, `isi3`) VALUES
-(1, 1, 'New Products', '', '', ''),
-(2, 1, 'Featured Products', '', 'f', 'k'),
-(3, 2, 'My Account', '', '', ''),
-(4, 2, 'Your Personal Details', '', '', 'ff'),
-(5, 3, 'Registration', '', '', ''),
-(6, 3, 'Your Personal Details ', '', '', ''),
-(7, 4, 'Visit Us', '', '', '');
+INSERT INTO `detailhal` (`id`, `idmenu`, `judulhal`, `subjudul`, `deskripsi`) VALUES
+(1, 1, 'New Products', '', ''),
+(2, 1, 'Featured Products', '', ''),
+(3, 2, 'My Account', '', ''),
+(4, 2, 'Your Personal Details', '', ''),
+(5, 3, 'Registration', '', ''),
+(6, 3, 'Your Personal Details ', '', ''),
+(7, 4, 'Visit Us', '', ''),
+(8, 15, 'About Us', '', 'I\'m a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story and let your users know a little more about you.<br><br>\r\nIt’s easy. Just click “Edit Text” or double click me and you can start adding your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a great place for you to tell a story and let your users know a little more about you.<br>\r\n				<br>\r\n				This is a great space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors. Make your company stand out and show your visitors who you are.\r\n				<br><br>\r\n				Sometimes I\'m right and I can be wrong. My own beliefs are in my song. The butcher, the banker, the drummer and then, makes no difference what group I\'m in. I am everyday people! Yeah. Yeah.<br>');
 
 -- --------------------------------------------------------
 
@@ -165,7 +174,7 @@ CREATE TABLE `halaman` (
 --
 
 INSERT INTO `halaman` (`idmenu`, `namamenu`) VALUES
-(1, 'Homeb'),
+(1, 'Home'),
 (2, 'My Account'),
 (3, 'Free Register'),
 (4, 'Contact Us'),
@@ -176,8 +185,8 @@ INSERT INTO `halaman` (`idmenu`, `namamenu`) VALUES
 (9, 'Three Column'),
 (10, 'Four Column'),
 (11, 'Tertunda'),
-(12, 'Search'),
-(13, 'Log In');
+(14, 'Footer'),
+(15, 'About US');
 
 -- --------------------------------------------------------
 
@@ -232,7 +241,9 @@ INSERT INTO `keranjang` (`idcart`, `idproduk`, `idcustomer`, `fotoproduk`, `desk
 (6, 13, 2, 'Seiko-5-Sports.jpg', 'Seiko 5 Sport SKZ255 Men Diver', 4150000, 1, 4150000, '2018-07-17'),
 (16, 9, 2, 'sosis_sapi.jpg', 'Sosis Sapi', 12500, 3, 37500, '2018-07-18'),
 (19, 12, 2, 'Rado-sand-rope.jpg', 'Jam tangan rado Judile Rose Gold', 240000, 1, 240000, '2018-07-19'),
-(21, 10, 2, 'lounch_sport.jpg', 'Lounch Sport AA-02', 102320, 1, 102320, '2018-07-19');
+(21, 10, 2, 'lounch_sport.jpg', 'Lounch Sport AA-02', 102320, 1, 102320, '2018-07-19'),
+(22, 9, 4, 'sosis_sapi.jpg', 'Sosis Sapi', 12500, 1, 12500, '2018-07-30'),
+(23, 11, 4, 'Jam-tangan-Rolex.jpg', 'Jam tangan rolex pria kw super keren', 240000, 1, 240000, '2018-07-30');
 
 -- --------------------------------------------------------
 
@@ -308,7 +319,13 @@ INSERT INTO `order` (`kodeorder`, `idcustom`, `jumbel`, `nominal`, `tanggal`, `s
 (10, 3, 1, 12500, '2018-07-21 11:18:33', 'Lunas'),
 (11, 3, 1, 102320, '2018-07-21 11:34:10', 'Lunas'),
 (12, 3, 1, 102320, '2018-07-25 10:30:45', 'Lunas'),
-(13, 4, 1, 102320, '2018-07-25 02:23:45', 'Lunas');
+(13, 4, 1, 102320, '2018-07-25 02:23:45', 'Lunas'),
+(14, 4, 3, 6025000, '2018-07-27 09:03:35', 'Lunas'),
+(15, 4, 1, 102320, '2018-07-27 09:31:19', 'Belum bayar'),
+(16, 4, 1, 12500, '2018-07-27 03:04:47', 'Lunas'),
+(17, 4, 1, 102320, '2018-07-28 01:43:22', 'Lunas'),
+(18, 4, 1, 240000, '2018-07-28 02:56:22', 'Belum bayar'),
+(19, 4, 2, 114820, '2018-07-28 03:08:00', 'Lunas');
 
 -- --------------------------------------------------------
 
@@ -430,7 +447,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `checkout`
 --
 ALTER TABLE `checkout`
-  MODIFY `idcheck` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idcheck` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -442,7 +459,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `detailhal`
 --
 ALTER TABLE `detailhal`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `detailprofil`
@@ -454,7 +471,7 @@ ALTER TABLE `detailprofil`
 -- AUTO_INCREMENT for table `halaman`
 --
 ALTER TABLE `halaman`
-  MODIFY `idmenu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idmenu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -466,7 +483,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `idcart` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `idcart` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `konfigurasi`
@@ -484,7 +501,7 @@ ALTER TABLE `merk`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `kodeorder` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `kodeorder` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `produk`

@@ -47,6 +47,7 @@
 			<center><h3><strong>Deskripsi</strong></h3>
 				<div class="well well-small">
 					<p><?php echo $set['deskripsi']; ?></p>
+				</div>
 			</center>
 		</div>
 

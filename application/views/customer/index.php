@@ -252,6 +252,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 }
             }
+
+            function increment() {
+            	var val = parseInt(document.getElementById('angka').value,10);
+            	val = isNaN(val) ? 0 : val;
+
+            	if (val<10) {
+            		val++;
+            		document.getElementById('angka').value=val;
+            	}
+            }
+
+            function decrement() {
+            	var val = parseInt(document.getElementById('angka').value,10);
+            	val = isNaN(val) ? 0 : val;
+
+            	if (val>1) {
+            		val--;
+            		document.getElementById('angka').value=val;
+            	}
+            }
     </script>
 </body>
 </html>

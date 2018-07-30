@@ -29,16 +29,26 @@ class Customermodel extends CI_Model {
 		return $this->db->get('produk');
 	} 
 
-	public function getcheck($id) { // CHECKOUT
-		$this->db->join('customer','customer.idcustom=checkout.idcustom');
-		$this->db->where('customer.idcustom',$id);
+	public function getcheck($kode=null) { // CHECKOUT
+		$this->db->join('order','order.kodeorder=checkout.kodeorder');
+		if (!empty($kode)) {
+			$this->db->where('order.kodeorder',$kode);
+		}
 
-		return $this->db->get('checkout');
+		return $this->db->order_by('idcheck','DESC')->get('checkout');
 	}
 
 	public function getkonfirmorder($id=null,$w=null) { // ORDER
 		if (!empty($id)&&$this->db->where('status',$w)) {
 			$this->db->where('idcustom',$id);
+		}
+
+		return $this->db->order_by('kodeorder','DESC')->get('order');
+	}
+
+	public function getkonfirm($kode=null) { // ORDER
+		if (!empty($kode)) {
+			$this->db->where('kodeorder',$kode);
 		}
 
 		return $this->db->order_by('kodeorder','DESC')->get('order');
@@ -68,6 +78,12 @@ class Customermodel extends CI_Model {
 
 	public function getheader() {
 		return $this->db->get('konfigurasi');
+	}
+
+	public function gethal($id) {
+		$this->db->where('idmenu',$id);
+		
+		return $this->db->get('detailhal');
 	}
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |

@@ -13,7 +13,7 @@
     <div class="col-md-6 col-sm-12 col-xs-12">
 
         <div class="panel-body">
-            <form action="<?php echo base_url('index.php/admin/toko/simpanhal');?>" method="post" enctype="multipart/form-data">
+            <form action="<?php echo base_url('index.php/admin/toko/simpanhal');?>" method="post">
 
                 <input type="hidden" name="idmenu" value="<?php echo $set['idmenu']; ?>">
                 <div class="form-group">
@@ -32,14 +32,6 @@
                             <input type="text" name="judul" class="form-control" required="" placeholder="Enter ..." value="<?php echo $value['judulhal']; ?>">
                         </div>
                         <div class="form-group">
-                            <label style="font-style: italic;">ISI 1</label>
-                            <input type="text" name="isi1" class="form-control" placeholder="Enter ..." value="<?php echo $value['isi1']; ?>">
-                        </div>
-                        <div class="form-group">
-                            <label style="font-style: italic;">ISI 2</label>
-                            <input type="text" name="isi2" class="form-control" placeholder="Enter ..." value="<?php echo $value['isi2']; ?>">
-                        </div>
-                        <div class="form-group">
                             <label style="font-style: italic;">Deskripsi</label>
                             <textarea name="des" class="form-control" placeholder="Enter ..."><?php echo $value['isi3']; ?></textarea>
                             </div>
@@ -50,7 +42,7 @@
 
                 <div class="form-group">
                     <input type="submit" value="Simpan" class="btn btn-default">
-                    <a href="<?php echo base_url('index.php/admin/toko/halaman1');?>" class="btn btn-danger">Batal</a>
+                    <a href="<?php echo base_url('index.php/admin/toko/halaman');?>" class="btn btn-danger">Batal</a>
                 </div>
 
             </form>

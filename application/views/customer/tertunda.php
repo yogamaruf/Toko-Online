@@ -33,7 +33,7 @@
 
 							<h3>Status : <?php echo $value['status']; ?></h3>
 							<div class="btn-group">
-								<a href="<?php echo base_url('index.php/toko/konfirmasi'); ?>" class="shopBtn btn-large"><span class="icon-check"></span> Konfirmasi</a>
+								<a href="<?php echo base_url('index.php/toko/konfirmasi/').$value['kodeorder']; ?>" class="shopBtn btn-large"><span class="icon-check"></span> Konfirmasi</a>
 		 					</div>
 
 						</div>

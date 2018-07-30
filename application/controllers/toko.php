@@ -104,7 +104,7 @@ class Toko extends CI_Controller {
             redirect(base_url('index.php/login'));
         } else {
 			$data = array(
-					'merk'  => $this->customermodel->getmerk(),
+					'merk' => $this->customermodel->getmerk(),
 					'data' => $this->customermodel->gethistori($id));
 		
 			$this->template->tampil('customer/histori',$data);
@@ -173,7 +173,10 @@ class Toko extends CI_Controller {
 	}
 
 	public function about() {
-		$data['merk'] = $this->customermodel->getmerk();
+		$id = 15;
+		$data = array(
+				'data' => $this->customermodel->gethal($id)->row_array(),
+				'merk' => $this->customermodel->getmerk());
 		$this->template->tampil('customer/about',$data);
 	}
 
@@ -227,12 +230,11 @@ class Toko extends CI_Controller {
 	}
 
 	public function konfirmasi() {
-		$id = $this->session->userdata('idcustom');
-		$w = 'Belum Bayar';
+		$kode = $this->uri->segment(3);
 		$check = array(
-					'merk'  => $this->customermodel->getmerk(),
-					'order' => $this->customermodel->getkonfirmorder($id,$w)->row_array(),
-					'check' => $this->customermodel->getcheck($id)->row_array());
+				'merk'  => $this->customermodel->getmerk(),
+				'order' => $this->customermodel->getkonfirm($kode)->row_array(),
+				'check' => $this->customermodel->getcheck($kode)->row_array());
 
 		$this->template->tampil('customer/konfirmasi',$check);
 	}
@@ -266,7 +268,7 @@ class Toko extends CI_Controller {
         } else {
         	$w = 'Belum Bayar';
 			$data = array(
-					'merk'  => $this->customermodel->getmerk(),
+					'merk' => $this->customermodel->getmerk(),
 					'data' => $this->customermodel->getkonfirmorder($id,$w));
 		
 			$this->template->tampil('customer/tertunda',$data);
@@ -310,8 +312,6 @@ class Toko extends CI_Controller {
 					'tanggalcart' => date('Y-m-d'));
 
 			$this->customermodel->gettambahcart($simpan);
-				
-			echo "<script>alert('Berhasil di tambahkan');</script>";
 			redirect(base_url('index.php/toko/keranjang'));
 		}
 	}

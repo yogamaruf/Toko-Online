@@ -44,6 +44,14 @@ class Toko extends CI_Controller {
 		$this->template->tampilan('admin/info/detailproduk', $data);
 	}
 
+	public function detailorder() { //Form Detail Tabel checkout
+		$id = $this->uri->segment(4);
+		$data = array(
+				'nama' => $this->tokomodel->getdetailorder($id)->row_array(),
+				'data' => $this->tokomodel->getdetailorder($id));
+		$this->template->tampilan('admin/info/detailorder', $data);
+	}
+
 	public function tabelproduk() {	//Tabel Produk
 		$data['data']  = $this->tokomodel->getproduk();
 		$this->template->tampilan('admin/tampil/tabelproduk', $data);
@@ -54,18 +62,22 @@ class Toko extends CI_Controller {
 		$this->template->tampilan('admin/tampil/user', $data);
 	}
 
-	public function hal() { //Halaman
+	public function halaman() { //Halaman
 		$this->template->tampilan('admin/setting/halaman');
 	}
 
-	public  function halaman1() {
-		$data['hal'] = $this->tokomodel->gethal1();
-		$this->template->tampilan('admin/setting/menu1',$data);
+	public function konten() { //Halaman
+		$konten['konten'] = $this->tokomodel->getkonten();
+		$this->template->tampilan('admin/setting/konten',$konten);
 	}
 
-	public  function halaman2() {
-		$data['hal'] = $this->tokomodel->gethal2();
-		$this->template->tampilan('admin/setting/menu1',$data);
+	public function footer() { //Halaman
+		$this->template->tampilan('admin/setting/footer');
+	}
+
+	public  function menu() {
+		$data['hal'] = $this->tokomodel->gethal();
+		$this->template->tampilan('admin/setting/menu',$data);
 	}
 
 	public function kategori() { //Tabel Kategori
@@ -112,6 +124,18 @@ class Toko extends CI_Controller {
 				'title1' => 'Edit Merk',
 				'data'   => !empty($id) ? $this->tokomodel->getmerk(array('idmerk' => $id))->row_array() : null);
 		$this->template->tampilan('admin/tambah/formmerk', $d);
+	}
+
+	public function formmenu() { //Halaman
+		$id = $this->uri->segment(4);
+		$data['menu'] = $this->tokomodel->gethal($id)->row_array();
+		$this->template->tampilan('admin/setting/ubah/edithal',$data);
+	}
+
+	public function formkonten() { //Halaman
+		$id = $this->uri->segment(4);
+		$data['konten'] = $this->tokomodel->getkonten($id)->row_array();
+		$this->template->tampilan('admin/setting/ubah/editkonten',$data);
 	}
 
 	public function formtambahkat() {
@@ -245,29 +269,27 @@ class Toko extends CI_Controller {
 		redirect(base_url('index.php/admin/toko/konfig'));
 	}
 
-	public function simpanhal() { //HALAMAN
-		$idmenu  = $this->input->post('idmenu');
-
+	public function simpanmenu() { //HALAMAN
+		$idmenu  = $this->input->post('id');
 		$hal = array(
-				'idmenu'   => $this->input->post('idmenu'),
+				'idmenu'   => $this->input->post('id'),
 				'namamenu' => $this->input->post('nama'));
 		$this->tokomodel->getsimpanhalaman($hal,$idmenu);
 
-		$id   = $this->input->post('id');
-		$data = $this->tokomodel->gethalaman($idmenu);
-		foreach ($data as $key => $value) {
-			$detailhal = array(
-					'id'       => $this->input->post('id'),
-					'idmenu'   => $this->input->post('idmenu'),
-					'judulhal' => $this->input->post('judul'),
-					'isi1'     => $this->input->post('isi1'),
-					'isi2'     => $this->input->post('isi2'),
-					'isi3'     => $this->input->post('des'));
+		redirect(base_url('index.php/admin/toko/menu'));
+	}
 
-			$this->tokomodel->getsimpanhal($detailhal, $id);
-		}
-		
-		redirect(base_url('index.php/admin/toko/halaman1'));
+	public function simpankonten() { //HALAMAN
+		$id  = $this->input->post('id');
+		$konten = array(
+				'id'        => $this->input->post('id'),
+				'idmenu'    => $this->input->post('idmenu'),
+				'judulhal'  => $this->input->post('judul'),
+				'subjudul'  => $this->input->post('subjudul'),
+				'deskripsi' => $this->input->post('des'));
+		$this->tokomodel->getsimpankonten($konten,$id);
+
+		redirect(base_url('index.php/admin/toko/konten'));
 	}
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
@@ -338,13 +360,6 @@ class Toko extends CI_Controller {
 		$id = $this->uri->segment(4);
 		$data['set']  = $this->tokomodel->geteditkonfig($id)->row_array();
 		$this->template->tampilan('admin/setting/konfig',$data);
-	}
-
-	public function edithal() { //Halaman
-		$id = $this->uri->segment(4);
-		$data['set']  = $this->tokomodel->getedithal($id)->row_array();
-		$data['data'] = $this->tokomodel->getedithal($id)->result_array();
-		$this->template->tampilan('admin/setting/ubah/edithal1',$data);
 	}
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |

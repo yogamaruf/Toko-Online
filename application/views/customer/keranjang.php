@@ -31,6 +31,7 @@
 
               		<?php 
               			$total = 0; 
+              			$no    = 1;
               			foreach ($data->result_array() as $key => $value) { 
               		?>
 
@@ -39,9 +40,9 @@
                   		<td><?php echo $value['deskripsi']; ?></td>
                   		<td>Rp. <?php echo number_format($value['harga'],0,'.','.'); ?></td>
                  		<td>
-							<input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text" value="<?php echo $value['jumlah']; ?>">
+							<input class="span1" style="max-width:34px" placeholder="1" id="angka<?php echo $no; ?>" size="16" type="text" value="1">
 				  			<div class="input-append">
-								<button class="btn btn-mini" type="button">-</button><button class="btn btn-mini" type="button"> + </button><a class="btn btn-mini btn-danger" href="<?php echo base_url('index.php/toko/hapuscart/').$value['idcart']; ?>"><span class="icon-remove"></span></a>
+								<button class="btn btn-mini" type="button" onclick="decrement();">-</button><button class="btn btn-mini" type="button" onclick="increment();"> + </button><a class="btn btn-mini btn-danger" href="<?php echo base_url('index.php/toko/hapuscart/').$value['idcart']; ?>"><span class="icon-remove"></span></a>
 							</div>
 						</td>
                   		<td>Rp. <?php echo number_format($value['total'],0,'.','.'); ?></td>
@@ -49,6 +50,7 @@
 
                 	<?php 
                 		$total += str_replace('', '', $value['total']);
+                		$no++;
             			} 
             		?>
 

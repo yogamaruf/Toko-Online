@@ -57,25 +57,34 @@ class Tokomodel extends CI_Model {
 
 	public function getorder() {
 		$this->db->join('customer','customer.idcustom=order.idcustom');
+		$q = $this->db->query('SELECT order.kodeorder,order.idcustom, GROUP_CONCAT(DISTINCT(order.kodeorder)) AS kodeorder, COUNT(*) AS jumorder FROM `order` GROUP BY order.idcustom');
+		return $q;
+	}
 
-		return $this->db->get('order');
+	public function getdetailorder($id) {
+		$this->db->join('customer','customer.idcustom=checkout.idcustom')->join('produk','produk.idproduk=checkout.idproduk')->join('order','order.kodeorder=checkout.kodeorder');
+		$this->db->where('customer.idcustom',$id);
+
+		return $this->db->order_by('tanggal','DESC')->get('checkout');
 	}
 
 	public function getkonfig() {
 		return $this->db->get('konfigurasi');
 	}
 
-	public function gethal1() {
-		return $this->db->order_by('idmenu','ASC')->limit(6)->get('halaman');
-	}
-
-	public function gethal2() {
-		return $this->db->order_by('idmenu','DESC')->limit(7)->get('halaman');
-	}
-
-	public function gethalaman($idmenu) {
+	public function gethal($id=null) {
 		if (!empty($id)) {
-			$this->db->where('idmenu',$idmenu);
+			$this->db->where('idmenu',$id);
+		}
+
+		return $this->db->get('halaman');
+	}
+
+	public function getkonten($id=null) {
+		$this->db->join('halaman','halaman.idmenu=detailhal.idmenu');
+
+		if (!empty($id)) {
+			$this->db->where('id',$id);
 		}
 
 		return $this->db->get('detailhal');
@@ -144,8 +153,8 @@ class Tokomodel extends CI_Model {
 		return $this->db->where('idmenu',$idmenu)->update('halaman',$hal);
 	}
 
-	public function getsimpanhal($detailhal,$id) {
-		return $this->db->where('id',$id)->update('detailhal',$detailhal);
+	public function getsimpankonten($konten,$id) {
+		return $this->db->where('id',$id)->update('detailhal',$konten);
 	}
 
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>

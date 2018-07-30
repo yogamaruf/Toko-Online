@@ -57,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a <?php if($page == 'user' || $page == 'formtambahuser' || $page == 'edituser'){ echo 'class="active-menu';}?> href="<?php echo base_url('index.php/admin/toko/user');?>"><i class="fa fa-user fa-2x"></i> User </a>
                     </li>
                     <li>
-                        <a <?php if($page == 'hal'){ echo 'class="active-menu';}?> href="<?php echo base_url('index.php/admin/toko/hal');?>"><i class="fa fa-newspaper-o fa-2x"></i> Halaman </a>
+                        <a <?php if($page == 'halaman' || $page == 'menu' || $page == 'konten' || $page == 'footer' || $page == 'formmenu' || $page == 'formkonten'){ echo 'class="active-menu';}?> href="<?php echo base_url('index.php/admin/toko/halaman');?>"><i class="fa fa-newspaper-o fa-2x"></i> Halaman </a>
                     </li>
                     <li>
                         <a <?php if($page == 'kategori' || $page == 'formtambahkat' || $page == 'editkategori'){ echo 'class="active-menu';}?> href="<?php echo base_url('index.php/admin/toko/kategori');?>"><i class="fa fa-filter fa-2x"></i> Kategori Produk </a>
@@ -72,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a <?php if($page == 'tabelcustomer' || $page == 'formtambahcus' || $page == 'editcustomer' || $page == 'detailprofil'){ echo 'class="active-menu';}?> href="<?php echo base_url('index.php/admin/toko/tabelcustomer');?>"><i class="fa fa-life-buoy fa-2x"></i> Customer </a>
                     </li>	
                     <li>
-                        <a <?php if($page == 'order'){ echo 'class="active-menu';}?> href="<?php echo base_url('index.php/admin/toko/order');?>"><i class="fa fa-line-chart fa-2x"></i> Order </a>
+                        <a <?php if($page == 'order' || $page == 'detailorder' ){ echo 'class="active-menu';}?> href="<?php echo base_url('index.php/admin/toko/order');?>"><i class="fa fa-line-chart fa-2x"></i> Order </a>
                     </li>	
                     <li>
                         <a <?php if($page == 'konfig'){ echo 'class="active-menu';}?> href="<?php echo base_url('index.php/admin/toko/konfig');?>"><i class="fa fa-desktop fa-2x"></i> Konfgurasi WEB </a>
