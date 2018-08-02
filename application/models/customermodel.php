@@ -16,7 +16,7 @@ class Customermodel extends CI_Model {
 		}
 		
 		$data = $this->db->get();
-		return $data->result_array();;
+		return $data;
 	} 
 
 	public function getdetailproduk($id=null) { // Menampilkan data pada halaman DETAIL PRODUK
@@ -62,10 +62,11 @@ class Customermodel extends CI_Model {
 		return $this->db->get('merk')->result_array();
 	}
 
-	public function getcart() { // Menampilkan data pada TABEL KERANJANG 
+	public function getcart($kode=null) { // Menampilkan data pada TABEL KERANJANG 
 		$id = $this->session->userdata('idcustom');
 		$this->db->join('customer','customer.idcustom=keranjang.idcustomer');
 		$this->db->where('idcustom',$id);
+		$this->db->or_where('idcart',$kode);
 
 		return $this->db->get('keranjang');
 	}
@@ -122,10 +123,10 @@ class Customermodel extends CI_Model {
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ Search Data ~  |
 
 	public function getsearch($search) {  // Search data CUSTOMER
-		$this->db->select('*');
 		$this->db->like('nama',$search);
-
-		return $this->db->get('produk')->result_array();
+		$this->db->order_by('nama','ASC');
+		$this->db->limit(10);
+		return $this->db->get('produk');
 	}
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
@@ -148,12 +149,24 @@ class Customermodel extends CI_Model {
 		return $this->db->insert('keranjang',$simpan);
 	}
 
+	public function gettimpacart($simpan,$produk) { // Menyimpan PRODUK yang memiliki id sama dan menambah data 
+		return $this->db->where('idproduk',$produk)->update('keranjang',$simpan); // pada kolom jumlah TABEL KERANJANG
+	}
+
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
 
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ KONFIRMASI DATA  ~  |
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ KONFIRMASI DATA ~  |
 
 	public function getlunas($kode,$simpan) { // TABEL KERANJANG
 		return $this->db->where('kodeorder',$kode)->update('order',$simpan);
+	}
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ PLUS AND MIN ~  |
+
+	public function geteditcart($kode,$simpan) { // Mengurangi dan menambah data pada kolom jumlah TABEL KERANJANG
+		return $this->db->where('idcart',$kode)->update('keranjang',$simpan);
 	}
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |

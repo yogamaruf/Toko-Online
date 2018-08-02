@@ -40,9 +40,26 @@
                   		<td><?php echo $value['deskripsi']; ?></td>
                   		<td>Rp. <?php echo number_format($value['harga'],0,'.','.'); ?></td>
                  		<td>
-							<input class="span1" style="max-width:34px" placeholder="1" id="angka<?php echo $no; ?>" size="16" type="text" value="1">
-				  			<div class="input-append">
-								<button class="btn btn-mini" type="button" onclick="decrement();">-</button><button class="btn btn-mini" type="button" onclick="increment();"> + </button><a class="btn btn-mini btn-danger" href="<?php echo base_url('index.php/toko/hapuscart/').$value['idcart']; ?>"><span class="icon-remove"></span></a>
+                 			<div class="input-append" style="display: flex;max-width: 80px;">
+                 				<form action="<?php echo base_url('index.php/toko/decart/').$value['idcart']; ?>" method="POST">
+
+                 					<input type="hidden" name="id" value="<?php echo $value['idcart']; ?>">
+									<input class="span1" style="max-width:34px" name="angka" placeholder="0" id='text1' size="16" type="text" onkeyup="text();" value="<?php echo $value['jumlah']; ?>">
+
+									<input type="submit" class="btn btn-mini" value="-" style="height: 100%;width: 22px;">
+
+								</form>
+
+								<form action="<?php echo base_url('index.php/toko/incart/').$value['idcart']; ?>" method="POST">
+
+                 					<input type="hidden" name="id" value="<?php echo $value['idcart']; ?>">
+									<input class="span1" style="max-width:34px" name="angka" placeholder="0" id='text2' size="16" type="hidden" value="<?php echo $value['jumlah']; ?>">
+
+									<input type="submit" class="btn btn-mini" value="+" style="height: 100%;width: 22px;">
+
+								</form>
+
+								<a class="btn btn-danger" style="height: 100%;" href="<?php echo base_url('index.php/toko/hapuscart/').$value['idcart']; ?>"><span class="icon-remove"></span></a>
 							</div>
 						</td>
                   		<td>Rp. <?php echo number_format($value['total'],0,'.','.'); ?></td>

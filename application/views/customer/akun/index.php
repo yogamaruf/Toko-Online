@@ -10,11 +10,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Bootstrap styles -->
-    <!--<link href="<?php echo base_url(); ?>assets/fronted/assets/css/bootstrap.css" rel="stylesheet"/>-->
-    <link href="<?php echo base_url(); ?>assets/fronted/assets/css/bootstrap1.css" rel="stylesheet"/>
+    <link href="<?php echo base_url(); ?>assets/fronted/assets/css/bootstrap.css" rel="stylesheet"/>
     <!-- Customize styles -->
-    <link href="<?php echo base_url(); ?>assets/fronted/assets/css/jquery-ui.css" rel="stylesheet"/>
-
     <link href="<?php echo base_url(); ?>assets/fronted/style1.css" rel="stylesheet"/>
     <!-- font awesome styles -->
 	<link href="<?php echo base_url(); ?>assets/fronted/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -41,7 +38,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<a href="<?php echo base_url('index.php/toko/register'); ?>"><span class="icon-edit"></span> Free Register </a> 
 				<a href="<?php echo base_url('index.php/toko/kontak'); ?>"><span class="icon-envelope"></span> Contact us</a>
 				<a href="<?php echo base_url('index.php/toko/keranjang'); ?>"><span class="icon-shopping-cart"></span> <?php echo $jumlah; ?>  Item(s) - <span class="badge badge-warning"> Rp. <?php echo number_format($hitung,0,'.','.'); ?> </span></a>
-				<a href="<?php echo base_url('index.php/login/logout'); ?>">Logout</a>
 
 			</div>
 
@@ -102,9 +98,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			  		<li class=""><a href="<?php echo base_url('index.php/toko/tertunda'); ?>">Tertunda</a></li>
 				</ul>
 
-				<form id="form_search" action="<?php echo base_url('index.php/toko/search'); ?>" class="navbar-search pull-left" method="GET">
+				<form action="<?php echo base_url('index.php/toko/search'); ?>" class="navbar-search pull-left" method="POST">
 
-			  		<input type="text" placeholder="Search" name="title" id="title" class="search-query span2">
+			  		<input type="text" placeholder="Search" name="search" id="search" onkeyup="search();" class="search-query span2">
+			  		<input type="submit" name="" class="kirim">
 
 				</form>
 
@@ -217,27 +214,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <a href="#" class="gotop"><i class="icon-double-angle-up"></i></a>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="<?php echo base_url(); ?>assets/fronted/assets/js/jquery.js"></script>
-   <!-- <script src="<?php echo base_url(); ?>assets/fronted/assets/js/jquery-3.3.1.js"></script>-->
-    <script src="<?php echo base_url(); ?>assets/fronted/assets/js/jquery-ui.js"></script>
-	<!--<script src="<?php echo base_url(); ?>assets/fronted/assets/js/bootstrap.js"></script>-->
 	<script src="<?php echo base_url(); ?>assets/fronted/assets/js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/fronted/assets/js/jquery.easing-1.3.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/fronted/assets/js/jquery.scrollTo-1.4.3.1-min.js"></script>
     <script src="<?php echo base_url(); ?>assets/fronted/assets/js/shop.js"></script>
     <script type="text/javascript">
-            $(document).ready(function(){
-            	$('#title').autocomplete({
-            		source: "<?php echo base_url('index.php/toko/autocomplete'); ?>",
+            function search()
+            {
+                var input_data = $('#search').val();
 
-            		select: function(event, ui) {
-            			$(this).val(ui.item.label);
-            			$('#form_search').submit();
-            		}
-            	});
-            });
+                if (input_data.length === 0)
+                {
+                    $('.thumbnails').hide();
+                }
+                else
+                {
 
-            function text() {
-            	document.getElementById('text1').value=document.getElementById('text2').value;
+                    var post_data = {
+                        'search': input_data,
+                        '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
+                    };
+
+                    $.ajax({
+                        type: "POST",
+                        url: "<?php echo base_url(); ?>toko/search/",
+                        data: post_data,
+                        success: function (data) {
+                            // return success
+                            if (data.length > 0) {
+                                $('.thumbnails').show();
+                                $('.span4').addClass('auto_list');
+                                $('.span4').html(data);
+                            }
+                        }
+                    });
+
+                }
             }
     </script>
 </body>

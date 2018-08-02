@@ -56,16 +56,15 @@ class Tokomodel extends CI_Model {
 	}
 
 	public function getorder() {
-		$this->db->join('customer','customer.idcustom=order.idcustom');
-		$q = $this->db->query('SELECT order.kodeorder,order.idcustom, GROUP_CONCAT(DISTINCT(order.kodeorder)) AS kodeorder, COUNT(*) AS jumorder FROM `order` GROUP BY order.idcustom');
+		$q = $this->db->query('SELECT order.kodeorder,customer.firstname,customer.lastname,customer.title,customer.idcustom,order.tanggal, GROUP_CONCAT(DISTINCT(order.kodeorder)ORDER BY order.kodeorder ASC) AS kodeorder, COUNT(*) AS jumorder FROM `order` JOIN customer ON customer.idcustom=order.idcustom GROUP BY order.idcustom ORDER BY order.tanggal DESC');
+
 		return $q;
 	}
 
 	public function getdetailorder($id) {
-		$this->db->join('customer','customer.idcustom=checkout.idcustom')->join('produk','produk.idproduk=checkout.idproduk')->join('order','order.kodeorder=checkout.kodeorder');
-		$this->db->where('customer.idcustom',$id);
+		$r = $this->db->query('SELECT produk.nama,produk.harga,customer.title,customer.firstname,customer.lastname,checkout.jumlah,checkout.tglorder,checkout.kodeorder, GROUP_CONCAT(DISTINCT(produk.nama) SEPARATOR "<br><hr style=margin:3px;border-color:#ccc;>") AS nama, GROUP_CONCAT(checkout.jumlah SEPARATOR "<br><hr style=margin:3px;border-color:#ccc;>") AS jumlah, GROUP_CONCAT(produk.harga SEPARATOR "<br><hr style=margin:3px;border-color:#ccc;>Rp. ") AS harga FROM checkout JOIN produk ON produk.idproduk=checkout.idproduk JOIN customer ON customer.idcustom=checkout.idcustom GROUP BY checkout.kodeorder ORDER BY checkout.kodeorder DESC');
 
-		return $this->db->order_by('tanggal','DESC')->get('checkout');
+		return $r;
 	}
 
 	public function getkonfig() {

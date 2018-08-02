@@ -11,10 +11,48 @@ class Toko extends CI_Controller {
 
 	public function index() {
 		$data = array(
-				'list'   => $this->customermodel->getkat(),
-				'merk'   => $this->customermodel->getmerk(),
-				'total'  => $this->customermodel->gethitung());
+				'list'  => $this->customermodel->getkat(),
+				'merk'  => $this->customermodel->getmerk(),
+				'total' => $this->customermodel->gethitung());
 		$this->template->tampil('customer/list',$data);
+	}
+
+	public function incart() {
+		$kode   = $this->uri->segment(3);
+		$cart   = $this->db->get_where('keranjang',array('idcart' => $kode));
+		$jumlah = $this->input->post('angka')+1;
+
+		foreach ($cart->result_array() as $key => $value) {
+			$harga  = $value['harga'];
+			$simpan = array(
+					'idcart' => $value['idcart'],
+					'harga'  => $harga,
+					'jumlah' => $jumlah,
+					'total'  => $jumlah*$harga);
+
+			$this->customermodel->geteditcart($kode,$simpan);
+		}
+		
+		redirect(base_url('index.php/toko/keranjang'));
+	}
+
+	public function decart() {
+		$kode   = $this->uri->segment(3);
+		$cart   = $this->db->get_where('keranjang',array('idcart' => $kode));
+		$jumlah = $this->input->post('angka')-1;
+
+		foreach ($cart->result_array() as $key => $value) {
+			$harga  = $value['harga'];
+			$simpan = array(
+					'idcart' => $value['idcart'],
+					'harga'  => $harga,
+					'jumlah' => $jumlah,
+					'total'  => $jumlah*$harga);
+			
+			$this->customermodel->geteditcart($kode,$simpan);
+		}
+		
+		redirect(base_url('index.php/toko/keranjang'));
 	}
 
 	public function produk() {
@@ -37,7 +75,9 @@ class Toko extends CI_Controller {
 	}
 
 	public function kontak() {
+		$id = 4;
 		$data = array(
+				'kontak' => $this->customermodel->gethal($id)->row_array(),
 				'list'   => $this->customermodel->getkat(),
 				'merk'   => $this->customermodel->getmerk());
 		$this->template->tampil('customer/kontak',$data);
@@ -154,11 +194,14 @@ class Toko extends CI_Controller {
 
 	public function detaillist() {
 		$id = $this->uri->segment(3);
+		$produk = $this->customermodel->getproduk($id)->row_array();
 		$data = array(
-				'data'   => $this->customermodel->getproduk($id),
-				'list'   => $this->customermodel->getkat(),
-				'merk'   => $this->customermodel->getmerk(),
-				'total'  => $this->customermodel->gethitung());
+				'promerk'  => 'Berdasarkan Merk '.$produk['namamerk'],
+				'kategori' => 'Berdasarkan Kategori '.$produk['namakategori'],
+				'data'     => $this->customermodel->getproduk($id),
+				'list'     => $this->customermodel->getkat(),
+				'merk'     => $this->customermodel->getmerk(),
+				'total'    => $this->customermodel->gethitung());
 		$this->template->tampil('customer/produk',$data);
 	}
 
@@ -180,13 +223,28 @@ class Toko extends CI_Controller {
 		$this->template->tampil('customer/about',$data);
 	}
 
+	public function autocomplete() {
+		if (isset($_GET['term'])) {
+			$result = $this->customermodel->getsearch($_GET['term']);
+			if (count($result) > 0) {
+				foreach ($result->result_array() as $key => $value) {
+					$d[] = array(
+						'label' => $value['nama']);
+
+					echo json_encode($d);
+				}
+			}
+		}
+	}
+
 	public function search() {
-		$search = $this->input->post('search');
+		$search = $this->input->get('title');
 		$data = array(
-				'data'   => $this->customermodel->getsearch($search),
-				'list'   => $this->customermodel->getkat(),
-				'total'  => $this->customermodel->gethitung(),
-				'merk'   => $this->customermodel->getmerk());
+				'cari'  => 'Hasil dari " '.$search.' "',
+				'data'  => $this->customermodel->getsearch($search),
+				'list'  => $this->customermodel->getkat(),
+				'total' => $this->customermodel->gethitung(),
+				'merk'  => $this->customermodel->getmerk());
 
 		$this->template->tampil('customer/produk',$data);
 	}
@@ -206,25 +264,25 @@ class Toko extends CI_Controller {
 
 		$keranjang = $this->customermodel->getcart($id);
 		foreach ($keranjang->result_array() as $key => $value) {
-					$data = array(
-							'idcheck'    => $this->input->post('idcheck'),
-							'kodeorder'  => $kode,
-							'idproduk'   => $value['idproduk'],
-							'idcustom'   => $id,
-							'jumlah'     => $value['jumlah'],
-							'total'      => $this->input->post('total'),
-							'tglorder'   => date('Y-m-d'),
-							'kdpos'      => $this->input->post('kodepos'),
-							'negara'     => $this->input->post('negara'),
-							'provinsi'   => $this->input->post('provinsi'),
-							'kabupaten'  => $this->input->post('kabupaten'),
-							'alamat'     => $this->input->post('alamat'),
-							'viabayar'   => $this->input->post('viabayar'),
-							'norekening' => $this->input->post('no'));
+			$data = array(
+					'idcheck'    => $this->input->post('idcheck'),
+					'kodeorder'  => $kode,
+					'idproduk'   => $value['idproduk'],
+					'idcustom'   => $id,
+					'jumlah'     => $value['jumlah'],
+					'total'      => $this->input->post('total'),
+					'tglorder'   => date('Y-m-d h:i:s'),
+					'kdpos'      => $this->input->post('kodepos'),
+					'negara'     => $this->input->post('negara'),
+					'provinsi'   => $this->input->post('provinsi'),
+					'kabupaten'  => $this->input->post('kabupaten'),
+					'alamat'     => $this->input->post('alamat'),
+					'viabayar'   => $this->input->post('viabayar'),
+					'norekening' => $this->input->post('no'));
 
-					$this->customermodel->getcheckout($data);
-					$this->customermodel->gethapuscart($id);
-				}
+			$this->customermodel->getcheckout($data);
+			$this->customermodel->gethapuscart($id);
+		}
 
 		redirect(base_url('index.php/toko/konfirmasi'));
 	}
@@ -298,20 +356,35 @@ class Toko extends CI_Controller {
             redirect(base_url('index.php/login'));
         } else {
 			$id     = $this->session->userdata('idcustom');
-			$jumlah = $this->input->post('jumlah'); 
+			$produk = $this->input->post('idproduk');
 			$harga  = $this->input->post('harga');
-			$simpan = array(
-					'idcart'      => $this->input->post('idcart'),
-					'idproduk'    => $this->input->post('idproduk'),
-					'idcustomer'  => $id,
-					'fotoproduk'  => $this->input->post('foto'),
-					'deskripsi'   => $this->input->post('desk'),
-					'harga'       => $harga,
-					'jumlah'      => $jumlah,
-					'total'       => $jumlah*$harga,
-					'tanggalcart' => date('Y-m-d'));
+			$tabel  = $this->db->get_where('keranjang',array('idproduk' => $produk))->row_array();
 
-			$this->customermodel->gettambahcart($simpan);
+			if ($produk==$tabel['idproduk']) {
+				$sum    = $tabel['jumlah']+1;
+				$simpan = array(
+						'idproduk' => $produk,
+						'harga'    => $harga,
+						'jumlah'   => $sum,
+						'total'    => $sum*$harga);
+
+				$this->customermodel->gettimpacart($simpan,$produk);
+			} else {
+				$jumlah = $this->input->post('jumlah'); 
+				$simpan = array(
+						'idcart'      => $this->input->post('idcart'),
+						'idproduk'    => $this->input->post('idproduk'),
+						'idcustomer'  => $id,
+						'fotoproduk'  => $this->input->post('foto'),
+						'deskripsi'   => $this->input->post('desk'),
+						'harga'       => $harga,
+						'jumlah'      => $jumlah,
+						'total'       => $jumlah*$harga,
+						'tanggalcart' => date('Y-m-d'));
+
+				$this->customermodel->gettambahcart($simpan);
+			}
+
 			redirect(base_url('index.php/toko/keranjang'));
 		}
 	}

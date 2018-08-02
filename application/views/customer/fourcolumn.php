@@ -2,7 +2,7 @@
 
 	<ul class="thumbnails">
 
-		<?php foreach ($data as $key => $value) { ?>
+		<?php foreach ($data->result_array() as $key => $value) { ?>
 
 			<li class="span3">
 

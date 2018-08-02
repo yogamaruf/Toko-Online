@@ -38,39 +38,25 @@
 
 		<ul class="nav nav-list promowrapper">
 
-			<li>
-			 	<div class="thumbnail">
-					<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-					<img src="<?php echo base_url(); ?>assets/fronted/assets/img/bootstrap-ecommerce-templates.png" alt="bootstrap ecommerce templates">
-						<div class="caption">
-				  			<h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
-						</div>
-				</div>
-			</li>
+			<?php 
+		  		$record = $this->db->query('SELECT * FROM produk LIMIT 3,3'); 
+		  		foreach ($record->result_array() as $key => $value) { 
+		  	?>
 
-			<li style="border:0"> &nbsp;</li>
+				<li>
+				 	<div class="thumbnail">
+						<a class="zoomTool" href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+						<img style="width: 210px;height: 270px;" src="<?php echo base_url(); ?>assets/gambar/produk/<?php echo $value['foto']; ?>" alt="bootstrap ecommerce templates">
+							<div class="caption">
+				  				<h4 style="padding: 0;"><a class="defaultBtn" href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>">VIEW</a><span class="pull-right" style="font-size: 16px;">Rp. <?php echo number_format($value['harga'],0,'.','.'); ?></span>
+				  				</h4>
+							</div>
+					</div>
+				</li>
 
-			<li>
-				<div class="thumbnail">
-					<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-					<img src="<?php echo base_url(); ?>assets/fronted/assets/img/shopping-cart-template.png" alt="shopping cart template">
-						<div class="caption">
-				  			<h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
-						</div>
-			  	</div>
-			</li>
+				<li style="border:0"> &nbsp;</li>
 
-			<li style="border:0"> &nbsp;</li>
-
-			<li>
-				<div class="thumbnail">
-					<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-					<img src="<?php echo base_url(); ?>assets/fronted/assets/img/bootstrap-template.png" alt="bootstrap template">
-						<div class="caption">
-				  			<h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
-						</div>
-				</div>
-			</li>
+			<?php } ?>
 
 		</ul>
 
@@ -80,13 +66,25 @@
 
 		<div class="well well-small">
 
-			<h3>Our Products </h3>
+			<h3>
+				<?php if ($this->uri->segment(3)>100) {
+                          echo $kategori;
+                      } elseif ($this->uri->segment(3)=='') {
+                    	  echo $cari;
+                      } elseif ($this->uri->segment(3)<100) {
+                      	  echo $promerk;
+                      }
+                ?>
+            </h3>
 
 			<div class="row-fluid">
 
 		  		<ul class="thumbnails">
 
-		  			<?php foreach ($data as $key => $value) { ?>
+		  			<?php 
+		  				if (!empty($data->num_rows())) {
+		  					foreach ($data->result_array() as $key => $value) { 
+		  			?>
 
 						<li class="span4" style="margin-left: 5px;">
 
@@ -120,7 +118,12 @@
 
 						</li>
 
-					<?php } ?>
+					<?php 
+							} 
+						} else {
+							echo "<h3 style='color: #666;'><center>Produk tidak Ditemukan</center></h3>";
+						}
+					?>
 
 		  		</ul>
 
@@ -148,3 +151,7 @@
 		
 	</div>
 </section>
+
+
+    <script src="<?php echo base_url(); ?>assets/fronted/assets/js/jquery-3.3.1.js"></script>
+	<script src="<?php echo base_url(); ?>assets/fronted/assets/js/bootstrap.js"></script>
