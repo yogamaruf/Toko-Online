@@ -1,4 +1,4 @@
-<h3>Four Column Product view </h3>
+<h3><?php echo $title['judulhal'];?></h3>
 
 	<ul class="thumbnails">
 

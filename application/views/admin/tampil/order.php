@@ -44,7 +44,6 @@
                                 <td><?php echo $value['status']; ?></td>-->
                                 <td>
                                 	<a href="<?php echo base_url('index.php/admin/toko/detailorder/').$value['idcustom'];?>" class="btn btn-info"><i class="fa fa-info"></i></a>
-                                    <a href="<?php echo base_url('index.php/admin/toko/formorder/').$value['kodeorder'];?>" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                                     <a href="<?php echo base_url('index.php/admin/toko/hapusporder/').$value['kodeorder'];?>" class="btn btn-danger" onclick='return confirm("Yakin mau dihapus???");'><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>

@@ -4,7 +4,7 @@
 
     	<ul class="breadcrumb">
 			<li><a href="<?php echo base_url('index.php/toko/');?>">Home</a> <span class="divider">/</span></li>
-			<li class="active">Check Out</li>
+			<li class="active"><?php echo $title['judulhal'];?></li>
    		</ul>
 
     	<?php echo $this->session->flashdata('error'); ?>
@@ -12,7 +12,7 @@
 		<div class="well well-small">
 
 			<h1>
-				Check Out <small class="pull-right"><?php echo $jumlah->num_rows(); ?> Items are in the cart </small>
+				<?php echo $title['judulhal'];?> <small class="pull-right"><?php echo $jumlah->num_rows(); ?> Items are in the cart </small>
 			</h1>
 
 			<hr class="soften"/>	
@@ -82,7 +82,7 @@
 			<table class="table table-bordered">
 				<tbody>
                 	<tr>
-                		<td>ESTIMATE YOUR SHIPPING & TAXES</td>
+                		<td><?php echo $title['subjudul'];?></td>
                 	</tr>
                  	<tr> 
 				 		<td>

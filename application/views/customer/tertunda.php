@@ -4,12 +4,12 @@
 
     	<ul class="breadcrumb">
 			<li><a href="<?php echo base_url('index.php/toko/');?>">Home</a> <span class="divider">/</span></li>
-			<li class="active">Konfirmasi Tertunda</li>
+			<li class="active"><?php echo $title['judulhal'];?></li>
     	</ul>
 
 		<div class="well">
 		
-			<h3>Konfirmasi Tertunda</h3>
+			<h3><?php echo $title['judulhal'];?></h3>
 
 			<?php 
 				if (!empty($data->num_rows())) {

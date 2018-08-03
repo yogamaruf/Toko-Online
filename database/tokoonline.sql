@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 02, 2018 at 12:33 PM
+-- Generation Time: Aug 03, 2018 at 04:07 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -105,35 +105,6 @@ INSERT INTO `customer` (`idcustom`, `title`, `firstname`, `lastname`, `email`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detailhal`
---
-
-CREATE TABLE `detailhal` (
-  `id` int(2) NOT NULL,
-  `idmenu` int(2) NOT NULL,
-  `judulhal` varchar(50) NOT NULL,
-  `subjudul` varchar(50) NOT NULL,
-  `deskripsi` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `detailhal`
---
-
-INSERT INTO `detailhal` (`id`, `idmenu`, `judulhal`, `subjudul`, `deskripsi`) VALUES
-(1, 1, 'New Products', '', ''),
-(2, 1, 'Featured', '', ''),
-(3, 2, 'My Account', '', ''),
-(4, 2, 'Your Personal Details', '', ''),
-(5, 3, 'Registration', '', ''),
-(6, 3, 'Your Personal Details ', '', ''),
-(7, 4, 'Visit Us', 'Contact Details', '2601 Mission St.<br>\r\nSan Francisco, CA 94110<br><br>\r\n\r\ninfo@mysite.com<br>\r\nTel 123-456-6780<br>\r\nFax 123-456-5679<br>\r\nweb:wwwmysitedomain.com'),
-(8, 15, 'About Us', '', 'I\'m a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story and let your users know a little more about you.<br><br>\r\nIt’s easy. Just click “Edit Text” or double click me and you can start adding your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a great place for you to tell a story and let your users know a little more about you.<br>\r\n				<br>\r\n				This is a great space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors. Make your company stand out and show your visitors who you are.\r\n				<br><br>\r\n				Sometimes I\'m right and I can be wrong. My own beliefs are in my song. The butcher, the banker, the drummer and then, makes no difference what group I\'m in. I am everyday people! Yeah. Yeah.<br>'),
-(9, 8, 'Produk', '', '');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `detailprofil`
 --
 
@@ -151,27 +122,33 @@ CREATE TABLE `detailprofil` (
 --
 
 CREATE TABLE `halaman` (
-  `idmenu` int(11) NOT NULL,
-  `namamenu` varchar(50) NOT NULL
+  `id` int(2) NOT NULL,
+  `idmenu` int(2) NOT NULL,
+  `judulhal` varchar(50) NOT NULL,
+  `subjudul` varchar(50) NOT NULL,
+  `deskripsi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `halaman`
 --
 
-INSERT INTO `halaman` (`idmenu`, `namamenu`) VALUES
-(1, 'Home'),
-(2, 'My Account'),
-(3, 'Free Register'),
-(4, 'Contact Us'),
-(5, 'Items (s)'),
-(6, 'Log Out'),
-(7, 'List View'),
-(8, 'Grid View'),
-(9, 'Three Column'),
-(10, 'Four Column'),
-(11, 'Tertunda'),
-(15, 'About US');
+INSERT INTO `halaman` (`id`, `idmenu`, `judulhal`, `subjudul`, `deskripsi`) VALUES
+(1, 1, 'New Products', '', ''),
+(2, 1, 'Featured Products', '', ''),
+(3, 2, 'My Account', '', ''),
+(4, 2, 'Your Personal Details', '', ''),
+(5, 3, 'Registration', '', ''),
+(6, 3, 'Your Personal Details ', '', ''),
+(7, 4, 'Visit Us', 'Contact Details', '2601 Mission St.<br>\r\nSan Francisco, CA 94110<br><br>\r\n\r\ninfo@mysite.com<br>\r\nTel 123-456-6780<br>\r\nFax 123-456-5679<br>\r\nweb:wwwmysitedomain.com'),
+(8, 15, 'About Us', '', 'I\'m a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a story and let your users know a little more about you.<br><br>\r\nIt’s easy. Just click “Edit Text” or double click me and you can start adding your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a great place for you to tell a story and let your users know a little more about you.<br>\r\n				<br>\r\n				This is a great space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors. Make your company stand out and show your visitors who you are.\r\n				<br><br>\r\n				Sometimes I\'m right and I can be wrong. My own beliefs are in my song. The butcher, the banker, the drummer and then, makes no difference what group I\'m in. I am everyday people! Yeah. Yeah.<br>'),
+(9, 8, 'Produk', '', ''),
+(10, 5, 'Keranjang', 'Shipping', ''),
+(11, 9, 'Tiga Kolom', '', ''),
+(12, 10, 'Empat Kolom', '', ''),
+(13, 11, 'Konfirmasi Tertunda', 'Pembayaran', ''),
+(14, 16, 'Histori', '', ''),
+(15, 17, 'Copyright', 'Toko Online by Yoga Ma\'ruf', '2018');
 
 -- --------------------------------------------------------
 
@@ -217,6 +194,14 @@ CREATE TABLE `keranjang` (
   `tanggalcart` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `keranjang`
+--
+
+INSERT INTO `keranjang` (`idcart`, `idproduk`, `idcustomer`, `fotoproduk`, `deskripsi`, `harga`, `jumlah`, `total`, `tanggalcart`) VALUES
+(2, 10, 2, 'lounch_sport.jpg', 'Lounch Sport AA-02', 102320, 5, 511600, '2018-08-03'),
+(3, 8, 2, 'G-shock.jpg', 'G-Shock GWN 1000B 1 ADR', 6000000, 2, 12000000, '2018-08-03');
+
 -- --------------------------------------------------------
 
 --
@@ -240,6 +225,36 @@ CREATE TABLE `konfigurasi` (
 
 INSERT INTO `konfigurasi` (`id`, `nama`, `deskripsi`, `email`, `telp`, `share1`, `share2`, `share3`) VALUES
 (1, 'Shopping Aja', 'The standard chunk of Lorem<br> The standard chunk of \r\n									Lorem Ipsum used since the 1500s is reproduced below for \r\n									those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus \r\n									Bonorum et Malorum\" by Cicero are also reproduced in their exact \r\n									original form, accompanied by English versions from the 1914 \r\n									translation by H. Rackham.', 'shoppingaja@gmail.com', '0800 1234 678', 'www.facebook.com', 'twitter.com', 'instagram.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu`
+--
+
+CREATE TABLE `menu` (
+  `idmenu` int(11) NOT NULL,
+  `namamenu` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `menu`
+--
+
+INSERT INTO `menu` (`idmenu`, `namamenu`) VALUES
+(1, 'Home'),
+(2, 'My Account'),
+(3, 'Free Register'),
+(4, 'Contact Us'),
+(5, 'Items (s)'),
+(7, 'List View'),
+(8, 'Grid View'),
+(9, 'Three Column'),
+(10, 'Four Column'),
+(11, 'Tertunda'),
+(15, 'About US'),
+(16, 'Histori'),
+(17, 'Footer');
 
 -- --------------------------------------------------------
 
@@ -341,12 +356,6 @@ ALTER TABLE `customer`
   ADD PRIMARY KEY (`idcustom`);
 
 --
--- Indexes for table `detailhal`
---
-ALTER TABLE `detailhal`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `detailprofil`
 --
 ALTER TABLE `detailprofil`
@@ -356,7 +365,7 @@ ALTER TABLE `detailprofil`
 -- Indexes for table `halaman`
 --
 ALTER TABLE `halaman`
-  ADD PRIMARY KEY (`idmenu`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `kategori`
@@ -375,6 +384,12 @@ ALTER TABLE `keranjang`
 --
 ALTER TABLE `konfigurasi`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`idmenu`);
 
 --
 -- Indexes for table `merk`
@@ -417,12 +432,6 @@ ALTER TABLE `customer`
   MODIFY `idcustom` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `detailhal`
---
-ALTER TABLE `detailhal`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
 -- AUTO_INCREMENT for table `detailprofil`
 --
 ALTER TABLE `detailprofil`
@@ -432,7 +441,7 @@ ALTER TABLE `detailprofil`
 -- AUTO_INCREMENT for table `halaman`
 --
 ALTER TABLE `halaman`
-  MODIFY `idmenu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -444,13 +453,19 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `idcart` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `idcart` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `konfigurasi`
 --
 ALTER TABLE `konfigurasi`
   MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `idmenu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `merk`

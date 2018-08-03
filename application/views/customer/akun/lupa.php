@@ -80,49 +80,29 @@
 
     	<ul class="breadcrumb">
 			<li><a href="<?php echo base_url('index.php/toko/');?>">Home</a> <span class="divider">/</span></li>
-			<li class="active">Login</li>
+			<li class="active">FORGOT YOUR PASSWORD</li>
     	</ul>
 
-		<h3> Login</h3>	
+		<div class="well well-small">
 
-		<hr class="soft"/>
+			<?php  echo $this->session->flashdata("error"); ?>
+
+			<h3> FORGOT YOUR PASSWORD</h3>	
+
+			<hr class="soft"/>
 	
-		<div class="row">
+			Please enter the e-mail address used to register. We will e-mail you your new password.<br/><br/><br/>
 	
-			<div class="span4">
+	
+				<form class="form-inline" action="<?php echo base_url('index.php/login/lupa'); ?>" method="POST">
 
-				<?php  echo $this->session->flashdata("error"); ?>
+					<label class="control-label" for="inputEmail">E-mail address</label>
+					<input type="text" class="span4" placeholder="Email">			  
+					<button type="submit" class="shopBtn block">Send My Password</button>
 
-				<div class="well">
-					
-					<h5>ALREADY REGISTERED ?</h5>
+				</form>
 
-					<form action="<?php echo base_url('index.php/login/loginmer'); ?>" method="POST">
-			  			<div class="control-group">
-							<label class="control-label" for="inputEmail">Email</label>
-							<div class="controls">
-				  				<input class="span3" type="text" name="email" placeholder="Email">
-							</div>
-			  			</div>
-			  			<div class="control-group">
-							<label class="control-label" for="inputPassword">Password</label>
-							<div class="controls">
-				  				<input type="password" class="span3" name="password" placeholder="Password">
-							</div>
-			  			</div>
-			  			<div class="control-group">
-							<div class="controls">
-				  				<button type="submit" class="defaultBtn">Sign in</button> 
-				  				<a href="<?php echo base_url('index.php/toko/lupa');?>">Forget password?</a>
-							</div>
-			  			</div>
-					</form>
-
-				</div>
-
-			</div>
-
-		</div>	
+		</div>
 
 	</div>
 

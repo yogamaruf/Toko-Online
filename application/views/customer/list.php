@@ -110,7 +110,7 @@
 
 		<div class="well well-small">
 
-			<h3>New Products </h3>
+			<h3><?php echo $title['judulhal'];?></h3>
 
 			<hr class="soften"/>
 
@@ -242,7 +242,7 @@
 		<div class="well well-small">
 
 		  	<h3>
-		  		<a class="btn btn-mini pull-right" href="<?php echo base_url('index.php/toko/grid'); ?>" title="View more">VIew More<span class="icon-plus"></span></a> Featured Products  
+		  		<a class="btn btn-mini pull-right" href="<?php echo base_url('index.php/toko/grid'); ?>" title="View more">VIew More<span class="icon-plus"></span></a> <?php echo $title1['judulhal'];?>  
 		  	</h3>
 
 		  	<hr class="soften"/>

@@ -4,12 +4,12 @@
 
     	<ul class="breadcrumb">
 			<li><a href="<?php echo base_url('index.php/toko/');?>">Home</a> <span class="divider">/</span></li>
-			<li class="active">My Account</li>
+			<li class="active"><?php echo $title['judulhal'];?></li>
     	</ul>
 
 		<div class="well">
 		
-			<h3>Your Personal Details</h3>
+			<h3><?php echo $title1['judulhal'];?></h3>
 
 				<div class="well">
 

@@ -208,7 +208,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<a href="#"><img src="<?php echo base_url(); ?>assets/fronted/assets/img/disc.png" alt="payment"></a>
 		</p>
 
-		<span>Copyright &copy; 2018<br> Toko Online by Yoga</span>
+		<span>Copyright &copy; <?php echo $footer['deskripsi']; ?><br> <?php echo $footer['subjudul']; ?></span>
 
 	</div>
 

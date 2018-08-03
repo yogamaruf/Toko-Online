@@ -66,7 +66,7 @@
 
 		<div class="well well-small">
 
-			<h3>Our Products</h3>
+			<h3><?php echo $title['judulhal'];?></h3>
 
 			<div class="row-fluid">
 

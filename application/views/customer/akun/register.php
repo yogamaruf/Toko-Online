@@ -80,10 +80,10 @@
 
     	<ul class="breadcrumb">
 			<li><a href="<?php echo base_url('index.php/toko/');?>">Home</a> <span class="divider">/</span></li>
-			<li class="active">Registration</li>
+			<li class="active"><?php echo $title['judulhal'];?></li>
     	</ul>
 
-		<h3> Registration</h3>	
+		<h3><?php echo $title['judulhal'];?></h3>	
 
 		<hr class="soft"/>
 
@@ -91,7 +91,7 @@
 
 			<form class="form-horizontal" action="<?php echo base_url('index.php/toko/tambahcustomer'); ?>" method="POST">
 
-				<h3>Your Personal Details</h3>
+				<h3><?php echo $title1['judulhal'];?></h3>
 
 				<input type="hidden" name="user">
 				<div class="control-group">

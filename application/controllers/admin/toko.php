@@ -72,13 +72,15 @@ class Toko extends CI_Controller {
 	}
 
 	public function footer() { //Halaman
-		$this->template->tampilan('admin/setting/footer');
+		$id = 15;
+		$footer['footer'] = $this->tokomodel->getkonten($id)->row_array();
+		$this->template->tampilan('admin/setting/footer',$footer);
 	}
 
-	public  function menu() {
+	/*public  function menu() {
 		$data['hal'] = $this->tokomodel->gethal();
 		$this->template->tampilan('admin/setting/menu',$data);
-	}
+	}*/
 
 	public function kategori() { //Tabel Kategori
 		$data['data']  = $this->tokomodel->getkategori();
@@ -126,11 +128,11 @@ class Toko extends CI_Controller {
 		$this->template->tampilan('admin/tambah/formmerk', $d);
 	}
 
-	public function formmenu() { //Halaman
+	/*public function formmenu() { //Halaman
 		$id = $this->uri->segment(4);
 		$data['menu'] = $this->tokomodel->gethal($id)->row_array();
 		$this->template->tampilan('admin/setting/ubah/edithal',$data);
-	}
+	}*/
 
 	public function formkonten() { //Halaman
 		$id = $this->uri->segment(4);
@@ -290,6 +292,18 @@ class Toko extends CI_Controller {
 		$this->tokomodel->getsimpankonten($konten,$id);
 
 		redirect(base_url('index.php/admin/toko/konten'));
+	}
+
+	public function simpanfooter() { //HALAMAN
+		$id  = $this->input->post('id');
+		$konten = array(
+				'id'        => $this->input->post('id'),
+				'subjudul'  => $this->input->post('nama'),
+				'deskripsi' => $this->input->post('tahun'));
+		$this->tokomodel->getsimpankonten($konten,$id);
+
+		echo "<script>alert('Footer Berhasil diUbah...');</script>";
+		redirect(base_url('index.php/admin/toko/footer'));
 	}
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |

@@ -80,13 +80,13 @@ class Tokomodel extends CI_Model {
 	}
 
 	public function getkonten($id=null) {
-		$this->db->join('halaman','halaman.idmenu=detailhal.idmenu');
+		$this->db->join('menu','menu.idmenu=halaman.idmenu');
 
 		if (!empty($id)) {
 			$this->db->where('id',$id);
 		}
 
-		return $this->db->get('detailhal');
+		return $this->db->limit(14)->get('halaman');
 	}
 
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -153,7 +153,7 @@ class Tokomodel extends CI_Model {
 	}
 
 	public function getsimpankonten($konten,$id) {
-		return $this->db->where('id',$id)->update('detailhal',$konten);
+		return $this->db->where('id',$id)->update('halaman',$konten);
 	}
 
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>

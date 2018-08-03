@@ -82,9 +82,14 @@ class Customermodel extends CI_Model {
 	}
 
 	public function gethal($id) {
-		$this->db->where('idmenu',$id);
+		$this->db->where('id',$id);
 		
-		return $this->db->get('detailhal');
+		return $this->db->get('halaman');
+	}
+
+	public function getfooter($id=null) {
+		$id = 15;
+		return $this->db->where('id',$id)->get('halaman');
 	}
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
@@ -165,8 +170,8 @@ class Customermodel extends CI_Model {
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ PLUS AND MIN ~  |
 
-	public function geteditcart($kode,$simpan) { // Mengurangi dan menambah data pada kolom jumlah TABEL KERANJANG
-		return $this->db->where('idcart',$kode)->update('keranjang',$simpan);
+	public function geteditcart($id,$simpan) { // Mengurangi dan menambah data pada kolom jumlah TABEL KERANJANG
+		return $this->db->where('idcart',$id)->update('keranjang',$simpan);
 	}
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |

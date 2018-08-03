@@ -16,17 +16,17 @@
             <a href="<?php echo base_url('index.php/admin/toko/halaman'); ?>" class="btn btn-danger" style="margin-bottom: 15px;"><i class="fa fa-arrow-left" style="margin-right: 5px;"></i>Kembali</a>
             <img src="<?php echo base_url(); ?>assets/gambar/setting/footer.png" class="img-responsive"><br>
 
-            <form action="<?php echo base_url('index.php/admin/toko/'); ?>" method="POST">
-
-            	<input type="hidden" name="id" value="<?php// echo $menu['idmenu'];?>">
+            <form action="<?php echo base_url('index.php/admin/toko/simpanfooter'); ?>" method="POST">
+                
+            	<input type="hidden" name="id" value="15">
             	<div class="panel-body">
             		<div class="form-group">
                     	<label>Copyright &copy;</label>
-                    	<input type="text" name="date" class="form-control" style="width: 60px;" required="" value="2018">
+                    	<input type="text" class="form-control" name="tahun" style="width: 60px;" required="" value="<?php echo $footer['deskripsi']; ?>">
                 	</div>
                 	<div class="form-group">
                     	<label>Nama Footer</label>
-                    	<input type="text" name="nama" class="form-control" required="" placeholder="Enter ..." value="Toko Online by Yoga">
+                    	<input type="text" class="form-control" name="nama" required="" placeholder="Enter ..." value="<?php echo $footer['subjudul']; ?>">
                 	</div>
                 	<div class="form-group">
                 	    <input type="submit" class="btn btn-default" value="Simpan">

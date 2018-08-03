@@ -20,7 +20,8 @@ class template {
 				'content' => $this->ci->load->view($t,$d,true),
 				'hitung'  => $this->ci->customermodel->gethitung($t,$d,true),
 				'jumlah'  => $this->ci->customermodel->getcart($t,$d,true)->num_rows(),
-				'header'  => $this->ci->customermodel->getheader($t,$d,true)->row_array());
+				'header'  => $this->ci->customermodel->getheader($t,$d,true)->row_array(),
+				'footer'  => $this->ci->customermodel->getfooter($t,$d,true)->row_array());
 
 		$this->ci->load->view('customer/index.php',$data);
 	}
