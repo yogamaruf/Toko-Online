@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 03, 2018 at 04:07 PM
+-- Generation Time: Aug 04, 2018 at 03:48 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -100,7 +100,7 @@ CREATE TABLE `customer` (
 INSERT INTO `customer` (`idcustom`, `title`, `firstname`, `lastname`, `email`, `date`, `password`) VALUES
 (2, 'Mr.', 'Febri', 'Indra', 'valentino1234@gmail.', '2018-07-11', '123456'),
 (3, 'Mr.', 'Dadang', 'Agusti', 'Agusti234@gmail.com', '2018-07-08', 'Mikarta'),
-(4, 'Mr.', 'Yoga', 'Maruf', 'yoga@gmail.com', '2018-07-18', 'yogamaruf');
+(4, 'Mr.', 'Yoga', 'Maruf', 'yoga@gmail.com', '2018-07-18', 'yoga');
 
 -- --------------------------------------------------------
 
@@ -148,7 +148,7 @@ INSERT INTO `halaman` (`id`, `idmenu`, `judulhal`, `subjudul`, `deskripsi`) VALU
 (12, 10, 'Empat Kolom', '', ''),
 (13, 11, 'Konfirmasi Tertunda', 'Pembayaran', ''),
 (14, 16, 'Histori', '', ''),
-(15, 17, 'Copyright', 'Toko Online by Yoga Ma\'ruf', '2018');
+(15, 17, 'Copyright', 'Toko Online by Yoga', '2018');
 
 -- --------------------------------------------------------
 
@@ -199,8 +199,10 @@ CREATE TABLE `keranjang` (
 --
 
 INSERT INTO `keranjang` (`idcart`, `idproduk`, `idcustomer`, `fotoproduk`, `deskripsi`, `harga`, `jumlah`, `total`, `tanggalcart`) VALUES
-(2, 10, 2, 'lounch_sport.jpg', 'Lounch Sport AA-02', 102320, 5, 511600, '2018-08-03'),
-(3, 8, 2, 'G-shock.jpg', 'G-Shock GWN 1000B 1 ADR', 6000000, 2, 12000000, '2018-08-03');
+(2, 10, 2, 'lounch_sport.jpg', 'Lounch Sport AA-02', 102320, 12, 1227840, '2018-08-03'),
+(4, 9, 4, 'sosis_sapi.jpg', 'Sosis Sapi', 12500, 7, 87500, '2018-08-04'),
+(5, 12, 4, 'Rado-sand-rope.jpg', 'Jam tangan rado Judile Rose Gold', 240000, 2, 480000, '2018-08-04'),
+(6, 10, 4, 'lounch_sport.jpg', 'Lounch Sport AA-02', 102320, 1, 102320, '2018-08-04');
 
 -- --------------------------------------------------------
 
@@ -453,7 +455,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `idcart` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idcart` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `konfigurasi`

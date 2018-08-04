@@ -40,6 +40,38 @@ class Login extends CI_Controller {
         }
     }
 
+    public function cek() {
+        $email = $this->loginmodel->cek($this->input->post('email'))->num_rows();
+
+        if ($email == 1) {
+            $id = $this->loginmodel->cek($this->input->post('email'))->row();
+            $data = array(
+                    'id'    => $id->idcustom,
+                    'email' => $this->input->post('email'),
+                    'list'  => $this->customermodel->getkat(),
+                    'merk'  => $this->customermodel->getmerk());
+
+            $this->template->tampil('customer/akun/password',$data);
+        } else {
+            $this->session->set_flashdata("error","<div class='alert alert-danger alert-dismissable'>
+                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                <strong>E-mail yang anda masukkan salah !!!</strong></div>");
+
+            redirect(base_url('index.php/toko/cek'));
+        }
+    }
+
+    public function lupa() {
+        $id = $this->input->post('id');
+        $simpan = array(
+                'idcustom' => $this->input->post('id'),
+                'email'    => $this->input->post('email'),
+                'password' => $this->input->post('pass'));
+
+        $this->loginmodel->getlupa($simpan,$id);
+        redirect(base_url('index.php/login/'));
+    }
+
     public function logout() {
         $this->session->sess_destroy();
         redirect(base_url('index.php/toko'));

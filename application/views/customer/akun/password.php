@@ -66,25 +66,38 @@
 
     	<ul class="breadcrumb">
 			<li><a href="<?php echo base_url('index.php/toko/');?>">Home</a> <span class="divider">/</span></li>
-			<li class="active">FORGOT YOUR PASSWORD</li>
+			<li class="active">NEW PASSWORD</li>
     	</ul>
 
     	<?php  echo $this->session->flashdata("error"); ?>
 
 		<div class="well well-small">
 
-			<h3> FORGOT YOUR PASSWORD</h3>	
+			<h3> NEW PASSWORD</h3>	
 
 			<hr class="soft"/>
 	
-			Please enter the e-mail address used to register. We will e-mail you your new password.<br/><br/><br/>
-	
-	
-				<form class="form-inline" action="<?php echo base_url('index.php/login/cek'); ?>" method="POST">
+				<form class="form-horizontal" id="konfirmpass" onsubmit="return konfirm();" action="<?php echo base_url('index.php/login/lupa'); ?>" method="POST">
 
-					<label class="control-label" for="inputEmail">E-mail address</label>
-					<input type="text" name="email" class="span4" placeholder="Email">			  
-					<button type="submit" class="shopBtn block">Send My Password</button>
+					<input type="hidden" name="id" value="<?php echo $id; ?>">
+					<input type="hidden" name="email" value="<?php echo $email; ?>">
+					<div class="control-group">
+						<label class="control-label" for="inputFname">Password <sup>*</sup></label>
+						<div class="controls">
+			  				<input type="password" name="pass" id="pass1" placeholder="Enter Password">
+						</div>
+		 			</div>
+		 			<div class="control-group">
+						<label class="control-label" for="inputFname">Re-password <sup>*</sup></label>
+						<div class="controls">
+			  				<input type="password" name="repass" id="pass2" placeholder="Enter Re-password">
+						</div>
+		 			</div>
+					<div class="control-group">
+						<div class="controls">
+							<button type="submit" class="exclusive shopBtn">Edit Password</button>
+						</div>
+					</div>
 
 				</form>
 

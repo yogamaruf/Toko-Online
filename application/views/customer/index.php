@@ -239,6 +239,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             function text() {
             	document.getElementById('text1').value=document.getElementById('text2').value;
             }
+
+            function konfirm() {
+            	var pass1 = document.forms['konfirmpass']['pass1'].value;
+            	var pass2 = document.forms['konfirmpass']['pass2'].value;
+
+            	if (pass2 != pass1) {
+            		alert('Password tidak cocok!!!');
+            		return false;
+            	};
+
+            	if (pass1 == '' || pass2 == '') {
+            		alert('Password tidak boleh kosong!!!');
+            		return false;
+            	};
+            }
     </script>
 </body>
 </html>

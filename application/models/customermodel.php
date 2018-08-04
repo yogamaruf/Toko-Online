@@ -154,8 +154,8 @@ class Customermodel extends CI_Model {
 		return $this->db->insert('keranjang',$simpan);
 	}
 
-	public function gettimpacart($simpan,$produk) { // Menyimpan PRODUK yang memiliki id sama dan menambah data 
-		return $this->db->where('idproduk',$produk)->update('keranjang',$simpan); // pada kolom jumlah TABEL KERANJANG
+	public function gettimpacart($simpan,$produk,$id) { // Menyimpan PRODUK yang memiliki id sama dan menambah data 
+		return $this->db->where('idproduk',$produk)->where('idcustomer',$id)->update('keranjang',$simpan); // pada kolom jumlah TABEL KERANJANG
 	}
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |

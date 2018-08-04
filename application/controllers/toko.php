@@ -81,18 +81,17 @@ class Toko extends CI_Controller {
 
 		$id1 = 5;$id2 = 6;
 		$data = array(
-				'title' => $this->customermodel->gethal($id1)->row_array(),
+				'title'  => $this->customermodel->gethal($id1)->row_array(),
 				'title1' => $this->customermodel->gethal($id2)->row_array(),
 				'list'   => $this->customermodel->getkat(),
 				'merk'   => $this->customermodel->getmerk());
 		$this->template->tampil('customer/akun/register',$data);
 	}
 
-	public function lupa() {
+	public function cek() {
 		$data = array(
 				'list'   => $this->customermodel->getkat(),
-				'merk'   => $this->customermodel->getmerk(),
-				'total'  => $this->customermodel->gethitung());
+				'merk'   => $this->customermodel->getmerk());
 		$this->template->tampil('customer/akun/lupa',$data);
 	}
 
@@ -399,15 +398,16 @@ class Toko extends CI_Controller {
 			$harga  = $this->input->post('harga');
 			$tabel  = $this->db->get_where('keranjang',array('idproduk' => $produk))->row_array();
 
-			if ($produk==$tabel['idproduk']) {
+			if ($produk == $tabel['idproduk'] && $id == $tabel['idcustomer']) {
 				$sum    = $tabel['jumlah']+1;
 				$simpan = array(
 						'idproduk'   => $produk,
+						'idcustomer' => $id,
 						'harga'      => $harga,
 						'jumlah'     => $sum,
 						'total'      => $sum*$harga);
 
-				$this->customermodel->gettimpacart($simpan,$produk);
+				$this->customermodel->gettimpacart($simpan,$produk,$id);
 			} else {
 				$jumlah = $this->input->post('jumlah'); 
 				$simpan = array(
