@@ -79,55 +79,62 @@
 
 				<h3><?php echo $title1['judulhal'];?></h3>
 
-				<input type="hidden" name="user">
+				<input type="hidden" name="user" value="<?php echo !empty($akun) ? $akun['idcustom'] : '' ?>">
+				<input type="hidden" name="id" value="<?php echo !empty($detail) ? $detail['idd'] : '' ?>">
 				<div class="control-group">
 					<label class="control-label">Title <sup>*</sup></label>
 					<div class="controls">
 						<select class="span1" name="title">
+
+							<?php if (!empty($akun)) { ?>
+								<option value="<?php echo !empty($akun) ? $akun['title'] : '' ?>">
+									<?php echo !empty($akun) ? $akun['title'] : '' ?>
+								</option>
+							<?php } ?>
+
 							<option value="">-</option>
-							<option value="1">Mr.</option>
-							<option value="2">Mrs</option>
-							<option value="3">Miss</option>
+							<option value="Mr.">Mr.</option>
+							<option value="Mrs">Mrs</option>
+							<option value="Miss">Miss</option>
 						</select>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="inputFname">First name <sup>*</sup></label>
 					<div class="controls">
-			  			<input type="text" id="inputFname" name="namad" placeholder="First Name">
+			  			<input type="text" id="inputFname" name="namad" placeholder="First Name" value="<?php echo !empty($akun) ? $akun['firstname'] : '' ?>">
 					</div>
 		 		</div>
 		 		<div class="control-group">
 					<label class="control-label" for="inputLname">Last name <sup>*</sup></label>
 					<div class="controls">
-			  			<input type="text" id="inputLname" name="namab" placeholder="Last Name">
+			  			<input type="text" id="inputLname" name="namab" placeholder="Last Name" value="<?php echo !empty($akun) ? $akun['lastname'] : '' ?>">
 					</div>
 		 		</div>
 				<div class="control-group">
 					<label class="control-label" for="inputEmail">Email <sup>*</sup></label>
 					<div class="controls">
-		  				<input type="text" placeholder="Email" name="email">
+		  				<input type="text" placeholder="Email" name="email" <?php if (!empty($akun)) { echo "readonly='readonly'"; } ?> value="<?php echo !empty($akun) ? $akun['email'] : '' ?>">
 					</div>
 	  			</div>	  
 				<div class="control-group">
 					<label class="control-label">Password <sup>*</sup></label>
 					<div class="controls">
-		  				<input type="password" placeholder="Password" name="pass">
+		  				<input <?php if (!empty($akun)) { echo "type='text'"; } else {?>type="password" <?php } ?>
+		  				 placeholder="Password" name="pass" value="<?php echo !empty($akun) ? $akun['password'] : '' ?>">
 					</div>
 	  			</div>
 				<div class="control-group">
 					<label class="control-label">Date of Birth <sup>*</sup></label>
 					<div class="controls">
-						<input type="date" id="inputLname" name="ttl">
+						<input type="date" id="inputLname" name="ttl" value="<?php echo !empty($akun) ? $akun['date'] : '' ?>">
 					</div>
 	  			</div>
 				<div class="control-group">
 					<div class="controls">
-		 				<input type="submit" name="submitAccount" value="Register" class="exclusive shopBtn">
+		 				<input type="submit" name="akun" <?php if (!empty($akun)) { echo "value='Ubah'"; } else {?>value="Register" <?php } ?> class="exclusive shopBtn">
 					</div>
 				</div>
-
-			</form>
 
 		</div>
 
@@ -174,51 +181,77 @@
 
 		<div class="well">
 
-			<form class="form-horizontal" >
+			<div class="form-horizontal">
 
 				<h3>Your Account Details</h3>
 
+				<input type="hidden" name="id" value="<?php echo !empty($detail) ? $detail['idd'] : '' ?>">
 				<div class="control-group">
 					<label class="control-label">No. Telp <sup>*</sup></label>
 					<div class="controls">
-			  			<input type="text" placeholder=" Field name">
+			  			<input type="text" name="telp" placeholder="No. Telp" value="<?php echo !empty($detail) ? $detail['notelp'] : '' ?>">
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">No. Rekening <sup>*</sup></label>
 					<div class="controls">
-			  			<input type="text" placeholder=" Field name">
+			  			<input type="text" name="rekening" placeholder="No. Rekening" value="<?php echo !empty($detail) ? $detail['norekening'] : '' ?>">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Jenis Kelamin <sup>*</sup></label>
+					<div class="controls">
+						<select class="span1" name="gender">
+
+							<?php if (!empty($detail)) { ?>
+								<option value="<?php echo !empty($detail) ? $detail['gender'] : '' ?>">
+									<?php echo !empty($detail) ? $detail['gender'] : '' ?>
+								</option>
+							<?php } ?>
+
+							<option value="">-</option>
+							<option value="L">Pria</option>
+							<option value="P">Wanita</option>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Alamat <sup>*</sup></label>
+					<div class="controls">
+			  			<textarea name="alamat" placeholder="Alamat"><?php echo !empty($detail) ? $detail['alamat'] : '' ?></textarea>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">Kewarganegaraan <sup>*</sup></label>
 					<div class="controls">
-			  			<input type="text" placeholder=" Field name">
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">Kabupaten <sup>*</sup></label>
-					<div class="controls">
-			  			<input type="text" placeholder=" Field name">
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">Provinsi <sup>*</sup></label>
-					<div class="controls">
-			  			<input type="text" placeholder=" Field name">
+			  			<input type="text" name="warga" placeholder="contoh: WNI" value="<?php echo !empty($detail) ? $detail['warganegara'] : '' ?>">
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">Kode POS <sup>*</sup></label>
 					<div class="controls">
-			  			<input type="text" placeholder=" Field name">
+			  			<input type="text" name="kodepos" placeholder="Kode POS" value="<?php echo !empty($detail) ? $detail['kodepos'] : '' ?>">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Kabupaten <sup>*</sup></label>
+					<div class="controls">
+			  			<input type="text" name="kabupaten" placeholder="Kabupaten" value="<?php echo !empty($detail) ? $detail['kabupaten'] : '' ?>">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Provinsi <sup>*</sup></label>
+					<div class="controls">
+			  			<input type="text" name="provinsi" placeholder="Provinsi" value="<?php echo !empty($detail) ? $detail['provinsi'] : '' ?>">
 					</div>
 				</div>
 				<div class="control-group">
 					<div class="controls">
-		 				<input type="submit" name="submitAccount" value="Register" class="exclusive shopBtn">
+		 				<input type="submit" name="detailakun" <?php if (!empty($akun)) { echo "value='Ubah'"; } else {?>value="Register" <?php } ?> class="exclusive shopBtn">
 					</div>
 				</div>
+
+			</div>
 
 			</form>
 

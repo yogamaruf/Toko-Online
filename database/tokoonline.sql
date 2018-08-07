@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2018 at 03:48 PM
+-- Generation Time: Aug 07, 2018 at 04:18 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -41,7 +41,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`idadmin`, `username`, `namalengkap`, `email`, `password`) VALUES
-(1, 'yoga', 'Yoga Ma\'ruf Ramadan', 'yoga@gmail.com', '12345');
+(1, 'yoga', 'Yoga Ma\'ruf Ramadan', 'yoga@gmail.com', '12345'),
+(3, 'Dina', 'Dina Lestari', 'dinalestari@gmail.com', 'lestari');
 
 -- --------------------------------------------------------
 
@@ -98,8 +99,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`idcustom`, `title`, `firstname`, `lastname`, `email`, `date`, `password`) VALUES
-(2, 'Mr.', 'Febri', 'Indra', 'valentino1234@gmail.', '2018-07-11', '123456'),
-(3, 'Mr.', 'Dadang', 'Agusti', 'Agusti234@gmail.com', '2018-07-08', 'Mikarta'),
+(2, 'Mr.', 'Febri', 'Indra', 'valentino1234@gmail.com', '2018-07-11', '123456'),
 (4, 'Mr.', 'Yoga', 'Maruf', 'yoga@gmail.com', '2018-07-18', 'yoga');
 
 -- --------------------------------------------------------
@@ -109,11 +109,25 @@ INSERT INTO `customer` (`idcustom`, `title`, `firstname`, `lastname`, `email`, `
 --
 
 CREATE TABLE `detailprofil` (
-  `idd` int(10) NOT NULL,
-  `idcustom` int(10) NOT NULL,
+  `idd` int(8) NOT NULL,
+  `idcustom` int(8) NOT NULL,
   `notelp` varchar(13) NOT NULL,
-  `alamat` varchar(150) NOT NULL
+  `norekening` int(20) NOT NULL,
+  `gender` varchar(1) NOT NULL,
+  `alamat` varchar(150) NOT NULL,
+  `warganegara` varchar(5) NOT NULL,
+  `kodepos` int(6) NOT NULL,
+  `kabupaten` varchar(15) NOT NULL,
+  `provinsi` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `detailprofil`
+--
+
+INSERT INTO `detailprofil` (`idd`, `idcustom`, `notelp`, `norekening`, `gender`, `alamat`, `warganegara`, `kodepos`, `kabupaten`, `provinsi`) VALUES
+(4, 2, '', 0, '', '', '', 0, '', ''),
+(5, 4, '089389409308', 2147483647, 'L', 'Kasongan', 'WNI', 15585, 'Bantul', 'Yogyakarta');
 
 -- --------------------------------------------------------
 
@@ -137,7 +151,7 @@ INSERT INTO `halaman` (`id`, `idmenu`, `judulhal`, `subjudul`, `deskripsi`) VALU
 (1, 1, 'New Products', '', ''),
 (2, 1, 'Featured Products', '', ''),
 (3, 2, 'My Account', '', ''),
-(4, 2, 'Your Personal Details', '', ''),
+(4, 2, 'Akun Anda', 'Detail akun', ''),
 (5, 3, 'Registration', '', ''),
 (6, 3, 'Your Personal Details ', '', ''),
 (7, 4, 'Visit Us', 'Contact Details', '2601 Mission St.<br>\r\nSan Francisco, CA 94110<br><br>\r\n\r\ninfo@mysite.com<br>\r\nTel 123-456-6780<br>\r\nFax 123-456-5679<br>\r\nweb:wwwmysitedomain.com'),
@@ -199,10 +213,11 @@ CREATE TABLE `keranjang` (
 --
 
 INSERT INTO `keranjang` (`idcart`, `idproduk`, `idcustomer`, `fotoproduk`, `deskripsi`, `harga`, `jumlah`, `total`, `tanggalcart`) VALUES
-(2, 10, 2, 'lounch_sport.jpg', 'Lounch Sport AA-02', 102320, 12, 1227840, '2018-08-03'),
-(4, 9, 4, 'sosis_sapi.jpg', 'Sosis Sapi', 12500, 7, 87500, '2018-08-04'),
-(5, 12, 4, 'Rado-sand-rope.jpg', 'Jam tangan rado Judile Rose Gold', 240000, 2, 480000, '2018-08-04'),
-(6, 10, 4, 'lounch_sport.jpg', 'Lounch Sport AA-02', 102320, 1, 102320, '2018-08-04');
+(2, 10, 2, 'lounch_sport.jpg', 'Lounch Sport AA-02', 102320, 13, 1330160, '2018-08-03'),
+(4, 9, 4, 'sosis_sapi.jpg', 'Sosis Sapi', 12500, 12, 150000, '2018-08-04'),
+(5, 12, 4, 'Rado-sand-rope.jpg', 'Jam tangan rado Judile Rose Gold', 240000, 5, 1200000, '2018-08-04'),
+(12, 9, 2, 'sosis_sapi.jpg', 'Sosis Sapi', 12500, 1, 12500, '2018-08-06'),
+(15, 10, 4, 'lounch_sport.jpg', 'Lounch Sport AA-02', 102320, 1, 102320, '2018-08-06');
 
 -- --------------------------------------------------------
 
@@ -419,7 +434,7 @@ ALTER TABLE `produk`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `idadmin` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idadmin` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `checkout`
@@ -437,7 +452,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `detailprofil`
 --
 ALTER TABLE `detailprofil`
-  MODIFY `idd` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `idd` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `halaman`
@@ -455,7 +470,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `idcart` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idcart` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `konfigurasi`

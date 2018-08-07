@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 				<a class="" href="<?php echo base_url('index.php/toko/'); ?>"> <span class="icon-home"></span> Home</a>
 				<a href="<?php echo base_url('index.php/toko/myprofil'); ?>"><span class="icon-user"></span> My Account</a> 
-				<a href="<?php echo base_url('index.php/toko/register'); ?>"><span class="icon-edit"></span> Free Register </a> 
+				<a href="<?php echo base_url('index.php/toko/register'); ?>" onclick="return confirm('Apakah Anda ingin daftar kembali ? jika anda ingin daftar maka anda akan Log Out Otomatis');"><span class="icon-edit"></span> Free Register </a> 
 				<a href="<?php echo base_url('index.php/toko/kontak'); ?>"><span class="icon-envelope"></span> Contact us</a>
 				<a href="<?php echo base_url('index.php/toko/keranjang'); ?>"><span class="icon-shopping-cart"></span> <?php echo $jumlah; ?>  Item(s) - <span class="badge badge-warning"> Rp. <?php echo number_format($hitung,0,'.','.'); ?> </span></a>
 				<a href="<?php echo base_url('index.php/login/logout'); ?>">Logout</a>

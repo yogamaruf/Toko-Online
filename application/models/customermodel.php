@@ -92,6 +92,10 @@ class Customermodel extends CI_Model {
 		return $this->db->where('id',$id)->get('halaman');
 	}
 
+	public function getcustomer($id) {
+		return $this->db->where('idcustom',$id)->get('customer');
+	}
+
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ Menampilkan Data Pada FORM MY ACCOUNT ~  |
@@ -101,6 +105,13 @@ class Customermodel extends CI_Model {
 		$this->db->where('email',$id);
 
 		return $this->db->get('customer');
+	}
+
+	public function getdetail($id=null) {
+		$id = $this->session->userdata('idcustom');
+		$this->db->where('idcustom',$id);
+
+		return $this->db->get('detailprofil');
 	}
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
@@ -128,7 +139,7 @@ class Customermodel extends CI_Model {
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ Search Data ~  |
 
 	public function getsearch($search) {  // Search data CUSTOMER
-		$this->db->like('nama',$search);
+		$this->db->like('nama',$search,'both');
 		$this->db->order_by('nama','ASC');
 		$this->db->limit(10);
 		return $this->db->get('produk');
@@ -150,12 +161,28 @@ class Customermodel extends CI_Model {
 		return $this->db->insert('customer',$simpan);
 	}
 
+	public function gettambahdetail($detailsimpan) { // TABEL CUSTOMER
+		return $this->db->insert('detailprofil',$detailsimpan);
+	}
+
 	public function gettambahcart($simpan) { // TABEL KERANJANG
 		return $this->db->insert('keranjang',$simpan);
 	}
 
 	public function gettimpacart($simpan,$produk,$id) { // Menyimpan PRODUK yang memiliki id sama dan menambah data 
 		return $this->db->where('idproduk',$produk)->where('idcustomer',$id)->update('keranjang',$simpan); // pada kolom jumlah TABEL KERANJANG
+	}
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ MENGEDIT AKUN ~  |
+
+	public function geteditakun($simpan,$idcustom) {
+		return $this->db->where('idcustom',$idcustom)->update('customer',$simpan);
+	}
+
+	public function geteditdetail($detailsimpan,$idcustom) {
+		return $this->db->where('idcustom',$idcustom)->update('detailprofil',$detailsimpan);
 	}
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
@@ -182,6 +209,14 @@ class Customermodel extends CI_Model {
 		$this->db->where('idcart',$id);
 		$this->db->or_where('idcustomer',$id);
 		return $this->db->delete('keranjang');
+	}
+
+	public function gethapusakun($id) { // TABEL CUSTOMER
+		return $this->db->where('idcustom',$id)->delete('customer');
+	}
+
+	public function gethapusdetail($id) { // TABEL DETAILPROFIL
+		return $this->db->where('idcustom',$id)->delete('detailprofil');
 	}
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |

@@ -74,18 +74,26 @@ class Toko extends CI_Controller {
 		$this->template->tampil('customer/produk',$data);
 	}
 
-	public function register() {
-		if($this->session->userdata('logged')==1) {
-			echo "<script>alert('Untuk registrasi silahkan anda logout terlebih dahulu');</script>";
-		}
-
+	public function editakun() {
 		$id1 = 5;$id2 = 6;
+		$id3 = $this->session->userdata('idcustom');
 		$data = array(
 				'title'  => $this->customermodel->gethal($id1)->row_array(),
 				'title1' => $this->customermodel->gethal($id2)->row_array(),
 				'list'   => $this->customermodel->getkat(),
-				'merk'   => $this->customermodel->getmerk());
+				'merk'   => $this->customermodel->getmerk(),
+				'akun'   => !empty($id3) ? $this->customermodel->getcustomer($id3)->row_array() : null,
+				'detail' => !empty($id3) ? $this->customermodel->getdetail($id3)->row_array() : null);
 		$this->template->tampil('customer/akun/register',$data);
+	}
+
+	public function register() {
+		if ($this->session->userdata('logged') == 1) {
+			$this->session->sess_destroy();
+        	redirect(base_url('index.php/toko/editakun'));
+		} else {
+			redirect(base_url('index.php/toko/editakun'));
+		}
 	}
 
 	public function cek() {
@@ -222,7 +230,8 @@ class Toko extends CI_Controller {
 					'title'  => $this->customermodel->gethal($id1)->row_array(),
 					'title1' => $this->customermodel->gethal($id2)->row_array(),
 					'merk'   => $this->customermodel->getmerk(),
-					'data'   => $this->customermodel->getmyprofil()->row_array());
+					'data'   => $this->customermodel->getmyprofil()->row_array(),
+					'detail' => $this->customermodel->getdetail()->row_array());
 
 			$this->template->tampil('customer/akun/profil',$data);
 		}
@@ -264,8 +273,7 @@ class Toko extends CI_Controller {
 			$result = $this->customermodel->getsearch($_GET['term']);
 			if (count($result) > 0) {
 				foreach ($result->result_array() as $key => $value) {
-					$d[] = array(
-						'label' => $value['nama']);
+					$d['label'] = $value['nama'];
 
 					echo json_encode($d);
 				}
@@ -372,6 +380,7 @@ class Toko extends CI_Controller {
 	}
 
 	public function tambahcustomer() {
+		$idcustom = $this->session->userdata('idcustom');
 		$simpan = array(
 				'idcustom'  => $this->input->post('user'),
 				'title'     => $this->input->post('title'),
@@ -381,8 +390,66 @@ class Toko extends CI_Controller {
 				'password'  => $this->input->post('pass'),
 				'date'      => $this->input->post('ttl'));
 
-		$this->customermodel->gettambah($simpan);
-		redirect(base_url('index.php/toko/'));
+		if (isset($_POST['akun'])) {
+
+			if (!empty($idcustom)) {
+				$this->customermodel->geteditakun($simpan,$idcustom);
+
+				redirect(base_url('index.php/toko/myprofil'));
+			} else {
+				$this->customermodel->gettambah($simpan);
+				$id = $this->db->insert_id();
+
+				$detailsimpan = array(
+							'idd'         => $this->input->post('id'),
+							'idcustom'    => $id);
+
+				$this->customermodel->gettambahdetail($detailsimpan);
+				redirect(base_url('index.php/login'));
+			}
+
+		} elseif (isset($_POST['detailakun'])) {
+
+			if (!empty($idcustom)) {
+				$this->customermodel->geteditakun($simpan,$idcustom);
+
+				$detailsimpan = array(
+						'idd'         => $this->input->post('id'),
+						'idcustom'    => $idcustom, 
+						'notelp'      => $this->input->post('telp'),
+						'norekening'  => $this->input->post('rekening'),
+						'gender'      => $this->input->post('gender'),
+						'alamat'      => $this->input->post('alamat'),
+						'warganegara' => $this->input->post('warga'),
+						'kodepos'     => $this->input->post('kodepos'),
+						'kabupaten'   => $this->input->post('kabupaten'),
+						'provinsi'    => $this->input->post('provinsi'));
+
+				$this->customermodel->geteditdetail($detailsimpan,$idcustom);
+
+				redirect(base_url('index.php/toko/myprofil'));
+			} else {
+				$this->customermodel->gettambah($simpan);
+				$id = $this->db->insert_id();
+
+				$detailsimpan = array(
+						'idd'         => $this->input->post('id'),
+						'idcustom'    => $id, 
+						'notelp'      => $this->input->post('telp'),
+						'norekening'  => $this->input->post('rekening'),
+						'gender'      => $this->input->post('gender'),
+						'alamat'      => $this->input->post('alamat'),
+						'warganegara' => $this->input->post('warga'),
+						'kodepos'     => $this->input->post('kodepos'),
+						'kabupaten'   => $this->input->post('kabupaten'),
+						'provinsi'    => $this->input->post('provinsi'));
+
+				$this->customermodel->gettambahdetail($detailsimpan);
+
+				redirect(base_url('index.php/login'));
+			}
+
+		}
 	}
 
 	public function tambahcart() {
@@ -426,6 +493,14 @@ class Toko extends CI_Controller {
 
 			redirect(base_url('index.php/toko/keranjang'));
 		}
+	}
+
+	public function hapusakun() {
+		$id = $this->session->userdata('idcustom');
+		$this->customermodel->gethapusakun($id);
+		$this->customermodel->gethapusdetail($id);
+
+		redirect(base_url('index.php/login/logout'));
 	}
 
 	public function hapuscart() {

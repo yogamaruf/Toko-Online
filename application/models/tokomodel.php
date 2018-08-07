@@ -9,6 +9,10 @@ class Tokomodel extends CI_Model {
 		return $this->db->insert('customer',$simpan);
 	}
 
+	public function gettambahuser($simpan) {
+		return $this->db->insert('admin',$simpan);
+	}
+
 	public function gettambahkat($simpan) {
 		return $this->db->insert('kategori', $simpan);
 	}
@@ -39,8 +43,12 @@ class Tokomodel extends CI_Model {
 		return $this->db->get('produk');
 	}
 
-	public function getuser() {
-		return $this->db->get('admin')->result_array();
+	public function getuser($w=null) {
+		if(!empty($w)) {
+			$this->db->where($w);
+		}
+
+		return $this->db->get('admin');
 	}
 
 	public function getkategori() {

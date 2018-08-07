@@ -54,7 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a <?php if($page == ''){ echo 'class="active-menu';}?> href="<?php echo base_url('index.php/admin/toko');?>"><i class="fa fa-dashboard fa-2x"></i> Dashboard </a>
                     </li>
                     <li>
-                        <a <?php if($page == 'user' || $page == 'formtambahuser' || $page == 'edituser'){ echo 'class="active-menu';}?> href="<?php echo base_url('index.php/admin/toko/user');?>"><i class="fa fa-user fa-2x"></i> User </a>
+                        <a <?php if($page == 'user' || $page == 'formuser'){ echo 'class="active-menu';}?> href="<?php echo base_url('index.php/admin/toko/user');?>"><i class="fa fa-user fa-2x"></i> User </a>
                     </li>
                     <li>
                         <a <?php if($page == 'halaman' || $page == 'menu' || $page == 'konten' || $page == 'footer' || $page == 'formmenu' || $page == 'formkonten'){ echo 'class="active-menu';}?> href="<?php echo base_url('index.php/admin/toko/halaman');?>"><i class="fa fa-newspaper-o fa-2x"></i> Halaman </a>

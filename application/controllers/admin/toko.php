@@ -110,6 +110,14 @@ class Toko extends CI_Controller {
 		$this->template->tampilan('admin/tambah/tambahcustomer');
 	}
 
+	public function formuser($id=null) {
+		$d = array(
+				'title'  => 'Tambah User',
+				'title1' => 'Edit User',
+				'data'   => !empty($id) ? $this->tokomodel->getuser(array('idadmin' => $id))->row_array() : null);
+		$this->template->tampilan('admin/tambah/formuser', $d);
+	}
+
 	public function formproduk($id=null) { //PRODUK
 		$d = array(
 				'title'  => 'Tambah Produk',
@@ -306,6 +314,24 @@ class Toko extends CI_Controller {
 		redirect(base_url('index.php/admin/toko/footer'));
 	}
 
+	public function simpanuser() { //USER ( TABEL ADMIN )
+		$id = $this->input->post('idadmin');
+		$simpan = array(
+					'idadmin'     => $this->input->post('idadmin'),
+					'username'    => $this->input->post('nama'),
+					'namalengkap' => $this->input->post('namaleng'),
+					'email'       => $this->input->post('email'),
+					'password'    => $this->input->post('pass'));
+
+		if (!empty($id)) {
+			$this->tokomodel->getubahuser($simpan, $id);
+		} else {
+			$this->tokomodel->gettambahuser($simpan);
+		}
+		
+		redirect(base_url('index.php/admin/toko/user'));
+	}
+
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ EDIT DATA ~  |
@@ -335,19 +361,6 @@ class Toko extends CI_Controller {
 		redirect(base_url('index.php/admin/toko/kategori'));
 	}	
 
-	public function ubahuser() { //USER ( TABEL ADMIN )
-		$id = $this->input->post('idadmin');
-		$simpan = array(
-					'idadmin'     => $this->input->post('idadmin'),
-					'username'    => $this->input->post('nama'),
-					'namalengkap' => $this->input->post('namaleng'),
-					'email'       => $this->input->post('email'),
-					'password'    => $this->input->post('pass'));
-
-		$this->tokomodel->getubahuser($simpan, $id);
-		redirect(base_url('index.php/admin/toko/user'));
-	}
-
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ MENAMPILKAN DATA PADA FORM ~  |
@@ -356,12 +369,6 @@ class Toko extends CI_Controller {
 		$id = $this->uri->segment(4);
 		$data['data']  = $this->tokomodel->getedit($id);
 		$this->template->tampilan('admin/edit/editcustomer',$data);
-	}
-
-	public function edituser() { //USER ( TABEL ADMIN )
-		$id = $this->uri->segment(4);
-		$data['data']  = $this->tokomodel->getedituser($id);
-		$this->template->tampilan('admin/edit/edituser',$data);
 	}
 
 	public function editkategori() { //KATEGORI
