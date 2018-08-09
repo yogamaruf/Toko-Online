@@ -13,7 +13,7 @@
     <div class="col-md-12">
 
         <div class="panel-body">
-            <a href="<?php echo base_url('index.php/admin/toko/formtambahcus');?>" class="btn btn-success" style="margin-bottom: 15px;"><i class="fa fa-plus" style="margin-right: 5px;"></i>Tambah</a>
+            <a href="<?php echo base_url('admin/toko/formtambahcus');?>" class="btn btn-success" style="margin-bottom: 15px;"><i class="fa fa-plus" style="margin-right: 5px;"></i>Tambah</a>
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
@@ -36,9 +36,9 @@
                                 <td><?php echo $value['email']; ?></td>
                                 <td><?php echo $value['date']; ?></td>
                                 <td>
-                                    <a href="<?php echo base_url('index.php/admin/toko/detailprofil/').$value['idcustom'];?>" class="btn btn-info"><i class="fa fa-info"></i></a>
-                                    <a href="<?php echo base_url('index.php/admin/toko/editcustomer/').$value['idcustom'];?>" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                    <a href="<?php echo base_url('index.php/admin/toko/hapuscustomer/').$value['idcustom'];?>" class="btn btn-danger" onclick='return confirm("Yakin mau dihapus???");'><i class="fa fa-trash"></i></a>
+                                    <a href="<?php echo base_url('admin/toko/detailprofil/').$value['idcustom'];?>" class="btn btn-info"><i class="fa fa-info"></i></a>
+                                    <a href="<?php echo base_url('admin/toko/editcustomer/').$value['idcustom'];?>" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                    <a href="<?php echo base_url('admin/toko/hapuscustomer/').$value['idcustom'];?>" class="btn btn-danger" onclick='return confirm("Yakin mau dihapus???");'><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
 

@@ -8,15 +8,15 @@
 
 			  	<div class="thumbnail">
 
-					<a href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>" class="overlay"></a>
-					<a class="zoomTool" href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>" title="Detail"><span class="icon-search"></span> QUICK VIEW</a>
-					<a href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>"><img style="height: 200px;" src="<?php echo base_url(); ?>assets/gambar/produk/<?php echo $value['foto']; ?>" alt=""></a>
+					<a href="<?php echo base_url('toko/detailproduk/').$value['idproduk']; ?>" class="overlay"></a>
+					<a class="zoomTool" href="<?php echo base_url('toko/detailproduk/').$value['idproduk']; ?>" title="Detail"><span class="icon-search"></span> QUICK VIEW</a>
+					<a href="<?php echo base_url('toko/detailproduk/').$value['idproduk']; ?>"><img style="height: 200px;" src="<?php echo base_url(); ?>assets/gambar/produk/<?php echo $value['foto']; ?>" alt=""></a>
 					<div class="caption cntr">
 
 						<p><?php echo substr($value['nama'],0,20).'...'; ?></p>
 						<p><strong>Rp. <?php echo number_format($value['harga'],0,'.','.'); ?></strong></p>
 
-							<form action="<?php echo base_url('index.php/toko/tambahcart'); ?>" method="POST" style="margin: 0;padding: 0;height: 42px;">
+							<form action="<?php echo base_url('toko/tambahcart'); ?>" method="POST" style="margin: 0;padding: 0;height: 42px;">
 
 								<input type="hidden" name="idcart">
 								<input type="hidden" name="idproduk" value="<?php echo $value['idproduk'];?>">
@@ -49,7 +49,7 @@
 		<?php foreach ($merk as $key => $value) { ?>
 
 			<div class="span2">
-				<a href="<?php echo base_url('index.php/toko/detaillist/').$value['idmerk']; ?>"><img alt="" src="<?php echo base_url(); ?>assets/gambar/merk/<?php echo $value['gambar']; ?>"></a>
+				<a href="<?php echo base_url('toko/detaillist/').$value['idmerk']; ?>"><img alt="" src="<?php echo base_url(); ?>assets/gambar/merk/<?php echo $value['gambar']; ?>"></a>
 			</div>
 
 		<?php } ?>

@@ -13,7 +13,7 @@
     <div class="col-md-6 col-sm-12 col-xs-12">
 
         <div class="panel-body">
-            <form action="<?php echo base_url('index.php/admin/toko/simpanhal');?>" method="post">
+            <form action="<?php echo base_url('admin/toko/simpanhal');?>" method="post">
 
                 <input type="hidden" name="idmenu" value="<?php echo $set['idmenu']; ?>">
                 <div class="form-group">
@@ -42,7 +42,7 @@
 
                 <div class="form-group">
                     <input type="submit" value="Simpan" class="btn btn-default">
-                    <a href="<?php echo base_url('index.php/admin/toko/halaman');?>" class="btn btn-danger">Batal</a>
+                    <a href="<?php echo base_url('admin/toko/halaman');?>" class="btn btn-danger">Batal</a>
                 </div>
 
             </form>

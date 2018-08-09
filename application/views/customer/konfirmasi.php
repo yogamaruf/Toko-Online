@@ -12,7 +12,7 @@
 
 				<h5><center>Silahkan isi form dibawah ini untuk konfirmasi pembayaran</center></h5>
 
-				<form class="form-horizontal" style="margin: 20px;" action="<?php echo base_url('index.php/toko/finish'); ?>" method="POST">
+				<form class="form-horizontal" style="margin: 20px;" action="<?php echo base_url('toko/selesai'); ?>" method="POST">
           			
             		<div class="control-group">
 						<label class="control-label" for="input">Nama <sup>*</sup></label> 
@@ -23,8 +23,8 @@
 					<div class="control-group">
 						<label class="control-label" for="input">Kode ORDER <sup>*</sup></label> 
 						<div class="controls">
-						  	<input type="text" name="kodeorder" required="" placeholder="Masukkan kode order anda">
-						  	<p style="font-style: italic;">( <?php echo $order['kodeorder']; ?> ) *kode order anda</p>
+						  	<input type="text" name="kodeorder" required="" value="<?php echo $order['kodeorder']; ?>" readonly>
+						  	<!--<p style="font-style: italic;">( <?php echo $order['kodeorder']; ?> ) *kode order anda</p>-->
 						</div>
 					</div>
 					<div class="control-group">
@@ -75,7 +75,7 @@
 		<?php foreach ($merk as $key => $value) { ?>
 
 			<div class="span2">
-				<a href="<?php echo base_url('index.php/toko/detaillist/').$value['idmerk']; ?>"><img alt="" src="<?php echo base_url(); ?>assets/gambar/merk/<?php echo $value['gambar']; ?>"></a>
+				<a href="<?php echo base_url('toko/detaillist/').$value['idmerk']; ?>"><img alt="" src="<?php echo base_url(); ?>assets/gambar/merk/<?php echo $value['gambar']; ?>"></a>
 			</div>
 
 		<?php } ?>

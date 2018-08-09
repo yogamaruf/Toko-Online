@@ -29,7 +29,7 @@
 				</div>
 
 				<div class="col-md-6">
-					<a href="<?php echo base_url('index.php/admin/toko/tabelproduk'); ?>" class="btn btn-primary" style="float: right;"><i class=""></i> Kembali </a>
+					<a href="<?php echo base_url('admin/toko/tabelproduk'); ?>" class="btn btn-primary" style="float: right;"><i class=""></i> Kembali </a>
 				</div>
 
 			</div>

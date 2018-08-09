@@ -3,7 +3,7 @@
 	<div class="span12">
 
     	<ul class="breadcrumb">
-			<li><a href="<?php echo base_url('index.php/toko/');?>">Home</a> <span class="divider">/</span></li>
+			<li><a href="<?php echo base_url('toko/');?>">Home</a> <span class="divider">/</span></li>
 			<li class="active"><?php echo $title['judulhal'];?></li>
     	</ul>
 
@@ -64,7 +64,7 @@
 		<?php foreach ($merk as $key => $value) { ?>
 
 			<div class="span2">
-				<a href="<?php echo base_url('index.php/toko/detaillist/').$value['idmerk']; ?>"><img alt="" src="<?php echo base_url(); ?>assets/gambar/merk/<?php echo $value['gambar']; ?>"></a>
+				<a href="<?php echo base_url('toko/detaillist/').$value['idmerk']; ?>"><img alt="" src="<?php echo base_url(); ?>assets/gambar/merk/<?php echo $value['gambar']; ?>"></a>
 			</div>
 
 		<?php } ?>

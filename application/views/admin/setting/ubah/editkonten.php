@@ -12,7 +12,7 @@
 
     <div class="col-md-6 col-sm-12 col-xs-12">
 
-        <form action="<?php echo base_url('index.php/admin/toko/simpankonten'); ?>" method="POST">
+        <form action="<?php echo base_url('admin/toko/simpankonten'); ?>" method="POST">
 
             <p>Termasuk bagian MENU <strong style="font-style: italic;"><?php echo $konten['namamenu']; ?></strong></p>
             <input type="hidden" name="id" value="<?php echo $konten['id'];?>">
@@ -32,7 +32,7 @@
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-default" value="Simpan">
-                    <a href="<?php echo base_url('index.php/admin/toko/konten'); ?>" class="btn btn-danger">Batal</a>
+                    <a href="<?php echo base_url('admin/toko/konten'); ?>" class="btn btn-danger">Batal</a>
                 </div>
             </div>
 

@@ -3,7 +3,7 @@
 	<div class="span12">
 
     	<ul class="breadcrumb">
-			<li><a href="<?php echo base_url('index.php/toko/');?>">Home</a> <span class="divider">/</span></li>
+			<li><a href="<?php echo base_url('toko/');?>">Home</a> <span class="divider">/</span></li>
 			<li class="active"><?php echo $title['judulhal'];?></li>
    		</ul>
 
@@ -41,7 +41,7 @@
                   		<td>Rp. <?php echo number_format($value['harga'],0,'.','.'); ?></td>
                  		<td>
                  			<div class="input-append" style="display: flex;max-width: 80px;">
-                 				<form action="<?php echo base_url('index.php/toko/decart/').$value['idcart']; ?>" method="POST">
+                 				<form action="<?php echo base_url('toko/decart/').$value['idcart']; ?>" method="POST">
 
                  					<input type="hidden" name="id" value="<?php echo $value['idcart']; ?>">
 									<input class="span1" style="max-width:34px" name="angka" placeholder="0" id='text1' size="16" type="text" onkeyup="text();" value="<?php echo $value['jumlah']; ?>">
@@ -50,7 +50,7 @@
 
 								</form>
 
-								<form action="<?php echo base_url('index.php/toko/incart/').$value['idcart']; ?>" method="POST">
+								<form action="<?php echo base_url('toko/incart/').$value['idcart']; ?>" method="POST">
 
                  					<input type="hidden" name="id" value="<?php echo $value['idcart']; ?>">
 									<input class="span1" style="max-width:34px" name="angka" placeholder="0" id='text2' size="16" type="hidden" value="<?php echo $value['jumlah']; ?>">
@@ -59,7 +59,7 @@
 
 								</form>
 
-								<a class="btn btn-danger" style="height: 100%;" href="<?php echo base_url('index.php/toko/hapuscart/').$value['idcart']; ?>"><span class="icon-remove"></span></a>
+								<a class="btn btn-danger" style="height: 100%;" href="<?php echo base_url('toko/hapuscart/').$value['idcart']; ?>"><span class="icon-remove"></span></a>
 							</div>
 						</td>
                   		<td>Rp. <?php echo number_format($value['total'],0,'.','.'); ?></td>
@@ -86,7 +86,7 @@
                 	</tr>
                  	<tr> 
 				 		<td>
-							<form class="form-horizontal" action="<?php echo base_url('index.php/toko/konfirm'); ?>" method="POST">
+							<form class="form-horizontal" action="<?php echo base_url('toko/konfirm'); ?>" method="POST">
 
 								<input type="hidden" name="total" value="<?php echo $total; ?>">
 					  			<div class="control-group">
@@ -129,7 +129,7 @@
               	</tbody>
             </table>		
 
-			<a href="<?php echo base_url('index.php/toko/grid'); ?>" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Continue Shopping </a>
+			<a href="<?php echo base_url('toko/kolom'); ?>" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Continue Shopping </a>
 			<button type="submit" class="shopBtn btn-large pull-right">Next  <span class="icon-arrow-right"></span></button>
 
 			</form>
@@ -149,7 +149,7 @@
 		<?php foreach ($merk as $key => $value) { ?>
 
 			<div class="span2">
-				<a href="<?php echo base_url('index.php/toko/detaillist/').$value['idmerk']; ?>"><img alt="" src="<?php echo base_url(); ?>assets/gambar/merk/<?php echo $value['gambar']; ?>"></a>
+				<a href="<?php echo base_url('toko/detaillist/').$value['idmerk']; ?>"><img alt="" src="<?php echo base_url(); ?>assets/gambar/merk/<?php echo $value['gambar']; ?>"></a>
 			</div>
 
 		<?php } ?>

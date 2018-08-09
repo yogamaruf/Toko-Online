@@ -9,14 +9,14 @@
 				<?php foreach ($list->result_array() as $key => $value) { ?>
 
 					<li>
-						<a href="<?php echo base_url('index.php/toko/detaillist/').$value['idkategori']; ?>"><span class="icon-chevron-right"></span><?php echo $value['namakategori']; ?></a>
+						<a href="<?php echo base_url('toko/detaillist/').$value['idkategori']; ?>"><span class="icon-chevron-right"></span><?php echo $value['namakategori']; ?></a>
 					</li>
 
 				<?php } ?>
 
 				<li style="border:0"> &nbsp;</li>
 				<li> 
-					<a class="totalInCart" href="<?php echo base_url('index.php/toko/keranjang'); ?>"><strong>Total <span class="badge badge-warning pull-right" style="line-height:18px;">Rp. <?php echo number_format($total,0,'.','.'); ?></span></strong></a>
+					<a class="totalInCart" href="<?php echo base_url('toko/keranjang'); ?>"><strong>Total <span class="badge badge-warning pull-right" style="line-height:18px;">Rp. <?php echo number_format($total,0,'.','.'); ?></span></strong></a>
 				</li>
 
 			</ul>
@@ -45,10 +45,10 @@
 
 				<li>
 				 	<div class="thumbnail">
-						<a class="zoomTool" href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+						<a class="zoomTool" href="<?php echo base_url('toko/detailproduk/').$value['idproduk']; ?>" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
 						<img style="width: 210px;height: 270px;" src="<?php echo base_url(); ?>assets/gambar/produk/<?php echo $value['foto']; ?>" alt="bootstrap ecommerce templates">
 							<div class="caption">
-				  				<h4 style="padding: 0;"><a class="defaultBtn" href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>">VIEW</a><span class="pull-right" style="font-size: 16px;">Rp. <?php echo number_format($value['harga'],0,'.','.'); ?></span>
+				  				<h4 style="padding: 0;"><a class="defaultBtn" href="<?php echo base_url('toko/detailproduk/').$value['idproduk']; ?>">VIEW</a><span class="pull-right" style="font-size: 16px;">Rp. <?php echo number_format($value['harga'],0,'.','.'); ?></span>
 				  				</h4>
 							</div>
 					</div>
@@ -78,14 +78,14 @@
 
 			  				<div class="thumbnail">
 
-								<a href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>" class="overlay"></a>
-								<a class="zoomTool" href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>"" title="Detail"><span class="icon-search"></span> QUICK VIEW</a>
-								<a href="<?php echo base_url('index.php/toko/detailproduk/').$value['idproduk']; ?>"><img style="height: 200px;" src="<?php echo base_url(); ?>assets/gambar/produk/<?php echo $value['foto']; ?>" alt=""></a>
+								<a href="<?php echo base_url('toko/detailproduk/').$value['idproduk']; ?>" class="overlay"></a>
+								<a class="zoomTool" href="<?php echo base_url('toko/detailproduk/').$value['idproduk']; ?>"" title="Detail"><span class="icon-search"></span> QUICK VIEW</a>
+								<a href="<?php echo base_url('toko/detailproduk/').$value['idproduk']; ?>"><img style="height: 200px;" src="<?php echo base_url(); ?>assets/gambar/produk/<?php echo $value['foto']; ?>" alt=""></a>
 								<div class="caption cntr" style="height: 100px;"> 
 									<p><?php echo substr($value['nama'],0,20).'...'; ?></p>
 									<p><strong>Rp. <?php echo number_format($value['harga'],0,'.','.'); ?></strong></p>
 
-									<form action="<?php echo base_url('index.php/toko/tambahcart'); ?>" method="POST" style="margin: 0;padding: 0;height: 42px;">
+									<form action="<?php echo base_url('toko/tambahcart'); ?>" method="POST" style="margin: 0;padding: 0;height: 42px;">
 
 										<input type="hidden" name="idcart">
 										<input type="hidden" name="idproduk" value="<?php echo $value['idproduk'];?>">
@@ -126,7 +126,7 @@
 		<?php foreach ($merk as $key => $value) { ?>
 
 			<div class="span2">
-				<a href="<?php echo base_url('index.php/toko/detaillist/').$value['idmerk']; ?>"><img alt="" src="<?php echo base_url(); ?>assets/gambar/merk/<?php echo $value['gambar']; ?>"></a>
+				<a href="<?php echo base_url('toko/detaillist/').$value['idmerk']; ?>"><img alt="" src="<?php echo base_url(); ?>assets/gambar/merk/<?php echo $value['gambar']; ?>"></a>
 			</div>
 
 		<?php } ?>

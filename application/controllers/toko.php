@@ -12,12 +12,13 @@ class Toko extends CI_Controller {
 	public function index() {
 		$id1 = 1;$id2 = 2;
 		$data = array(
-				'title' => $this->customermodel->gethal($id1)->row_array(),
+				'title'  => $this->customermodel->gethal($id1)->row_array(),
 				'title1' => $this->customermodel->gethal($id2)->row_array(),
-				'list'  => $this->customermodel->getkat(),
-				'merk'  => $this->customermodel->getmerk(),
-				'total' => $this->customermodel->gethitung());
-		$this->template->tampil('customer/list',$data);
+				'list'   => $this->customermodel->getkat(),
+				'merk'   => $this->customermodel->getmerk(),
+				'total'  => $this->customermodel->gethitung());
+		
+		$this->template->tampil('customer/daftar',$data);
 	}
 
 	public function incart() {
@@ -36,7 +37,7 @@ class Toko extends CI_Controller {
 			$this->customermodel->geteditcart($kode,$simpan);
 		}
 		
-		redirect(base_url('index.php/toko/keranjang'));
+		redirect(base_url('toko/keranjang'));
 	}
 
 	public function decart() {
@@ -63,7 +64,7 @@ class Toko extends CI_Controller {
 			}
 		}
 
-		redirect(base_url('index.php/toko/keranjang'));
+		redirect(base_url('toko/keranjang'));
 	}
 
 	public function produk() {
@@ -87,13 +88,10 @@ class Toko extends CI_Controller {
 		$this->template->tampil('customer/akun/register',$data);
 	}
 
-	public function register() {
-		if ($this->session->userdata('logged') == 1) {
-			$this->session->sess_destroy();
-        	redirect(base_url('index.php/toko/editakun'));
-		} else {
-			redirect(base_url('index.php/toko/editakun'));
-		}
+	public function regis() {
+		$this->session->sess_destroy();
+
+		redirect(base_url('toko/editakun'));
 	}
 
 	public function cek() {
@@ -118,7 +116,7 @@ class Toko extends CI_Controller {
               	<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                 <strong>Silahkan login terlebih dahulu !!!</strong></div>");
 
-            redirect(base_url('index.php/login'));
+            redirect(base_url('login'));
         } else {
         	$id = $this->session->userdata('idcustom');
         	$id = 10;
@@ -142,10 +140,10 @@ class Toko extends CI_Controller {
 		$this->template->tampil('customer/listproduk',$data);
 	}
 
-	public function grid() {
+	public function kolom() {
 		$id = 9;
 		$data = array(
-				'title' => $this->customermodel->gethal($id)->row_array(),
+				'title'  => $this->customermodel->gethal($id)->row_array(),
 				'data'   => $this->customermodel->getdetailproduk(),
 				'list'   => $this->customermodel->getkat(),
 				'merk'   => $this->customermodel->getmerk(),
@@ -153,22 +151,22 @@ class Toko extends CI_Controller {
 		$this->template->tampil('customer/gridproduk',$data);
 	}
 
-	public function three() {
+	public function tiga() {
 		$id = 11;
 		$data = array(
 				'title' => $this->customermodel->gethal($id)->row_array(),
 				'data'  => $this->customermodel->getdetailproduk(),
 				'merk'  => $this->customermodel->getmerk());
-		$this->template->tampil('customer/treecolumn',$data);
+		$this->template->tampil('customer/tigacolumn',$data);
 	}
 
-	public function four() {
+	public function empat() {
 		$id = 12;
 		$data = array(
 				'title' => $this->customermodel->gethal($id)->row_array(),
 				'data'  => $this->customermodel->getproduk(),
 				'merk'  => $this->customermodel->getmerk());
-		$this->template->tampil('customer/fourcolumn',$data);
+		$this->template->tampil('customer/empatcolumn',$data);
 	}
 
 	public function histori() {
@@ -178,7 +176,7 @@ class Toko extends CI_Controller {
                 <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                 <strong>Silahkan login terlebih dahulu !!!</strong></div>");
 
-            redirect(base_url('index.php/login'));
+            redirect(base_url('login'));
         } else {
 			$id = 14;
 			$data = array(
@@ -197,7 +195,7 @@ class Toko extends CI_Controller {
                 <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                 <strong>Silahkan isi keranjang anda sebelum memesan...</strong></div>");
 
-            redirect(base_url('index.php/toko/keranjang'));
+            redirect(base_url('toko/keranjang'));
 		} else {
 			$id = 13;
 			$data = array(
@@ -223,7 +221,7 @@ class Toko extends CI_Controller {
                         <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                         <strong>Silahkan login terlebih dahulu !!!</strong></div>");
 
-                redirect(base_url('index.php/login'));
+                redirect(base_url('login'));
         } else {
 			$id1 = 3;$id2 = 4;
 			$data = array(
@@ -328,7 +326,7 @@ class Toko extends CI_Controller {
 			$this->customermodel->gethapuscart($id);
 		}
 
-		redirect(base_url('index.php/toko/konfirmasi'));
+		redirect(base_url('toko/konfirmasi'));
 	}
 
 	public function konfirmasi() {
@@ -341,7 +339,7 @@ class Toko extends CI_Controller {
 		$this->template->tampil('customer/konfirmasi',$check);
 	}
 
-	public function finish() {
+	public function selesai() {
 		$id = $this->session->userdata('idcustom');
 		$kode = $this->input->post('kodeorder');
 		if (!empty($kode)||$kode==$this->customermodel->getkonfirmorder($id)) {
@@ -350,13 +348,13 @@ class Toko extends CI_Controller {
 
 			$data['merk'] = $this->customermodel->getmerk();
 			$this->template->tampil('customer/lunas',$data);
-		} else {
+		} /*else {
 			$this->session->set_flashdata("error","<div class='alert alert-danger alert-dismissable'>
                 <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                 <strong>Nama atau kode Order salah !!!</strong></div>");
 
-			redirect(base_url('index.php/toko/konfirmasi'));
-		}
+			redirect(base_url('toko/konfirmasi'));
+		}*/
 	}
 
 	public function tertunda() {
@@ -366,12 +364,12 @@ class Toko extends CI_Controller {
                 <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                 <strong>Silahkan login terlebih dahulu !!!</strong></div>");
 
-            redirect(base_url('index.php/login'));
+            redirect(base_url('login'));
         } else {
         	$w  = 'Belum Bayar';
-			$id = 13;
+			$id2 = 13;
 			$data = array(
-					'title' => $this->customermodel->gethal($id)->row_array(),
+					'title' => $this->customermodel->gethal($id2)->row_array(),
 					'merk'  => $this->customermodel->getmerk(),
 					'data'  => $this->customermodel->getkonfirmorder($id,$w));
 		
@@ -395,7 +393,7 @@ class Toko extends CI_Controller {
 			if (!empty($idcustom)) {
 				$this->customermodel->geteditakun($simpan,$idcustom);
 
-				redirect(base_url('index.php/toko/myprofil'));
+				redirect(base_url('toko/myprofil'));
 			} else {
 				$this->customermodel->gettambah($simpan);
 				$id = $this->db->insert_id();
@@ -405,7 +403,7 @@ class Toko extends CI_Controller {
 							'idcustom'    => $id);
 
 				$this->customermodel->gettambahdetail($detailsimpan);
-				redirect(base_url('index.php/login'));
+				redirect(base_url('login'));
 			}
 
 		} elseif (isset($_POST['detailakun'])) {
@@ -427,7 +425,7 @@ class Toko extends CI_Controller {
 
 				$this->customermodel->geteditdetail($detailsimpan,$idcustom);
 
-				redirect(base_url('index.php/toko/myprofil'));
+				redirect(base_url('toko/myprofil'));
 			} else {
 				$this->customermodel->gettambah($simpan);
 				$id = $this->db->insert_id();
@@ -446,7 +444,7 @@ class Toko extends CI_Controller {
 
 				$this->customermodel->gettambahdetail($detailsimpan);
 
-				redirect(base_url('index.php/login'));
+				redirect(base_url('login'));
 			}
 
 		}
@@ -458,14 +456,14 @@ class Toko extends CI_Controller {
                 <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                 <strong>Silahkan login terlebih dahulu !!!</strong></div>");
 
-            redirect(base_url('index.php/login'));
+            redirect(base_url('login'));
         } else {
 			$id     = $this->session->userdata('idcustom');
 			$produk = $this->input->post('idproduk');
 			$harga  = $this->input->post('harga');
-			$tabel  = $this->db->get_where('keranjang',array('idproduk' => $produk))->row_array();
+			$tabel  = $this->db->where('idproduk',$produk)->where('idcustomer',$id)->get('keranjang')->row_array();
 
-			if ($produk == $tabel['idproduk'] && $id == $tabel['idcustomer']) {
+			if (count($tabel['idproduk']) == 1) {
 				$sum    = $tabel['jumlah']+1;
 				$simpan = array(
 						'idproduk'   => $produk,
@@ -491,7 +489,7 @@ class Toko extends CI_Controller {
 				$this->customermodel->gettambahcart($simpan);
 			}
 
-			redirect(base_url('index.php/toko/keranjang'));
+			redirect(base_url('toko/keranjang'));
 		}
 	}
 
@@ -500,14 +498,14 @@ class Toko extends CI_Controller {
 		$this->customermodel->gethapusakun($id);
 		$this->customermodel->gethapusdetail($id);
 
-		redirect(base_url('index.php/login/logout'));
+		redirect(base_url('login/logout'));
 	}
 
 	public function hapuscart() {
 		$id = $this->uri->segment(3);
 		$this->customermodel->gethapuscart($id);
 
-		redirect(base_url('index.php/toko/keranjang'));
+		redirect(base_url('toko/keranjang'));
 	}
 
 }

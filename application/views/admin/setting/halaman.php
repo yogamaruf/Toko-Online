@@ -18,20 +18,20 @@
         <div class="well well-small" style="background-color: #fff;">
           <img src="<?php echo base_url(); ?>assets/gambar/setting/navbar1.png" class="img-responsive"><br>
           <img src="<?php echo base_url(); ?>assets/gambar/setting/navbar2.png" class="img-responsive"><br>
-            <a href="<?php echo base_url('index.php/admin/toko/menu'); ?>" class="btn btn-primary"><i class="fa fa-edit"></i> Setting</a>
+            <a href="<?php echo base_url('admin/toko/menu'); ?>" class="btn btn-primary"><i class="fa fa-edit"></i> Setting</a>
         </div>-->
 
       <h3><strong>Konten</strong></h3>
         <div class="well well-small" style="background-color: #fff;">
           <img src="<?php echo base_url(); ?>assets/gambar/setting/about.png" class="img-responsive"><br>
           <img src="<?php echo base_url(); ?>assets/gambar/setting/kontak.png" class="img-responsive"><br>
-            <a href="<?php echo base_url('index.php/admin/toko/konten'); ?>" class="btn btn-primary"><i class="fa fa-edit"></i> Setting</a>
+            <a href="<?php echo base_url('admin/toko/konten'); ?>" class="btn btn-primary"><i class="fa fa-edit"></i> Setting</a>
         </div>
 
       <h3><strong>Footer</strong></h3>
         <div class="well well-small" style="background-color: #fff;">
           <img src="<?php echo base_url(); ?>assets/gambar/setting/footer.png" class="img-responsive"><br>
-            <a href="<?php echo base_url('index.php/admin/toko/footer'); ?>" class="btn btn-primary"><i class="fa fa-edit"></i> Setting</a>
+            <a href="<?php echo base_url('admin/toko/footer'); ?>" class="btn btn-primary"><i class="fa fa-edit"></i> Setting</a>
         </div>
 			
     </div>

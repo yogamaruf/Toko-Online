@@ -3,7 +3,7 @@
 	<div class="span12">
 
     	<ul class="breadcrumb">
-			<li><a href="<?php echo base_url('index.php/toko/');?>">Home</a> <span class="divider">/</span></li>
+			<li><a href="<?php echo base_url('toko/');?>">Home</a> <span class="divider">/</span></li>
 			<li class="active"><?php echo $title['subjudul'];?></li>
     	</ul>
 
@@ -105,7 +105,7 @@
 
 			<h3>Via Bayar</h3>
 
-			<form action="<?php echo base_url('index.php/toko/checkout'); ?>" method="POST">
+			<form action="<?php echo base_url('toko/checkout'); ?>" method="POST">
 
 				<input type="hidden" name="order">
 				<input type="hidden" name="idcheck">
@@ -134,7 +134,7 @@
 						<input type="text" name="no" placeholder="No. Rekening">
 					</div>
 				</div>
-				<a href="<?php echo base_url('index.php/toko/keranjang'); ?>" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Kembali </a>
+				<a href="<?php echo base_url('toko/keranjang'); ?>" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Kembali </a>
 				<input type="submit" name="" class="shopBtn btn-large pull-right" value="CheckOut">
 
 			</form>
@@ -154,7 +154,7 @@
 		<?php foreach ($merk as $key => $value) { ?>
 
 			<div class="span2">
-				<a href="<?php echo base_url('index.php/toko/detaillist/').$value['idmerk']; ?>"><img alt="" src="<?php echo base_url(); ?>assets/gambar/merk/<?php echo $value['gambar']; ?>"></a>
+				<a href="<?php echo base_url('toko/detaillist/').$value['idmerk']; ?>"><img alt="" src="<?php echo base_url(); ?>assets/gambar/merk/<?php echo $value['gambar']; ?>"></a>
 			</div>
 
 		<?php } ?>

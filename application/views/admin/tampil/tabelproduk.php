@@ -13,7 +13,7 @@
     <div class="col-md-12">
 
          <div class="panel-body">
-            <a href="<?php echo base_url('index.php/admin/toko/formproduk');?>" class="btn btn-success" style="margin-bottom: 15px;"><i class="fa fa-plus" style="margin-right: 5px;"></i>Tambah</a>
+            <a href="<?php echo base_url('admin/toko/formproduk');?>" class="btn btn-success" style="margin-bottom: 15px;"><i class="fa fa-plus" style="margin-right: 5px;"></i>Tambah</a>
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
@@ -28,7 +28,7 @@
                         </thead>
                         <tbody>
 
-                             <?php $no = 1;
+                            <?php $no = 1;
                             foreach ($data->result_array() as $key => $value) { ?>
 
                             <tr>
@@ -38,9 +38,9 @@
                                 <td><?php echo $value['namakategori']; ?></td>
                                 <td>Rp. <?php echo number_format($value['harga'],0,'.','.'); ?></td>
                                 <td>
-                                    <a href="<?php echo base_url('index.php/admin/toko/detailproduk/').$value['idproduk'];?>" class="btn btn-info"><i class="fa fa-info"></i></a>
-                                    <a href="<?php echo base_url('index.php/admin/toko/formproduk/').$value['idproduk'];?>" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                    <a href="<?php echo base_url('index.php/admin/toko/hapusproduk/').$value['idproduk'];?>" class="btn btn-danger" onclick='return confirm("Yakin mau dihapus???");'><i class="fa fa-trash"></i></a>
+                                    <a href="<?php echo base_url('admin/toko/detailproduk/').$value['idproduk'];?>" class="btn btn-info"><i class="fa fa-info"></i></a>
+                                    <a href="<?php echo base_url('admin/toko/formproduk/').$value['idproduk'];?>" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                    <a href="<?php echo base_url('admin/toko/hapusproduk/').$value['idproduk'];?>" class="btn btn-danger" onclick='return confirm("Yakin mau dihapus???");'><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
 

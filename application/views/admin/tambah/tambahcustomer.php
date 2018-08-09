@@ -13,7 +13,7 @@
     <div class="col-md-6">
 
         <div class="panel-body">
-            <form action="<?php echo base_url('index.php/admin/toko/tambahcustomer');?>" method="post">
+            <form action="<?php echo base_url('admin/toko/tambahcustomer');?>" method="post">
                 <input type="hidden" name="user">
                 <div class="form-group">
                     <label>Title</label>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Simpan" class="btn btn-default">
-                    <a href="<?php echo base_url('index.php/admin/toko/tabelcustomer');?>" class="btn btn-danger">Batal</a>
+                    <a href="<?php echo base_url('admin/toko/tabelcustomer');?>" class="btn btn-danger">Batal</a>
                 </div>
             </form>
         </div>

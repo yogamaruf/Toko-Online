@@ -13,7 +13,7 @@
     <div class="col-md-6 col-sm-12 col-xs-12">
 
         <div class="panel-body">
-            <form action="<?php echo base_url('index.php/admin/toko/simpankonfig');?>" method="post" enctype="multipart/form-data">
+            <form action="<?php echo base_url('admin/toko/simpankonfig');?>" method="post" enctype="multipart/form-data">
 
                 <input type="hidden" name="id" value="<?php echo $set['id']; ?>">
                 <div class="form-group">
@@ -58,7 +58,7 @@
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Simpan" class="btn btn-default">
-                    <a href="<?php echo base_url('index.php/admin/toko/konfig');?>" class="btn btn-danger">Batal</a>
+                    <a href="<?php echo base_url('admin/toko/konfig');?>" class="btn btn-danger">Batal</a>
                 </div>
 
             </form>

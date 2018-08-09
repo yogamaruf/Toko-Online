@@ -32,8 +32,8 @@
 			<a href="https:\\<?php echo $set['share3']; ?>" class="aa"><li class="fa fa-instagram fa-2x"></li></a>
 		</div><br><br>
 
-		<a href="<?php echo base_url('index.php/admin/toko/editkonfig/').$set['id']; ?>" class="btn btn-primary"><i class="fa fa-edit"></i> Ubah</a>
-		<a href="<?php echo base_url('index.php/admin/toko/reset/').$set['id']; ?>" class="btn btn-info" onclick="return confirm('Anda yakin ingin kembali ke awal !!!');"><i class="fa fa-undo"></i> Kembali ke Awal</a>
+		<a href="<?php echo base_url('admin/toko/editkonfig/').$set['id']; ?>" class="btn btn-primary"><i class="fa fa-edit"></i> Ubah</a>
+		<a href="<?php echo base_url('admin/toko/reset/').$set['id']; ?>" class="btn btn-info" onclick="return confirm('Anda yakin ingin kembali ke awal !!!');"><i class="fa fa-undo"></i> Kembali ke Awal</a>
 
 	</div>
 	

@@ -3,7 +3,7 @@
 	<div class="span12">
 
     	<ul class="breadcrumb">
-			<li><a href="<?php echo base_url('index.php/toko/');?>">Home</a> <span class="divider">/</span></li>
+			<li><a href="<?php echo base_url('toko/');?>">Home</a> <span class="divider">/</span></li>
 			<li class="active"><?php echo $title['judulhal'];?></li>
     	</ul>
 
@@ -14,8 +14,8 @@
 		
 			<h3>
 				<?php echo $title1['judulhal'];?>
-				<a href="<?php echo base_url('index.php/toko/hapusakun'); ?>" class="shopBtn pull-right" style="border-radius: 20px;margin-left: 5px;" title="Hapus" onclick="return confirm('Anda yakin ingin menghapus akun Anda ?');"><span class="icon-trash"></span></a>
-				<a href="<?php echo base_url('index.php/toko/editakun'); ?>" class="shopBtn pull-right" style="border-radius: 50%;padding: 0 10px;" title="Edit"><span class="icon-edit"></span></a>
+				<a href="<?php echo base_url('toko/hapusakun'); ?>" class="shopBtn pull-right" style="border-radius: 20px;margin-left: 5px;" title="Hapus" onclick="return confirm('Anda yakin ingin menghapus akun Anda ?');"><span class="icon-trash"></span></a>
+				<a href="<?php echo base_url('toko/editakun'); ?>" class="shopBtn pull-right" style="border-radius: 50%;padding: 0 10px;" title="Edit"><span class="icon-edit"></span></a>
 			</h3>
 
 				<div class="well">
@@ -186,7 +186,7 @@
 		<?php foreach ($merk as $key => $value) { ?>
 
 			<div class="span2">
-				<a href="<?php echo base_url('index.php/toko/detaillist/').$value['idmerk']; ?>"><img alt="" src="<?php echo base_url(); ?>assets/gambar/merk/<?php echo $value['gambar']; ?>"></a>
+				<a href="<?php echo base_url('toko/detaillist/').$value['idmerk']; ?>"><img alt="" src="<?php echo base_url(); ?>assets/gambar/merk/<?php echo $value['gambar']; ?>"></a>
 			</div>
 
 		<?php } ?>

@@ -13,7 +13,7 @@ class Login extends CI_Controller {
         $this->load->view('admin/akun/login');
     }
 
-    public function login() {
+    public function loginadmin() {
         $login = $this->loginmodel->login($this->input->post('username'), $this->input->post('password'))->num_rows();
 
         if ($login == 1) {
@@ -25,22 +25,22 @@ class Login extends CI_Controller {
 
             $this->session->set_userdata($data);
 
-            redirect(base_url('index.php/admin/toko'));
+            redirect(base_url('admin/toko'));
         } else {
             $this->session->set_flashdata("error","<div class='alert alert-danger alert-dismissable'>
                         <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                         <strong>Username atau password salah !!!</strong></div>");
 
-            redirect(base_url('index.php/admin/login'));
+            redirect(base_url('admin/login'));
         }
     }
 
-    public function logout() {
+    public function keluar() {
         $this->session->sess_destroy();
-        redirect(base_url('index.php/admin/login'));
+        redirect(base_url('admin/login'));
     }
 
-    public function register() {
+    public function regis() {
         $this->load->view('admin/akun/register');
     }
 
@@ -54,7 +54,7 @@ class Login extends CI_Controller {
 
         $this->loginmodel->tambah($simpan);
 
-        redirect(base_url('index.php/admin/toko'));
+        redirect(base_url('admin/toko'));
     }
 
 }

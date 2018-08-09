@@ -13,7 +13,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
 
         <div class="panel-body">
-            <a href="<?php echo base_url('index.php/admin/toko/halaman'); ?>" class="btn btn-danger" style="margin-bottom: 15px;"><i class="fa fa-arrow-left" style="margin-right: 5px;"></i>Kembali</a>
+            <a href="<?php echo base_url('admin/toko/halaman'); ?>" class="btn btn-danger" style="margin-bottom: 15px;"><i class="fa fa-arrow-left" style="margin-right: 5px;"></i>Kembali</a>
                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                     <thead>
                         <tr>
@@ -33,7 +33,7 @@
                             <td><?php echo $value['namamenu']; ?></td>
                             <td><?php echo $value['judulhal']; ?></td>
                              <td>
-                                <a href="<?php echo base_url('index.php/admin/toko/formkonten/').$value['id']; ?>" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                <a href="<?php echo base_url('admin/toko/formkonten/').$value['id']; ?>" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                             </td>
                         </tr>
                 

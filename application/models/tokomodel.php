@@ -64,15 +64,36 @@ class Tokomodel extends CI_Model {
 	}
 
 	public function getorder() {
-		$q = $this->db->query('SELECT order.kodeorder,customer.firstname,customer.lastname,customer.title,customer.idcustom,order.tanggal, GROUP_CONCAT(DISTINCT(order.kodeorder)ORDER BY order.kodeorder ASC) AS kodeorder, COUNT(*) AS jumorder FROM `order` JOIN customer ON customer.idcustom=order.idcustom GROUP BY order.idcustom ORDER BY order.tanggal DESC');
+		/*$q = $this->db->query('SELECT order.kodeorder,customer.firstname,customer.lastname,customer.title,customer.idcustom,order.tanggal, GROUP_CONCAT(DISTINCT(order.kodeorder)ORDER BY order.kodeorder ASC) AS kodeorder, COUNT(*) AS jumorder FROM `order` JOIN customer ON customer.idcustom=order.idcustom GROUP BY order.idcustom ORDER BY order.tanggal DESC');
 
-		return $q;
+		return $q;*/
+		$this->db->select('order.kodeorder,customer.firstname,customer.lastname,customer.title,customer.idcustom,
+							order.tanggal, GROUP_CONCAT(DISTINCT(order.kodeorder)ORDER BY order.kodeorder ASC) 
+							AS kodeorder, COUNT(*) AS jumorder');
+		$this->db->from('order');
+		$this->db->join('customer','customer.idcustom=order.idcustom');
+		$this->db->group_by('order.idcustom');
+		$this->db->order_by('order.kodeorder','DESC');
+
+		return $this->db->get();
 	}
 
 	public function getdetailorder($id) {
-		$r = $this->db->query('SELECT produk.nama,produk.harga,customer.title,customer.firstname,customer.lastname,checkout.jumlah,checkout.tglorder,checkout.kodeorder, GROUP_CONCAT(DISTINCT(produk.nama) SEPARATOR "<br><hr style=margin:3px;border-color:#ccc;>") AS nama, GROUP_CONCAT(checkout.jumlah SEPARATOR "<br><hr style=margin:3px;border-color:#ccc;>") AS jumlah, GROUP_CONCAT(produk.harga SEPARATOR "<br><hr style=margin:3px;border-color:#ccc;>Rp. ") AS harga FROM checkout JOIN produk ON produk.idproduk=checkout.idproduk JOIN customer ON customer.idcustom=checkout.idcustom GROUP BY checkout.kodeorder ORDER BY checkout.kodeorder DESC');
+		/*$r = $this->db->query('SELECT produk.nama,produk.harga,customer.title,customer.firstname,customer.lastname,checkout.jumlah,checkout.tglorder,checkout.kodeorder, GROUP_CONCAT(DISTINCT(produk.nama) SEPARATOR "<br><hr style=margin:3px;border-color:#ccc;>") AS nama, GROUP_CONCAT(checkout.jumlah SEPARATOR "<br><hr style=margin:3px;border-color:#ccc;>") AS jumlah, GROUP_CONCAT(produk.harga SEPARATOR "<br><hr style=margin:3px;border-color:#ccc;>Rp. ") AS harga FROM checkout JOIN produk ON produk.idproduk=checkout.idproduk JOIN customer ON customer.idcustom=checkout.idcustom GROUP BY checkout.kodeorder ORDER BY checkout.kodeorder DESC');
 
-		return $r;
+		return $r;*/
+		$this->db->select('produk.nama,produk.harga,customer.title,customer.firstname,customer.lastname,
+							checkout.jumlah,checkout.tglorder,checkout.kodeorder, order.nominal, 
+							GROUP_CONCAT(DISTINCT(produk.nama) SEPARATOR "<br><hr style=margin:3px;border-color:#ccc;>") AS nama, 
+							GROUP_CONCAT(checkout.jumlah SEPARATOR "<br><hr style=margin:3px;border-color:#ccc;>") 
+							AS jumlah, GROUP_CONCAT(produk.harga SEPARATOR "<br><hr style=margin:3px;border-color:#ccc;> ") 
+							AS harga, GROUP_CONCAT(checkout.total SEPARATOR "<br><hr style=margin:3px;border-color:#ccc;> ") AS total');
+		$this->db->from('checkout');
+		$this->db->join('customer','customer.idcustom=checkout.idcustom')->join('produk','produk.idproduk=checkout.idproduk')->join('order','order.kodeorder=checkout.kodeorder');
+		$this->db->group_by('checkout.kodeorder');
+		$this->db->order_by('checkout.kodeorder','DESC');
+
+		return $this->db->get();
 	}
 
 	public function getkonfig() {

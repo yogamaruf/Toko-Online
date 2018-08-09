@@ -33,7 +33,7 @@
                         <strong>  New User ? Register Yourself </strong>  
                             </div>
                             <div class="panel-body">
-                                <form role="form" action="<?php echo base_url('index.php/admin/login/getregister'); ?>" method="POST">
+                                <form role="form" action="<?php echo base_url('admin/login/getregister'); ?>" method="POST">
                                         <br/>
                                         <input type="hidden" name="idadmin">
                                         <div class="form-group input-group">
@@ -59,7 +59,7 @@
                                      
                                         <input type="submit" name="simpan" value="Register" class="btn btn-primary">
                                         <hr />
-                                        Already Registered ?  <a href="<?php echo base_url('index.php/admin/login'); ?>" >Login here</a>
+                                        Already Registered ?  <a href="<?php echo base_url('admin/login'); ?>" >Login here</a>
                                 </form>
                             </div>
                            

@@ -13,7 +13,7 @@
     <div class="col-md-6">
 
         <div class="panel-body">
-            <form action="<?php echo base_url('index.php/admin/toko/tambahkategori');?>" method="post">
+            <form action="<?php echo base_url('admin/toko/tambahkategori');?>" method="post">
                 <input type="hidden" name="idmerk">
                     <div class="form-group">
                         <label>Nama Kategori</label>
@@ -21,7 +21,7 @@
                     </div>
                 <div class="form-group">
                     <input type="submit" value="Simpan" class="btn btn-default">
-                    <a href="<?php echo base_url('index.php/admin/toko/kategori');?>" class="btn btn-danger">Batal</a>
+                    <a href="<?php echo base_url('admin/toko/kategori');?>" class="btn btn-danger">Batal</a>
                 </div>
             </form>
         </div>

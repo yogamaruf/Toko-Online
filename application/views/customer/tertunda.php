@@ -3,7 +3,7 @@
 	<div class="span12">
 
     	<ul class="breadcrumb">
-			<li><a href="<?php echo base_url('index.php/toko/');?>">Home</a> <span class="divider">/</span></li>
+			<li><a href="<?php echo base_url('toko/');?>">Home</a> <span class="divider">/</span></li>
 			<li class="active"><?php echo $title['judulhal'];?></li>
     	</ul>
 
@@ -33,7 +33,7 @@
 
 							<h3>Status : <?php echo $value['status']; ?></h3>
 							<div class="btn-group">
-								<a href="<?php echo base_url('index.php/toko/konfirmasi/').$value['kodeorder']; ?>" class="shopBtn btn-large"><span class="icon-check"></span> Konfirmasi</a>
+								<a href="<?php echo base_url('toko/konfirmasi/').$value['kodeorder']; ?>" class="shopBtn btn-large"><span class="icon-check"></span> Konfirmasi</a>
 		 					</div>
 
 						</div>
@@ -67,7 +67,7 @@
 		<?php foreach ($merk as $key => $value) { ?>
 
 			<div class="span2">
-				<a href="<?php echo base_url('index.php/toko/detaillist/').$value['idmerk']; ?>"><img alt="" src="<?php echo base_url(); ?>assets/gambar/merk/<?php echo $value['gambar']; ?>"></a>
+				<a href="<?php echo base_url('toko/detaillist/').$value['idmerk']; ?>"><img alt="" src="<?php echo base_url(); ?>assets/gambar/merk/<?php echo $value['gambar']; ?>"></a>
 			</div>
 
 		<?php } ?>

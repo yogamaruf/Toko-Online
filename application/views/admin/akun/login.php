@@ -9,7 +9,7 @@
      <!-- FONTAWESOME STYLES-->
     <link href="<?php echo base_url(); ?>assets/backend/assets/css/font-awesome.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
-    <link href="<?php echo base_url(); ?>assets/backend/assets/css/style1.css" rel="stylesheet" />
+    <link href="<?php echo base_url(); ?>assets/backend/assets/css/style2.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
@@ -24,7 +24,7 @@
                     <?php echo $this->session->flashdata("error"); ?>
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <form role="form" action="<?php echo base_url('index.php/admin/login/login'); ?>" method="POST">
+                                <form role="form" action="<?php echo base_url('admin/login/loginadmin'); ?>" method="POST">
                                        <br />
                                         <div class="form-group input-group">
                                             <span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
@@ -45,7 +45,7 @@
                                      
                                         <center><input type="submit" name="simpan" value="Login" class="btn btn-primary"></center>
                                         <hr />
-                                        Not register ? <a href="<?php echo base_url('index.php/admin/login/register'); ?>" >click here </a> 
+                                        Not register ? <a href="<?php echo base_url('admin/login/regis'); ?>" >click here </a> 
                                 </form>
                             </div>
                            

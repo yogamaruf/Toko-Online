@@ -12,7 +12,7 @@
 
     <div class="col-md-6 col-sm-12 col-xs-12">
 
-        <form action="<?php echo base_url('index.php/admin/toko/simpanmenu'); ?>" method="POST">
+        <form action="<?php echo base_url('admin/toko/simpanmenu'); ?>" method="POST">
 
             <input type="hidden" name="id" value="<?php echo $menu['idmenu'];?>">
             <div class="panel-body">
@@ -22,7 +22,7 @@
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-default" value="Simpan">
-                    <a href="<?php echo base_url('index.php/admin/toko/menu'); ?>" class="btn btn-danger">Batal</a>
+                    <a href="<?php echo base_url('admin/toko/menu'); ?>" class="btn btn-danger">Batal</a>
                 </div>
             </div>
 

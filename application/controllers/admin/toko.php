@@ -12,7 +12,7 @@ class Toko extends CI_Controller {
                     	<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                     	<strong>Silahkan login terlebih dahulu !!!</strong></div>");
 
-                redirect(base_url('index.php/admin/login'));
+                redirect(base_url('admin/login'));
             }
 	}
 
@@ -167,7 +167,7 @@ class Toko extends CI_Controller {
 					'date'      => $this->input->post('ttl'));
 
 		$this->tokomodel->gettambah($simpan);
-		redirect(base_url('index.php/admin/toko/tabelcustomer'));
+		redirect(base_url('admin/toko/tabelcustomer'));
 	}
 
 	public function tambahkategori() { //Tambah data KATEGORI
@@ -176,7 +176,7 @@ class Toko extends CI_Controller {
 					'namakategori' => $this->input->post('nama'));
 
 		$this->tokomodel->gettambahkat($simpan);
-		redirect(base_url('index.php/admin/toko/kategori'));
+		redirect(base_url('admin/toko/kategori'));
 	}
 
 	public function simpanmerk() { //Tambah data dan Edit data MERK
@@ -204,7 +204,7 @@ class Toko extends CI_Controller {
 			$this->tokomodel->gettambahmerk($simpan);
 		}
 
-		redirect(base_url('index.php/admin/toko/merk'));
+		redirect(base_url('admin/toko/merk'));
 	}
 
 	public function simpanproduk() { //Tambah data dan Edit data pada PRODUK
@@ -238,7 +238,7 @@ class Toko extends CI_Controller {
 			$this->tokomodel->gettambahproduk($simpan);
 		}
 
-		redirect(base_url('index.php/admin/toko/tabelproduk'));
+		redirect(base_url('admin/toko/tabelproduk'));
 	}	
 
 	public function simpankonfig() {
@@ -254,7 +254,7 @@ class Toko extends CI_Controller {
 					'share3' => $this->input->post('share3'));
 
 		$this->tokomodel->getsimpankonfig($simpan,$id);
-		redirect(base_url('index.php/admin/toko/konfig'));
+		redirect(base_url('admin/toko/konfig'));
 	}
 
 	public function reset() {
@@ -276,7 +276,7 @@ class Toko extends CI_Controller {
 									translation by H. Rackham.');
 
 		$this->tokomodel->getsimpankonfig($simpan,$id);
-		redirect(base_url('index.php/admin/toko/konfig'));
+		redirect(base_url('admin/toko/konfig'));
 	}
 
 	public function simpanmenu() { //HALAMAN
@@ -286,7 +286,7 @@ class Toko extends CI_Controller {
 				'namamenu' => $this->input->post('nama'));
 		$this->tokomodel->getsimpanhalaman($hal,$idmenu);
 
-		redirect(base_url('index.php/admin/toko/menu'));
+		redirect(base_url('admin/toko/menu'));
 	}
 
 	public function simpankonten() { //HALAMAN
@@ -299,7 +299,7 @@ class Toko extends CI_Controller {
 				'deskripsi' => $this->input->post('des'));
 		$this->tokomodel->getsimpankonten($konten,$id);
 
-		redirect(base_url('index.php/admin/toko/konten'));
+		redirect(base_url('admin/toko/konten'));
 	}
 
 	public function simpanfooter() { //HALAMAN
@@ -311,7 +311,7 @@ class Toko extends CI_Controller {
 		$this->tokomodel->getsimpankonten($konten,$id);
 
 		echo "<script>alert('Footer Berhasil diUbah...');</script>";
-		redirect(base_url('index.php/admin/toko/footer'));
+		redirect(base_url('admin/toko/footer'));
 	}
 
 	public function simpanuser() { //USER ( TABEL ADMIN )
@@ -329,7 +329,7 @@ class Toko extends CI_Controller {
 			$this->tokomodel->gettambahuser($simpan);
 		}
 		
-		redirect(base_url('index.php/admin/toko/user'));
+		redirect(base_url('admin/toko/user'));
 	}
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
@@ -348,7 +348,7 @@ class Toko extends CI_Controller {
 					'date'      => $this->input->post('ttl'));
 
 		$this->tokomodel->getubah($simpan, $id);
-		redirect(base_url('index.php/admin/toko/tabelcustomer'));
+		redirect(base_url('admin/toko/tabelcustomer'));
 	}
 
 	public function ubahkategori() { //KATEGORI
@@ -358,7 +358,7 @@ class Toko extends CI_Controller {
 					'namakategori' => $this->input->post('nama'));
 
 		$this->tokomodel->getubahkat($simpan, $id);
-		redirect(base_url('index.php/admin/toko/kategori'));
+		redirect(base_url('admin/toko/kategori'));
 	}	
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
@@ -391,14 +391,14 @@ class Toko extends CI_Controller {
 		$id = $this->uri->segment(4);
 		$this->tokomodel->gethapus($id);
 
-		redirect(base_url('index.php/admin/toko/tabelcustomer'));
+		redirect(base_url('admin/toko/tabelcustomer'));
 	}
 
 	public function hapuskategori() { //Hapus data KATEGORI
 		$id = $this->uri->segment(4);
 		$this->tokomodel->gethapuskat($id);
 
-		redirect(base_url('index.php/admin/toko/kategori'));
+		redirect(base_url('admin/toko/kategori'));
 	}
 
 	public function hapusmerk() { //Hapus data MERK
@@ -407,7 +407,7 @@ class Toko extends CI_Controller {
 		unlink('assets/gambar/'.$img['gambar']);
 		$this->tokomodel->gethapusmerk($id);
 
-		redirect(base_url('index.php/admin/toko/merk'));
+		redirect(base_url('admin/toko/merk'));
 	}
 
 	public function hapusproduk() { //Hapus data PRODUK
@@ -416,14 +416,14 @@ class Toko extends CI_Controller {
 		unlink('./assets/gambar/'.$img['foto']);
 		$this->tokomodel->gethapusproduk($id);
 
-		redirect(base_url('index.php/admin/toko/tabelproduk'));
+		redirect(base_url('admin/toko/tabelproduk'));
 	}
 
 	public function hapusadmin() { //Hapus data USER ( TABEL ADMIN )
 		$id = $this->uri->segment(4);
 		$this->tokomodel->gethapusadmin($id);
 
-		redirect(base_url('index.php/admin/toko/user'));
+		redirect(base_url('admin/toko/user'));
 	}
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~ |

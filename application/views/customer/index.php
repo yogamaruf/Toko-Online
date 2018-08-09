@@ -23,6 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 
+<?php $page  = $this->uri->segment(2);?>
+<?php $login = $this->uri->segment(1);?>
+
 <div class="navbar navbar-inverse navbar-fixed-top">
 
 	<div class="topNav">
@@ -36,12 +39,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<a href="https://<?php echo $header['share1']; ?>"><span class="icon-facebook"></span></a>
 					<a href="https://<?php echo $header['share3']; ?>"><span class="icon-instagram"></span></a>
 				</div>
-				<a class="" href="<?php echo base_url('index.php/toko/'); ?>"> <span class="icon-home"></span> Home</a>
-				<a href="<?php echo base_url('index.php/toko/myprofil'); ?>"><span class="icon-user"></span> My Account</a> 
-				<a href="<?php echo base_url('index.php/toko/register'); ?>" onclick="return confirm('Apakah Anda ingin daftar kembali ? jika anda ingin daftar maka anda akan Log Out Otomatis');"><span class="icon-edit"></span> Free Register </a> 
-				<a href="<?php echo base_url('index.php/toko/kontak'); ?>"><span class="icon-envelope"></span> Contact us</a>
-				<a href="<?php echo base_url('index.php/toko/keranjang'); ?>"><span class="icon-shopping-cart"></span> <?php echo $jumlah; ?>  Item(s) - <span class="badge badge-warning"> Rp. <?php echo number_format($hitung,0,'.','.'); ?> </span></a>
-				<a href="<?php echo base_url('index.php/login/logout'); ?>">Logout</a>
+				<a <?php if($page == ''){ echo 'class="active"';} ?> href="<?php echo base_url('toko/'); ?>">
+					<span class="icon-home"></span> Home
+				</a>
+				<a <?php if($page == 'myprofil'){ echo 'class="active"';} ?> href="<?php echo base_url('toko/myprofil'); ?>">
+					<span class="icon-user"></span> My Account
+				</a> 
+
+				<?php if (count($this->session->userdata('idcustom')) == 1) { ?>
+					<a href="" onclick="return alert('Jika Anda ingin daftar kembali, Silahkan Anda Log Out terlebih dahulu');"><span class="icon-edit"></span> Free Register </a>
+				<?php } else { ?>
+					<a <?php if($page == 'editakun'){ echo 'class="active"';} ?> href="<?php echo base_url('toko/regis'); ?>"><span class="icon-edit"></span> Free Register </a>
+				<?php } ?>
+
+				<a <?php if($page == 'kontak'){ echo 'class="active"';} ?> href="<?php echo base_url('toko/kontak'); ?>">
+					<span class="icon-envelope"></span> Contact us
+				</a>
+				<a <?php if($page == 'keranjang'){ echo 'class="active"';} ?> href="<?php echo base_url('toko/keranjang'); ?>">
+					<span class="icon-shopping-cart"></span> <?php echo $jumlah; ?>  Item(s) - 
+					<span class="badge badge-warning"> Rp. <?php echo number_format($hitung,0,'.','.'); ?> </span>
+				</a>
 
 			</div>
 
@@ -61,7 +78,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 		<div class="span4">
 			<h1>
-				<a class="logo" href="<?php echo base_url('index.php/toko/'); ?>"><font style="font-family: 'Stencil',sans-serif;color: #999999a3;"><?php echo $header['nama']; ?></font></a>
+				<a class="logo" href="<?php echo base_url('toko/'); ?>"><font style="font-family: 'Stencil',sans-serif;color: #999999a3;"><?php echo $header['nama']; ?></font></a>
 			</h1>
 		</div>
 
@@ -94,45 +111,67 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		  	<div class="nav-collapse">
 
 				<ul class="nav">
-			  		<li class=""><a href="<?php echo base_url('index.php/toko/'); ?>">Home</a></li>
-			  		<li class=""><a href="<?php echo base_url('index.php/toko/daftar'); ?>">List View</a></li>
-			  		<li class=""><a href="<?php echo base_url('index.php/toko/grid'); ?>">Grid View</a></li>
-			  		<li class=""><a href="<?php echo base_url('index.php/toko/three'); ?>">Three Column</a></li>
-			  		<li class=""><a href="<?php echo base_url('index.php/toko/four'); ?>">Four Column</a></li>
-			  		<li class=""><a href="<?php echo base_url('index.php/toko/tertunda'); ?>">Tertunda</a></li>
+			  		<li <?php if($page == ''){ echo 'class="active"';} ?>>
+			  			<a href="<?php echo base_url('toko/'); ?>">Home</a>
+			  		</li>
+			  		<li <?php if($page == 'daftar'){ echo 'class="active"';} ?>>
+			  			<a href="<?php echo base_url('toko/daftar'); ?>">List View</a>
+			  		</li>
+			  		<li <?php if($page == 'kolom'){ echo 'class="active"';} ?>>
+			  			<a href="<?php echo base_url('toko/kolom'); ?>">Grid View</a>
+			  		</li>
+			  		<li <?php if($page == 'tiga'){ echo 'class="active"';} ?>>
+			  			<a href="<?php echo base_url('toko/tiga'); ?>">Three Column</a>
+			  		</li>
+			  		<li <?php if($page == 'empat'){ echo 'class="active"';} ?>>
+			  			<a href="<?php echo base_url('toko/empat'); ?>">Four Column</a>
+			  		</li>
+			  		<li <?php if($page == 'tertunda'){ echo 'class="active"';} ?>>
+			  			<a href="<?php echo base_url('toko/tertunda'); ?>">Tertunda</a>
+			  		</li>
 				</ul>
 
-				<form id="form_search" action="<?php echo base_url('index.php/toko/search'); ?>" class="navbar-search pull-left" method="GET">
+				<form id="form_search" action="<?php echo base_url('toko/search'); ?>" class="navbar-search pull-left" method="GET">
 
 			  		<input type="text" placeholder="Search" name="title" id="title" class="search-query span2">
 
 				</form>
 
-				<ul class="nav pull-right">
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span> Login <b class="caret"></b></a>
-						<div class="dropdown-menu">
+				<?php if (count($this->session->userdata('idcustom')) == 1) { ?>
 
-							<form class="form-horizontal loginFrm" action="<?php echo base_url('index.php/login/loginmer'); ?>" method="POST">
+					<ul class="nav pull-right">
+						<li><a href="<?php echo base_url('login/keluar'); ?>" onclick="return confirm('Apakah Anda ingin keluar ?');">Logout</a></li>
+					</ul>
 
-				  				<div class="control-group">
-									<input type="text" class="span2" name="email" id="inputEmail" placeholder="Email">
-				  				</div>
-				  				<div class="control-group">
-									<input type="password" class="span2" name="password" id="inputPassword" placeholder="Password">
-				  				</div>
-				  				<div class="control-group">
-									<label class="checkbox">
-										<input type="checkbox"> Remember me
-									</label>
-									<button type="submit" class="shopBtn btn-block">Sign in</button>
-				  				</div>
+				<?php } else { ?>
 
-							</form>
+					<ul class="nav pull-right">
+						<li class="dropdown">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span> Login <b class="caret"></b></a>
+							<div class="dropdown-menu">
 
-						</div>
-					</li>
-				</ul>
+								<form class="form-horizontal loginFrm" action="<?php echo base_url('login/loginmer'); ?>" method="POST">
+
+					  				<div class="control-group">
+										<input type="text" class="span2" name="email" id="inputEmail" placeholder="Email">
+					  				</div>
+					  				<div class="control-group">
+										<input type="password" class="span2" name="password" id="inputPassword" placeholder="Password">
+					  				</div>
+					  				<div class="control-group">
+										<label class="checkbox">
+											<input type="checkbox"> Remember me
+										</label>
+										<button type="submit" class="shopBtn btn-block">Sign in</button>
+					  				</div>
+
+								</form>
+
+							</div>
+						</li>
+					</ul>
+
+				<?php } ?>
 
 		  	</div>
 
@@ -152,11 +191,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			<h5>Your Account</h5>
 
-			<a href="<?php echo base_url('index.php/toko/myprofil'); ?>">YOUR ACCOUNT</a><br>
+			<a href="<?php echo base_url('toko/myprofil'); ?>">YOUR ACCOUNT</a><br>
 			<a href="#">PERSONAL INFORMATION</a><br>
-			<a href="<?php echo base_url('index.php/toko/kontak'); ?>">ADDRESSES</a><br>
+			<a href="<?php echo base_url('toko/kontak'); ?>">ADDRESSES</a><br>
 			<a href="#">DISCOUNT</a><br>
-			<a href="<?php echo base_url('index.php/toko/histori'); ?>">ORDER HISTORY</a><br>
+			<a href="<?php echo base_url('toko/histori'); ?>">ORDER HISTORY</a><br>
 
  		</div>
 
@@ -164,11 +203,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			<h5>Information</h5>
 
-			<a href="<?php echo base_url('index.php/toko/kontak'); ?>">CONTACT</a><br>
+			<a href="<?php echo base_url('toko/kontak'); ?>">CONTACT</a><br>
 			<a href="#">SITEMAP</a><br>
 			<a href="#">LEGAL NOTICE</a><br>
 			<a href="#">TERMS AND CONDITIONS</a><br>
-			<a href="<?php echo base_url('index.php/toko/about'); ?>">ABOUT US</a><br>
+			<a href="<?php echo base_url('toko/about'); ?>">ABOUT US</a><br>
 
  		</div>
 

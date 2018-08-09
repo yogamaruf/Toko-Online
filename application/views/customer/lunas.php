@@ -10,7 +10,7 @@
 
 				<center>
 					<h1 class="alert alert-success"><span class="icon-check"></span> Konfirmasi Berhasil</h1>
-					<a href="<?php echo base_url('index.php/toko/grid'); ?>" class="shopBtn btn-large"><span class="icon-shopping-cart"></span> Kembali Belanja</a>
+					<a href="<?php echo base_url('toko/kolom'); ?>" class="shopBtn btn-large"><span class="icon-shopping-cart"></span> Kembali Belanja</a>
 				</center>
 
 			</div>
@@ -32,7 +32,7 @@
 		<?php foreach ($merk as $key => $value) { ?>
 
 			<div class="span2">
-				<a href="<?php echo base_url('index.php/toko/detaillist/').$value['idmerk']; ?>"><img alt="" src="<?php echo base_url(); ?>assets/gambar/merk/<?php echo $value['gambar']; ?>"></a>
+				<a href="<?php echo base_url('toko/detaillist/').$value['idmerk']; ?>"><img alt="" src="<?php echo base_url(); ?>assets/gambar/merk/<?php echo $value['gambar']; ?>"></a>
 			</div>
 
 		<?php } ?>

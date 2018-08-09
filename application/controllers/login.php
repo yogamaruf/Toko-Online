@@ -36,7 +36,7 @@ class Login extends CI_Controller {
                         <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                         <strong>E-mail atau password salah !!!</strong></div>");
 
-            redirect(base_url('index.php/login'));
+            redirect(base_url('login'));
         }
     }
 
@@ -57,7 +57,7 @@ class Login extends CI_Controller {
                 <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                 <strong>E-mail yang anda masukkan salah !!!</strong></div>");
 
-            redirect(base_url('index.php/toko/cek'));
+            redirect(base_url('toko/cek'));
         }
     }
 
@@ -69,12 +69,12 @@ class Login extends CI_Controller {
                 'password' => $this->input->post('pass'));
 
         $this->loginmodel->getlupa($simpan,$id);
-        redirect(base_url('index.php/login/'));
+        redirect(base_url('login/'));
     }
 
-    public function logout() {
+    public function keluar() {
         $this->session->sess_destroy();
-        redirect(base_url('index.php/toko'));
+        redirect(base_url('toko'));
     }
 
 }

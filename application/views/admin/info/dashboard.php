@@ -26,12 +26,12 @@
                     </div>
                 </div>
                 <p style="margin: 5px 0;font-size: 18px;">
-                    <a href="<?php echo base_url('index.php/admin/toko/formproduk'); ?>">
+                    <a href="<?php echo base_url('admin/toko/formproduk'); ?>">
                     <i style="border: 1px solid #fff;color: #fff;border-radius: 50px;margin: 0 7px;padding: 2px 4px;" class="fa fa-plus"></i></a>Produk
                 </p>
             </div>
             <div style="padding: 0;" class="panel-footer back-footer-green">
-               <a style="text-decoration: none; color: #fff;display: block;padding: 10px 0;" href="<?php echo base_url('index.php/admin/toko/tabelproduk'); ?>">Lebih banyak...</a>    
+               <a style="text-decoration: none; color: #fff;display: block;padding: 10px 0;" href="<?php echo base_url('admin/toko/tabelproduk'); ?>">Lebih banyak...</a>    
             </div>
 
         </div>
@@ -54,12 +54,12 @@
                     </div>
                 </div>
                 <p style="margin: 5px 0;font-size: 18px;">
-                    <a href="<?php echo base_url('index.php/admin/toko/formmerk'); ?>">
+                    <a href="<?php echo base_url('admin/toko/formmerk'); ?>">
                     <i style="border: 1px solid #fff;color: #fff;border-radius: 50px;margin: 0 7px;padding: 2px 4px;" class="fa fa-plus"></i></a>Merk
                 </p>
             </div>
             <div style="padding: 0;background-color: #a023008f;" class="panel-footer back-footer-green">
-               <a style="text-decoration: none; color: #fff;display: block;padding: 10px 0;" href="<?php echo base_url('index.php/admin/toko/merk'); ?>">Lebih banyak...</a>    
+               <a style="text-decoration: none; color: #fff;display: block;padding: 10px 0;" href="<?php echo base_url('admin/toko/merk'); ?>">Lebih banyak...</a>    
             </div>
 
         </div>
@@ -82,12 +82,12 @@
                     </div>
                 </div>
                 <p style="margin: 5px 0;font-size: 18px;">
-                    <a href="<?php echo base_url('index.php/admin/toko/formtambahkat'); ?>">
+                    <a href="<?php echo base_url('admin/toko/formtambahkat'); ?>">
                     <i style="border: 1px solid #fff;color: #fff;border-radius: 50px;margin: 0 7px;padding: 2px 4px;" class="fa fa-plus"></i></a>Kategori
                 </p>
             </div>
             <div style="padding: 0;background-color: #5d1e7f;" class="panel-footer back-footer-green">
-               <a style="text-decoration: none; color: #fff;display: block;padding: 10px 0;" href="<?php echo base_url('index.php/admin/toko/kategori'); ?>">Lebih banyak...</a>    
+               <a style="text-decoration: none; color: #fff;display: block;padding: 10px 0;" href="<?php echo base_url('admin/toko/kategori'); ?>">Lebih banyak...</a>    
             </div>
 
         </div>
@@ -110,12 +110,12 @@
                     </div>
                 </div>
                 <p style="margin: 5px 0;font-size: 18px;">
-                    <a href="<?php echo base_url('index.php/admin/toko/formtambahcus'); ?>">
+                    <a href="<?php echo base_url('admin/toko/formtambahcus'); ?>">
                     <i style="border: 1px solid #fff;color: #fff;border-radius: 50px;margin: 0 7px;padding: 2px 4px;" class="fa fa-plus"></i></a>Customer
                 </p>
             </div>
             <div style="padding: 0; background-color: #0c5798;" class="panel-footer back-footer-green">
-               <a style="text-decoration: none; color: #fff;display: block;padding: 10px 0;" href="<?php echo base_url('index.php/admin/toko/tabelcustomer'); ?>">Lebih banyak...</a>    
+               <a style="text-decoration: none; color: #fff;display: block;padding: 10px 0;" href="<?php echo base_url('admin/toko/tabelcustomer'); ?>">Lebih banyak...</a>    
             </div>
 
         </div>

@@ -19,7 +19,7 @@
     <div class="col-md-6 col-sm-12 col-xs-12">
 
         <div class="panel-body">
-            <form action="<?php echo base_url('index.php/admin/toko/simpanproduk');?>" method="post" enctype="multipart/form-data">
+            <form action="<?php echo base_url('admin/toko/simpanproduk');?>" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="idproduk" value="<?php echo !empty($data2) ? $data2['idproduk'] : '' ?>">
                 <div class="form-group">
                     <label>Nama Produk</label>
@@ -77,7 +77,7 @@
             </div>
             <div class="form-group">
                 <input type="submit" value="Simpan" class="btn btn-default">
-                <a href="<?php echo base_url('index.php/admin/toko/tabelproduk');?>" class="btn btn-danger">Batal</a>
+                <a href="<?php echo base_url('admin/toko/tabelproduk');?>" class="btn btn-danger">Batal</a>
             </div>
             
             </form>

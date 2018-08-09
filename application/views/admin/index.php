@@ -35,10 +35,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <div style="color: white;padding: 15px 50px 5px 50px;float: right;font-size: 16px;"> 
                 <?php 
-                    date_default_timezone_set('Asia/Jakarta');
-                    echo date('l, d F Y H:i:s'); 
+                    echo date('l, d F Y'); 
                 ?>&nbsp; 
-                <a href="<?php echo base_url('index.php/admin/login/logout');?>" class="btn btn-danger square-btn-adjust"><i class="fa fa-sign-out"></i> Logout</a> 
+                <a href="<?php echo base_url('admin/login/keluar');?>" class="btn btn-danger square-btn-adjust"><i class="fa fa-sign-out"></i> Logout</a> 
             </div>
         </nav>   
 
@@ -51,31 +50,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <img src="<?php echo base_url(); ?>assets/backend/assets/img/find_user.png" class="user-image img-responsive"/>
 					</li>
                     <li>
-                        <a <?php if($page == ''){ echo 'class="active-menu';}?> href="<?php echo base_url('index.php/admin/toko');?>"><i class="fa fa-dashboard fa-2x"></i> Dashboard </a>
+                        <a <?php if($page == ''){ echo 'class="active-menu"';}?> href="<?php echo base_url('admin/toko');?>"><i class="fa fa-dashboard fa-2x"></i> Dashboard </a>
                     </li>
                     <li>
-                        <a <?php if($page == 'user' || $page == 'formuser'){ echo 'class="active-menu';}?> href="<?php echo base_url('index.php/admin/toko/user');?>"><i class="fa fa-user fa-2x"></i> User </a>
+                        <a <?php if($page == 'user' || $page == 'formuser'){ echo 'class="active-menu"';}?> href="<?php echo base_url('admin/toko/user');?>"><i class="fa fa-user fa-2x"></i> User </a>
                     </li>
                     <li>
-                        <a <?php if($page == 'halaman' || $page == 'menu' || $page == 'konten' || $page == 'footer' || $page == 'formmenu' || $page == 'formkonten'){ echo 'class="active-menu';}?> href="<?php echo base_url('index.php/admin/toko/halaman');?>"><i class="fa fa-newspaper-o fa-2x"></i> Halaman </a>
+                        <a <?php if($page == 'halaman' || $page == 'menu' || $page == 'konten' || $page == 'footer' || $page == 'formmenu' || $page == 'formkonten'){ echo 'class="active-menu"';}?> href="<?php echo base_url('admin/toko/halaman');?>"><i class="fa fa-newspaper-o fa-2x"></i> Halaman </a>
                     </li>
                     <li>
-                        <a <?php if($page == 'kategori' || $page == 'formtambahkat' || $page == 'editkategori'){ echo 'class="active-menu';}?> href="<?php echo base_url('index.php/admin/toko/kategori');?>"><i class="fa fa-filter fa-2x"></i> Kategori Produk </a>
+                        <a <?php if($page == 'kategori' || $page == 'formtambahkat' || $page == 'editkategori'){ echo 'class="active-menu"';}?> href="<?php echo base_url('admin/toko/kategori');?>"><i class="fa fa-filter fa-2x"></i> Kategori Produk </a>
                     </li>
                     <li>
-                        <a <?php if($page == 'merk' || $page == 'formmerk'){ echo 'class="active-menu';}?> href="<?php echo base_url('index.php/admin/toko/merk');?>"><i class="fa fa-inbox fa-2x"></i> Merk Produk </a>
+                        <a <?php if($page == 'merk' || $page == 'formmerk'){ echo 'class="active-menu"';}?> href="<?php echo base_url('admin/toko/merk');?>"><i class="fa fa-inbox fa-2x"></i> Merk Produk </a>
                     </li>
                     <li>
-                        <a <?php if($page == 'tabelproduk' || $page == 'formproduk' || $page == 'detailproduk'){ echo 'class="active-menu';}?> href="<?php echo base_url('index.php/admin/toko/tabelproduk');?>"><i class="fa fa-shopping-cart fa-2x"></i>  Produk </a>
+                        <a <?php if($page == 'tabelproduk' || $page == 'formproduk' || $page == 'detailproduk'){ echo 'class="active-menu"';}?> href="<?php echo base_url('admin/toko/tabelproduk');?>"><i class="fa fa-shopping-cart fa-2x"></i>  Produk </a>
                     </li>
                     <li>
-                        <a <?php if($page == 'tabelcustomer' || $page == 'formtambahcus' || $page == 'editcustomer' || $page == 'detailprofil'){ echo 'class="active-menu';}?> href="<?php echo base_url('index.php/admin/toko/tabelcustomer');?>"><i class="fa fa-life-buoy fa-2x"></i> Customer </a>
+                        <a <?php if($page == 'tabelcustomer' || $page == 'formtambahcus' || $page == 'editcustomer' || $page == 'detailprofil'){ echo 'class="active-menu"';}?> href="<?php echo base_url('admin/toko/tabelcustomer');?>"><i class="fa fa-life-buoy fa-2x"></i> Customer </a>
                     </li>	
                     <li>
-                        <a <?php if($page == 'order' || $page == 'detailorder' ){ echo 'class="active-menu';}?> href="<?php echo base_url('index.php/admin/toko/order');?>"><i class="fa fa-line-chart fa-2x"></i> Order </a>
+                        <a <?php if($page == 'order' || $page == 'detailorder' ){ echo 'class="active-menu"';}?> href="<?php echo base_url('admin/toko/order');?>"><i class="fa fa-line-chart fa-2x"></i> Order </a>
                     </li>	
                     <li>
-                        <a <?php if($page == 'konfig'){ echo 'class="active-menu';}?> href="<?php echo base_url('index.php/admin/toko/konfig');?>"><i class="fa fa-desktop fa-2x"></i> Konfgurasi WEB </a>
+                        <a <?php if($page == 'konfig'){ echo 'class="active-menu"';}?> href="<?php echo base_url('admin/toko/konfig');?>"><i class="fa fa-desktop fa-2x"></i> Konfgurasi WEB </a>
                     </li>		
                 </ul>
             </div>   
