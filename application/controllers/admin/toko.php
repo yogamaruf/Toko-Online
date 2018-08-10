@@ -34,7 +34,9 @@ class Toko extends CI_Controller {
 
 	public function detailprofil() { //Form Detail Tabel Customer
 		$id = $this->uri->segment(4);
-		$data['detail'] = $this->tokomodel->getedit($id);
+		$data = array(
+				'detail' => $this->tokomodel->getdetailprofil($id)->row_array(),
+				'data'   => $this->tokomodel->getedit($id)->row_array());
 		$this->template->tampilan('admin/info/detailprofil', $data);
 	}
 

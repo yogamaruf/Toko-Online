@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2018 at 04:00 AM
+-- Generation Time: Aug 09, 2018 at 11:16 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -80,7 +80,12 @@ INSERT INTO `checkout` (`idcheck`, `kodeorder`, `idproduk`, `idcustom`, `jumlah`
 (11, 5, 9, 4, 3, 240000, '2018-08-07 02:38:48', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'MEGA', 2147483647),
 (12, 5, 10, 4, 1, 240000, '2018-08-07 02:38:48', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'MEGA', 2147483647),
 (13, 5, 12, 4, 1, 240000, '2018-08-07 02:38:48', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'MEGA', 2147483647),
-(14, 6, 10, 4, 1, 102320, '2018-08-07 02:41:04', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'BCA', 2147483647);
+(14, 6, 10, 4, 1, 102320, '2018-08-07 02:41:04', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'BCA', 2147483647),
+(15, 7, 10, 2, 3, 306960, '2018-08-09 11:50:01', 55187, 'Indonesia', 'Jakarta', 'Cilacap', 'Jambrong', 'BCA', 2147483647),
+(16, 7, 12, 2, 2, 480000, '2018-08-09 11:50:01', 55187, 'Indonesia', 'Jakarta', 'Cilacap', 'Jambrong', 'BCA', 2147483647),
+(17, 7, 9, 2, 3, 37500, '2018-08-09 11:50:01', 55187, 'Indonesia', 'Jakarta', 'Cilacap', 'Jambrong', 'BCA', 2147483647),
+(18, 8, 9, 2, 2, 25000, '2018-08-09 02:12:51', 55187, 'Indonesia', 'Jakarta', 'Cilacap', 'Karangjati', 'MEGA', 2147483647),
+(19, 8, 10, 2, 1, 102320, '2018-08-09 02:12:52', 55187, 'Indonesia', 'Jakarta', 'Cilacap', 'Karangjati', 'MEGA', 2147483647);
 
 -- --------------------------------------------------------
 
@@ -217,12 +222,9 @@ CREATE TABLE `keranjang` (
 --
 
 INSERT INTO `keranjang` (`idcart`, `idproduk`, `idcustomer`, `fotoproduk`, `deskripsi`, `harga`, `jumlah`, `total`, `tanggalcart`) VALUES
-(2, 10, 2, 'lounch_sport.jpg', 'Lounch Sport AA-02', 102320, 16, 1637120, '2018-08-03'),
-(3, 12, 2, 'Rado-sand-rope.jpg', 'Jam tangan rado Judile Rose Gold', 240000, 2, 480000, '2018-08-08'),
 (4, 12, 4, 'Rado-sand-rope.jpg', 'Jam tangan rado Judile Rose Gold', 240000, 3, 720000, '2018-08-08'),
 (5, 11, 4, 'Jam-tangan-Rolex.jpg', 'Jam tangan rolex pria kw super keren', 240000, 1, 240000, '2018-08-08'),
-(6, 9, 4, 'sosis_sapi.jpg', 'Sosis Sapi', 12500, 3, 37500, '2018-08-08'),
-(7, 9, 2, 'sosis_sapi.jpg', 'Sosis Sapi', 12500, 4, 50000, '2018-08-08');
+(6, 9, 4, 'sosis_sapi.jpg', 'Sosis Sapi', 12500, 1, 12500, '2018-08-08');
 
 -- --------------------------------------------------------
 
@@ -325,7 +327,9 @@ INSERT INTO `order` (`kodeorder`, `idcustom`, `jumbel`, `nominal`, `tanggal`, `s
 (3, 4, 3, 4379640, '2018-08-02 03:26:49', 'Lunas'),
 (4, 4, 2, 6204640, '2018-08-02 03:30:20', 'Lunas'),
 (5, 4, 3, 379820, '2018-08-07 02:38:48', 'Lunas'),
-(6, 4, 1, 102320, '2018-08-07 02:41:04', 'Belum bayar');
+(6, 4, 1, 102320, '2018-08-07 02:41:04', 'Belum bayar'),
+(7, 2, 3, 824460, '2018-08-09 11:50:00', 'Belum bayar'),
+(8, 2, 2, 127320, '2018-08-09 02:12:51', 'Lunas');
 
 -- --------------------------------------------------------
 
@@ -447,7 +451,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `checkout`
 --
 ALTER TABLE `checkout`
-  MODIFY `idcheck` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idcheck` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -501,7 +505,7 @@ ALTER TABLE `merk`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `kodeorder` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `kodeorder` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `produk`

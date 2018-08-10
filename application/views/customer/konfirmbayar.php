@@ -44,7 +44,6 @@
 
             		<?php 
             			$no++;
-            			$t = $value['total'];
             			} 
             		?>	
 
@@ -109,7 +108,6 @@
 
 				<input type="hidden" name="order">
 				<input type="hidden" name="idcheck">
-				<input type="hidden" name="total" value="<?php echo $t; ?>">
 				<input type="hidden" name="barang" value="<?php echo $jumlah->num_rows(); ?>">
 				<input type="hidden" name="tobayar" value="<?php echo $total; ?>">
 				<input type="hidden" name="alamat" value="<?php echo $alm; ?>">

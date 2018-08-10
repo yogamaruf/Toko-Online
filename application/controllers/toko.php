@@ -46,11 +46,19 @@ class Toko extends CI_Controller {
 		$jumlah = $this->input->post('angka')-1;
 
 		if ($jumlah==0) {
-			$this->session->set_flashdata("error","<div class='alert alert-danger alert-dismissable'>
+			foreach ($cart->result_array() as $key => $value) {
+			$harga  = $value['harga'];
+			$simpan = array(
+					'idcart' => $value['idcart'],
+					'harga'  => $harga,
+					'jumlah' => 1,
+					'total'  => 1*$harga);
+			
+			$this->customermodel->geteditcart($id,$simpan);
+			}
+			$this->session->set_flashdata("error","<div class='alert alert-warning alert-dismissable'>
               	<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                <strong>QTY anda nol (0) maka akan dihapus</strong></div>");
-			$this->customermodel->gethapuscart($id);
-			redirect(base_url('index.php/toko/keranjang'));
+                <strong>Minimal QTY yang harus dimasukkan pada keranjang adalah 1 barang</strong></div>");
 		} else {
 			foreach ($cart->result_array() as $key => $value) {
 			$harga  = $value['harga'];
@@ -312,7 +320,7 @@ class Toko extends CI_Controller {
 					'idproduk'   => $value['idproduk'],
 					'idcustom'   => $id,
 					'jumlah'     => $value['jumlah'],
-					'total'      => $this->input->post('total'),
+					'total'      => $value['total'],
 					'tglorder'   => date('Y-m-d h:i:s'),
 					'kdpos'      => $this->input->post('kodepos'),
 					'negara'     => $this->input->post('negara'),

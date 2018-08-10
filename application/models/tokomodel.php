@@ -63,13 +63,16 @@ class Tokomodel extends CI_Model {
 		return $this->db->get('merk');
 	}
 
+	public function getdetailprofil($id) {
+		return $this->db->get_where('detailprofil',array('idcustom' => $id ));
+	}
+
 	public function getorder() {
 		/*$q = $this->db->query('SELECT order.kodeorder,customer.firstname,customer.lastname,customer.title,customer.idcustom,order.tanggal, GROUP_CONCAT(DISTINCT(order.kodeorder)ORDER BY order.kodeorder ASC) AS kodeorder, COUNT(*) AS jumorder FROM `order` JOIN customer ON customer.idcustom=order.idcustom GROUP BY order.idcustom ORDER BY order.tanggal DESC');
 
 		return $q;*/
 		$this->db->select('order.kodeorder,customer.firstname,customer.lastname,customer.title,customer.idcustom,
-							order.tanggal, GROUP_CONCAT(DISTINCT(order.kodeorder)ORDER BY order.kodeorder ASC) 
-							AS kodeorder, COUNT(*) AS jumorder');
+							order.tanggal, COUNT(*) AS jumorder');
 		$this->db->from('order');
 		$this->db->join('customer','customer.idcustom=order.idcustom');
 		$this->db->group_by('order.idcustom');
@@ -83,7 +86,7 @@ class Tokomodel extends CI_Model {
 
 		return $r;*/
 		$this->db->select('produk.nama,produk.harga,customer.title,customer.firstname,customer.lastname,
-							checkout.jumlah,checkout.tglorder,checkout.kodeorder, order.nominal, 
+							checkout.jumlah,checkout.tglorder,checkout.kodeorder,order.nominal,order.status, 
 							GROUP_CONCAT(DISTINCT(produk.nama) SEPARATOR "<br><hr style=margin:3px;border-color:#ccc;>") AS nama, 
 							GROUP_CONCAT(checkout.jumlah SEPARATOR "<br><hr style=margin:3px;border-color:#ccc;>") 
 							AS jumlah, GROUP_CONCAT(produk.harga SEPARATOR "<br><hr style=margin:3px;border-color:#ccc;> ") 
@@ -92,6 +95,7 @@ class Tokomodel extends CI_Model {
 		$this->db->join('customer','customer.idcustom=checkout.idcustom')->join('produk','produk.idproduk=checkout.idproduk')->join('order','order.kodeorder=checkout.kodeorder');
 		$this->db->group_by('checkout.kodeorder');
 		$this->db->order_by('checkout.kodeorder','DESC');
+		$this->db->where('checkout.idcustom',$id);
 
 		return $this->db->get();
 	}

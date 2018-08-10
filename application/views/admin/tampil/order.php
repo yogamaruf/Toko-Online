@@ -21,7 +21,6 @@
                                 <!--<th>Kode ORDER</th>-->
                                 <th>Nama Pelanggan</th>
                                 <th>Jumlah ORDER</th>
-                                <th>Kode ORDER</th>
                                 <th>Terakhir ORDER</th>
                                 <!--<th>Tanggal</th>
                                 <th>Status</th>-->
@@ -37,7 +36,6 @@
                                 <td><?php echo $no; ?></td>
                                 <td><?php echo $value['title'];echo " ".$value['firstname'];echo " ".$value['lastname']; ?></td>
                                 <td><?php echo $value['jumorder']; ?></td>
-                                <td><?php echo $value['kodeorder']; ?></td>
                                 <td><?php echo $value['tanggal']; ?></td>
                                 <!--<td>Rp. <?php echo number_format($value['nominal'],0,'.','.'); ?></td>
                                 <td><?php echo $value['tanggal']; ?></td>

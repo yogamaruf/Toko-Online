@@ -11,101 +11,144 @@
 <div class="row">
 
 	<div class="col-md-4">
-		
-		<div class="panel-body">
-			<img src="<?php echo base_url(); ?>assets/backend/assets/img/find_user.png" class="user-image img-responsive"/>
-		</div>
+		<div class="well" style="background-color: #fff;">
 
-	</div>
-
-	<div class="col-md-4">
-		
-		<div class="panel-body">
-
-			<div class="row">
-
-				<div class="col-md-6">
-					<h3 style="margin: 5px 0 20px 0;"><strong>Akun User</strong></h3>
-				</div>
-
-			</div>
-
-			<div class="table-responsive">
-
-				<?php foreach ($detail->result_array() as $key => $value) { ?>
-
-					<table class="table table-striped">
-						<tbody>
-							<tr>
-								<td class="td">Nama</td>
-								<td class="td"><?php echo $value['title'];echo " ".$value['firstname'];echo " ".$value['lastname']; ?></td>
-							</tr>
-							<tr>
-								<td class="td">Kata Kunci</td>
-								<td class="td"><?php echo $value['password']; ?></td>
-							</tr>
-							<tr>
-								<td class="td">E-mail</td>
-								<td class="td"><?php echo $value['email']; ?></td>
-							</tr>
-							<tr>
-								<td class="td">Tanggal lahir</td>
-								<td class="td"><?php echo $value['date']; ?></td>
-							</tr>
-						</tbody>
-					</table>
-
-				<?php } ?>
-
-			</div>
+					<div class="control-group">
+						<label><strong>Nama :</strong></label>
+						<div class="controls">
+							<?php echo $data['title'];echo ' '.$data['firstname'];echo ' '.$data['lastname']; ?>
+						</div><br>
+					</div>
+					<div class="control-group">
+						<label><strong>E-mail :</strong></label>
+						<div class="controls">
+		 					<?php echo $data['email']; ?>
+						</div><br>
+	    			</div>	  
+					<div class="control-group">
+						<label><strong>Password :</strong></label>
+						<div class="controls">
+		  					<?php echo $data['password']; ?>
+						</div><br>
+	    			</div>
+					<div class="control-group">
+						<label><strong>Tanggal Lahir :</strong></label>
+						<div class="controls">
+							<?php echo $data['date']; ?>
+						</div>
+	 				</div>
 
 		</div>
 
 	</div>
 
 	<div class="col-md-4">
-		
-		<div class="panel-body">
+		<div class="well" style="background-color: #fff;">
 
-			<div class="row">
-
-				<div class="col-md-6">
-					<h3 style="margin: 5px 0 20px 0;"><strong>Akun User</strong></h3>
+					<div class="control-group">
+						<label><strong>Alamat :</strong></label>
+						<div class="controls">
+		  					<?php 
+		  						if (!empty($detail['alamat'])) { 
+		  							echo $detail['alamat']; 
+		  						} else { 
+		  							echo "<font style='font-style:italic;'>Tidak Ada...</font>"; 
+		  						} 
+		  					?>
+						</div><br>
+	    			</div>
+					<div class="control-group">
+						<label><strong>Jenis Kelamin :</strong></label>
+						<div class="controls">
+							<?php 
+		  						if (!empty($detail['gender'])) { 
+		  							echo $detail['gender']; 
+		  						} else { 
+		  							echo "<font style='font-style:italic;'>Tidak Ada...</font>"; 
+		  						} 
+		  					?>
+						</div><br>
+	 				</div>
+					<div class="control-group">
+						<label><strong>No. Telp :</strong></label>
+						<div class="controls">
+							<?php 
+		  						if (!empty($detail['notelp'])) { 
+		  							echo $detail['notelp']; 
+		  						} else { 
+		  							echo "<font style='font-style:italic;'>Tidak Ada...</font>"; 
+		  						} 
+		  					?>
+						</div><br>
+					</div>
+					<div class="control-group">
+						<label><strong>No. Rekening :</strong></label>
+						<div class="controls">
+		 					<?php 
+		  						if (!empty($detail['norekening'])) { 
+		  							echo $detail['norekening']; 
+		  						} else { 
+		  							echo "<font style='font-style:italic;'>Tidak Ada...</font>"; 
+		  						} 
+		  					?>
+						</div>
 				</div>
-				<div class="col-md-6">
-					<a href="<?php echo base_url('admin/toko/tabelcustomer'); ?>" class="btn btn-primary" style="float: right;"><i class=""></i> Kembali </a>
-				</div>
 
-			</div>
+		</div>
 
-			<div class="table-responsive">
+	</div>
 
-				<?php foreach ($detail->result_array() as $key => $value) { ?>
+	<div class="col-md-4">
+		<div class="well" style="background-color: #fff;">
 
-					<table class="table table-striped">
-						<tbody>
-							<tr>
-								<td class="td">Nama</td>
-								<td class="td"><?php echo $value['title'];echo " ".$value['firstname'];echo " ".$value['lastname']; ?></td>
-							</tr>
-							<tr>
-								<td class="td">Kata Kunci</td>
-								<td class="td"><?php echo $value['password']; ?></td>
-							</tr>
-							<tr>
-								<td class="td">E-mail</td>
-								<td class="td"><?php echo $value['email']; ?></td>
-							</tr>
-							<tr>
-								<td class="td">Tanggal lahir</td>
-								<td class="td"><?php echo $value['date']; ?></td>
-							</tr>
-						</tbody>
-					</table>
-
-				<?php } ?>
-
-			</div>
+					<div class="control-group">
+						<label><strong>Kewarganegaraan :</strong></label>
+						<div class="controls">
+							<?php 
+		  						if (!empty($detail['warganegara'])) { 
+		  							echo $detail['warganegara']; 
+		  						} else { 
+		  							echo "<font style='font-style:italic;'>Tidak Ada...</font>"; 
+		  						} 
+		  					?>
+						</div><br>
+					</div>
+					<div class="control-group">
+						<label><strong>Kode POS :</strong></label>
+						<div class="controls">
+		 					<?php 
+		  						if (!empty($detail['kodepos'])) { 
+		  							echo $detail['kodepos']; 
+		  						} else { 
+		  							echo "<font style='font-style:italic;'>Tidak Ada...</font>"; 
+		  						} 
+		  					?>
+						</div><br>
+	    			</div>	  
+					<div class="control-group">
+						<label><strong>Kabupaten :</strong></label>
+						<div class="controls">
+		  					<?php 
+		  						if (!empty($detail['kabupaten'])) { 
+		  							echo $detail['kabupaten']; 
+		  						} else { 
+		  							echo "<font style='font-style:italic;'>Tidak Ada...</font>"; 
+		  						} 
+		  					?>
+						</div><br>
+	    			</div>
+					<div class="control-group">
+						<label><strong>Provinsi :</strong></label>
+						<div class="controls">
+							<?php 
+		  						if (!empty($detail['provinsi'])) { 
+		  							echo $detail['provinsi']; 
+		  						} else { 
+		  							echo "<font style='font-style:italic;'>Tidak Ada...</font>"; 
+		  						} 
+		  					?>
+						</div>
+	 				</div>
 
 		</div>
 
