@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2018 at 11:16 AM
+-- Generation Time: Aug 10, 2018 at 05:50 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -224,7 +224,7 @@ CREATE TABLE `keranjang` (
 INSERT INTO `keranjang` (`idcart`, `idproduk`, `idcustomer`, `fotoproduk`, `deskripsi`, `harga`, `jumlah`, `total`, `tanggalcart`) VALUES
 (4, 12, 4, 'Rado-sand-rope.jpg', 'Jam tangan rado Judile Rose Gold', 240000, 3, 720000, '2018-08-08'),
 (5, 11, 4, 'Jam-tangan-Rolex.jpg', 'Jam tangan rolex pria kw super keren', 240000, 1, 240000, '2018-08-08'),
-(6, 9, 4, 'sosis_sapi.jpg', 'Sosis Sapi', 12500, 1, 12500, '2018-08-08');
+(6, 9, 4, 'sosis_sapi.jpg', 'Sosis Sapi', 12500, 2, 25000, '2018-08-08');
 
 -- --------------------------------------------------------
 
@@ -481,7 +481,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `idcart` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idcart` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `konfigurasi`
