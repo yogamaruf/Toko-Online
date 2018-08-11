@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2018 at 05:50 AM
+-- Generation Time: Aug 11, 2018 at 02:04 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -72,20 +72,12 @@ CREATE TABLE `checkout` (
 --
 
 INSERT INTO `checkout` (`idcheck`, `kodeorder`, `idproduk`, `idcustom`, `jumlah`, `total`, `tglorder`, `kdpos`, `negara`, `provinsi`, `kabupaten`, `alamat`, `viabayar`, `norekening`) VALUES
-(6, 3, 9, 4, 2, 4150000, '2018-08-02 03:26:49', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'BCA', 2147483647),
-(7, 3, 10, 4, 2, 4150000, '2018-08-02 03:26:49', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'BCA', 2147483647),
-(8, 3, 13, 4, 1, 4150000, '2018-08-02 03:26:49', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'BCA', 2147483647),
-(9, 4, 8, 4, 1, 204640, '2018-08-02 03:30:20', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'MEGA', 2147483647),
-(10, 4, 10, 4, 2, 204640, '2018-08-02 03:30:21', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'MEGA', 2147483647),
-(11, 5, 9, 4, 3, 240000, '2018-08-07 02:38:48', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'MEGA', 2147483647),
-(12, 5, 10, 4, 1, 240000, '2018-08-07 02:38:48', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'MEGA', 2147483647),
-(13, 5, 12, 4, 1, 240000, '2018-08-07 02:38:48', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'MEGA', 2147483647),
-(14, 6, 10, 4, 1, 102320, '2018-08-07 02:41:04', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'BCA', 2147483647),
 (15, 7, 10, 2, 3, 306960, '2018-08-09 11:50:01', 55187, 'Indonesia', 'Jakarta', 'Cilacap', 'Jambrong', 'BCA', 2147483647),
 (16, 7, 12, 2, 2, 480000, '2018-08-09 11:50:01', 55187, 'Indonesia', 'Jakarta', 'Cilacap', 'Jambrong', 'BCA', 2147483647),
 (17, 7, 9, 2, 3, 37500, '2018-08-09 11:50:01', 55187, 'Indonesia', 'Jakarta', 'Cilacap', 'Jambrong', 'BCA', 2147483647),
 (18, 8, 9, 2, 2, 25000, '2018-08-09 02:12:51', 55187, 'Indonesia', 'Jakarta', 'Cilacap', 'Karangjati', 'MEGA', 2147483647),
-(19, 8, 10, 2, 1, 102320, '2018-08-09 02:12:52', 55187, 'Indonesia', 'Jakarta', 'Cilacap', 'Karangjati', 'MEGA', 2147483647);
+(19, 8, 10, 2, 1, 102320, '2018-08-09 02:12:52', 55187, 'Indonesia', 'Jakarta', 'Cilacap', 'Karangjati', 'MEGA', 2147483647),
+(20, 9, 9, 2, 2, 25000, '2018-08-11 09:36:10', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Pajangan', 'MEGA', 2147483647);
 
 -- --------------------------------------------------------
 
@@ -108,8 +100,9 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`idcustom`, `title`, `firstname`, `lastname`, `email`, `date`, `password`) VALUES
-(2, 'Mr.', 'Febri', 'Indra', 'valentino1234@gmail.com', '2018-07-11', '123456'),
-(4, 'Mr.', 'Yoga', 'Maruf', 'yoga@gmail.com', '2018-07-18', 'yoga');
+(2, 'Mr.', 'Febri', 'Indra', 'valentino1234@gmail.com', '2000-02-14', '123456'),
+(4, 'Mr.', 'Yoga', 'Maruf', 'yoga@gmail.com', '2000-02-01', 'yoga'),
+(8, 'Miss', 'Dian', 'Astuti', 'astuti@gmail.com', '2001-09-22', 'astuti');
 
 -- --------------------------------------------------------
 
@@ -121,7 +114,7 @@ CREATE TABLE `detailprofil` (
   `idd` int(8) NOT NULL,
   `idcustom` int(8) NOT NULL,
   `notelp` varchar(13) NOT NULL,
-  `norekening` int(20) NOT NULL,
+  `norekening` varchar(20) NOT NULL,
   `gender` varchar(1) NOT NULL,
   `alamat` varchar(150) NOT NULL,
   `warganegara` varchar(5) NOT NULL,
@@ -135,8 +128,9 @@ CREATE TABLE `detailprofil` (
 --
 
 INSERT INTO `detailprofil` (`idd`, `idcustom`, `notelp`, `norekening`, `gender`, `alamat`, `warganegara`, `kodepos`, `kabupaten`, `provinsi`) VALUES
-(4, 2, '', 0, '', '', '', 0, '', ''),
-(5, 4, '089389409308', 2147483647, 'L', 'Kasongan', 'WNI', 15585, 'Bantul', 'Yogyakarta');
+(4, 2, '', '2893785930489', '', '', '', 0, '', ''),
+(5, 4, '089389409308', '2147483647', 'L', 'Kasongan', 'WNI', 15585, 'Bantul', 'Yogyakarta'),
+(8, 8, '08590496783', '209389509894', 'P', 'Sembungan', 'WNI', 55185, 'Bantul', 'Yogyakarta');
 
 -- --------------------------------------------------------
 
@@ -324,12 +318,9 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`kodeorder`, `idcustom`, `jumbel`, `nominal`, `tanggal`, `status`) VALUES
-(3, 4, 3, 4379640, '2018-08-02 03:26:49', 'Lunas'),
-(4, 4, 2, 6204640, '2018-08-02 03:30:20', 'Lunas'),
-(5, 4, 3, 379820, '2018-08-07 02:38:48', 'Lunas'),
-(6, 4, 1, 102320, '2018-08-07 02:41:04', 'Belum bayar'),
 (7, 2, 3, 824460, '2018-08-09 11:50:00', 'Belum bayar'),
-(8, 2, 2, 127320, '2018-08-09 02:12:51', 'Lunas');
+(8, 2, 2, 127320, '2018-08-09 02:12:51', 'Lunas'),
+(9, 2, 1, 25000, '2018-08-11 09:36:10', 'Belum bayar');
 
 -- --------------------------------------------------------
 
@@ -451,19 +442,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `checkout`
 --
 ALTER TABLE `checkout`
-  MODIFY `idcheck` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idcheck` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `idcustom` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idcustom` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `detailprofil`
 --
 ALTER TABLE `detailprofil`
-  MODIFY `idd` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idd` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `halaman`
@@ -505,7 +496,7 @@ ALTER TABLE `merk`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `kodeorder` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `kodeorder` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `produk`

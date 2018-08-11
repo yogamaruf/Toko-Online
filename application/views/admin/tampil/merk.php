@@ -68,8 +68,8 @@
 
                                     data-placement="bottom" class="btn btn-info"><i class="fa fa-info"></i></a>
 
-                                    <a href="<?php echo base_url('admin/toko/formmerk/').$value['idmerk'];?>" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                    <a href="<?php echo base_url('admin/toko/hapusmerk/').$value['idmerk'];?>" class="btn btn-danger" onclick='return confirm("Yakin mau dihapus???");'><i class="fa fa-trash"></i></a>
+                                    <a href="<?php echo base_url('admin/toko/formmerk/').$value['idmerk'];?>" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-edit"></i></a>
+                                    <a href="<?php echo base_url('admin/toko/hapusmerk/').$value['idmerk'];?>" class="btn btn-danger" onclick='return confirm("Yakin mau dihapus???");'><i class="fa fa-trash" data-toggle="tooltip" data-placement="right" title="Hapus"></i></a>
                                 </td>
                             </tr>
 

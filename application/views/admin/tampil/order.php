@@ -41,8 +41,8 @@
                                 <td><?php echo $value['tanggal']; ?></td>
                                 <td><?php echo $value['status']; ?></td>-->
                                 <td>
-                                	<a href="<?php echo base_url('admin/toko/detailorder/').$value['idcustom'];?>" class="btn btn-info"><i class="fa fa-info"></i></a>
-                                    <a href="<?php echo base_url('admin/toko/hapusporder/').$value['kodeorder'];?>" class="btn btn-danger" onclick='return confirm("Yakin mau dihapus???");'><i class="fa fa-trash"></i></a>
+                                	<a href="<?php echo base_url('admin/toko/detailorder/').$value['idcustom'];?>" class="btn btn-info" data-toggle="tooltip" data-placement="left" title="Detail Order"><i class="fa fa-info"></i></a>
+                                    <a href="<?php echo base_url('admin/toko/hapusorder/').$value['idcustom'];?>" class="btn btn-danger" onclick='return confirm("Yakin mau dihapus ? Ini akan menghapus seluruh data order yang pernah dilakukan oleh pelanggan yang bernama <?php echo " ".$value['title'];echo " ".$value['firstname'];echo " ".$value['lastname']; ?> termasuk histori dan order yang belum dikonfirmasi atau status belum bayar");' data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
 

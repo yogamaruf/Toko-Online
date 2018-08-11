@@ -293,6 +293,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             		return false;
             	};
             }
+
+            $(function(){
+            	$('.gotop').hide().on('click',function(){
+            		$('body,html').animate({scrollTop : 0}, 800);
+            	});
+            	$(window).on('scroll',function(){
+            		if ($(this).scrollTop() > 50) {
+            			$('.gotop').show();
+            		} else {
+            			$('.gotop').hide();
+            		}
+            	});
+            });
     </script>
 </body>
 </html>

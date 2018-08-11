@@ -17,7 +17,7 @@
             		<div class="control-group">
 						<label class="control-label" for="input">Nama <sup>*</sup></label> 
 						<div class="controls">
-						  	<input type="text" required="" placeholder="Masukkan nama anda">
+						  	<input type="text" name="nama" required="" placeholder="Masukkan nama depan anda">
 						</div>
 					</div>
 					<div class="control-group">

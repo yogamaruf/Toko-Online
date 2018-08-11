@@ -38,9 +38,9 @@
                                 <td><?php echo $value['namakategori']; ?></td>
                                 <td>Rp. <?php echo number_format($value['harga'],0,'.','.'); ?></td>
                                 <td>
-                                    <a href="<?php echo base_url('admin/toko/detailproduk/').$value['idproduk'];?>" class="btn btn-info"><i class="fa fa-info"></i></a>
-                                    <a href="<?php echo base_url('admin/toko/formproduk/').$value['idproduk'];?>" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                    <a href="<?php echo base_url('admin/toko/hapusproduk/').$value['idproduk'];?>" class="btn btn-danger" onclick='return confirm("Yakin mau dihapus???");'><i class="fa fa-trash"></i></a>
+                                    <a href="<?php echo base_url('admin/toko/detailproduk/').$value['idproduk'];?>" class="btn btn-info" data-toggle="tooltip" data-placement="left" title="Detail Produk"><i class="fa fa-info"></i></a>
+                                    <a href="<?php echo base_url('admin/toko/formproduk/').$value['idproduk'];?>" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-edit"></i></a>
+                                    <a href="<?php echo base_url('admin/toko/hapusproduk/').$value['idproduk'];?>" class="btn btn-danger" onclick='return confirm("Yakin mau dihapus???");' data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
 

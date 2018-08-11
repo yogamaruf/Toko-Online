@@ -9,6 +9,10 @@ class Tokomodel extends CI_Model {
 		return $this->db->insert('customer',$simpan);
 	}
 
+	public function gettambahdetail($detailsimpan) {
+		return $this->db->insert('detailprofil',$detailsimpan);
+	}
+
 	public function gettambahuser($simpan) {
 		return $this->db->insert('admin',$simpan);
 	}
@@ -130,6 +134,10 @@ class Tokomodel extends CI_Model {
 		return $this->db->get_where('customer',array('idcustom' => $id));
 	}
 
+	public function getdetailcustomer($id) {
+		return $this->db->get_where('detailprofil',array('idcustom' => $id));
+	}
+
 	public function getedituser($id) {
 		return $this->db->get_where('admin',array('idadmin' => $id));
 	}
@@ -157,8 +165,12 @@ class Tokomodel extends CI_Model {
 
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ EDIT ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-	public function getubah($simpan,$id) {
-		return $this->db->where('idcustom',$id)->update('customer',$simpan);
+	public function getubah($simpan,$idcustom) {
+		return $this->db->where('idcustom',$idcustom)->update('customer',$simpan);
+	}
+
+	public function getubahdetail($detailsimpan,$idcustom) {
+		return $this->db->where('idcustom',$idcustom)->update('detailprofil',$detailsimpan);
 	}
 
 	public function getubahkat($simpan,$id) {
@@ -195,6 +207,18 @@ class Tokomodel extends CI_Model {
 
 	public function gethapus($id) {
 		return $this->db->where('idcustom',$id)->delete('customer');
+	}
+
+	public function gethapusdetail($id) {
+		return $this->db->where('idcustom',$id)->delete('detailprofil');
+	}
+
+	public function gethapusorder($id) {
+		return $this->db->where('idcustom',$id)->delete('order');
+	}
+
+	public function gethapusdetailorder($id) {
+		return $this->db->where('idcustom',$id)->delete('checkout');
 	}
 
 	public function gethapuskat($id) {

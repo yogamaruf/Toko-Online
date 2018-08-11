@@ -68,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a <?php if($page == 'tabelproduk' || $page == 'formproduk' || $page == 'detailproduk'){ echo 'class="active-menu"';}?> href="<?php echo base_url('admin/toko/tabelproduk');?>"><i class="fa fa-shopping-cart fa-2x"></i>  Produk </a>
                     </li>
                     <li>
-                        <a <?php if($page == 'tabelcustomer' || $page == 'formtambahcus' || $page == 'editcustomer' || $page == 'detailprofil'){ echo 'class="active-menu"';}?> href="<?php echo base_url('admin/toko/tabelcustomer');?>"><i class="fa fa-life-buoy fa-2x"></i> Customer </a>
+                        <a <?php if($page == 'tabelcustomer' || $page == 'formcustomer' || $page == 'editcustomer' || $page == 'detailprofil'){ echo 'class="active-menu"';}?> href="<?php echo base_url('admin/toko/tabelcustomer');?>"><i class="fa fa-life-buoy fa-2x"></i> Customer </a>
                     </li>	
                     <li>
                         <a <?php if($page == 'order' || $page == 'detailorder' ){ echo 'class="active-menu"';}?> href="<?php echo base_url('admin/toko/order');?>"><i class="fa fa-line-chart fa-2x"></i> Order </a>
@@ -117,15 +117,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             });
 
             $(document).ready(function() {
-                $('#editkat').on('show.bs.modal', function(event) {
-                    var div = $(event.relatedTarget)
-                    var modal = $(this)
-
-                    modal.find('#id').attr("value",div.data('id'));
-                    modal.find('#nama').attr("value",div.data('nama'));
-                });
+                $('[data-toggle="tooltip"]').tooltip();
             });
-
+            
             $(document).ready(function() {
                 $('[data-toggle="popover"]').popover();
             });

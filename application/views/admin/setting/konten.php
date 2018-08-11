@@ -33,7 +33,7 @@
                             <td><?php echo $value['namamenu']; ?></td>
                             <td><?php echo $value['judulhal']; ?></td>
                              <td>
-                                <a href="<?php echo base_url('admin/toko/formkonten/').$value['id']; ?>" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                <a href="<?php echo base_url('admin/toko/formkonten/').$value['id']; ?>" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Edit"><i class="fa fa-edit"></i></a>
                             </td>
                         </tr>
                 

@@ -108,8 +108,14 @@ class Toko extends CI_Controller {
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ MENAMPILKAN FORM TAMBAH ~  |
 
-	public function formtambahcus() { //CUSTOMER
-		$this->template->tampilan('admin/tambah/tambahcustomer');
+	public function formcustomer() { //CUSTOMER
+		$id = $this->uri->segment(4);
+		$data = array(
+				'title'  => 'Tambah Customer',
+				'title1' => 'Edit Customer',
+				'data'  => !empty($id) ? $this->tokomodel->getedit($id)->row_array() : null,
+				'data1' => !empty($id) ? $this->tokomodel->getdetailcustomer($id)->row_array() : null);
+		$this->template->tampilan('admin/tambah/formcustomer',$data);
 	}
 
 	public function formuser($id=null) {
@@ -158,17 +164,71 @@ class Toko extends CI_Controller {
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ TAMBAH dan SIMPAN DATA ~  |
 
-	public function tambahcustomer() { //Tambah data CUSTOMER
+	public function simpancustomer() { //Tambah data CUSTOMER
+		$idcustom = $this->input->post('user');
 		$simpan = array(
-					'idcustom'  => $this->input->post('user'),
-					'title'     => $this->input->post('title'),
-					'firstname' => $this->input->post('namad'),
-					'lastname'  => $this->input->post('namab'),
-					'email'     => $this->input->post('email'),
-					'password'  => $this->input->post('pass'),
-					'date'      => $this->input->post('ttl'));
+				'idcustom'  => $this->input->post('user'),
+				'title'     => $this->input->post('title'),
+				'firstname' => $this->input->post('namad'),
+				'lastname'  => $this->input->post('namab'),
+				'email'     => $this->input->post('email'),
+				'password'  => $this->input->post('pass'),
+				'date'      => $this->input->post('ttl'));
 
-		$this->tokomodel->gettambah($simpan);
+		if (isset($_POST['akun'])) {
+
+			if (!empty($idcustom)) {
+				$this->tokomodel->getubah($simpan,$idcustom);
+			} else {
+				$this->tokomodel->gettambah($simpan);
+				$id = $this->db->insert_id();
+
+				$detailsimpan = array(
+							'idd'         => $this->input->post('detail'),
+							'idcustom'    => $id);
+
+				$this->tokomodel->gettambahdetail($detailsimpan);
+			}
+
+		} elseif (isset($_POST['detailakun'])) {
+
+			if (!empty($idcustom)) {
+				$this->tokomodel->getubah($simpan,$idcustom);
+
+				$detailsimpan = array(
+						'idd'         => $this->input->post('detail'),
+						'idcustom'    => $idcustom, 
+						'notelp'      => $this->input->post('notelp'),
+						'norekening'  => $this->input->post('norekening'),
+						'gender'      => $this->input->post('gender'),
+						'alamat'      => $this->input->post('alamat'),
+						'warganegara' => $this->input->post('warga'),
+						'kodepos'     => $this->input->post('kodepos'),
+						'kabupaten'   => $this->input->post('kabupaten'),
+						'provinsi'    => $this->input->post('provinsi'));
+
+				$this->tokomodel->getubahdetail($detailsimpan,$idcustom);
+			} else {
+				$this->tokomodel->gettambah($simpan);
+				$id = $this->db->insert_id();
+
+				$detailsimpan = array(
+						'idd'         => $this->input->post('id'),
+						'idcustom'    => $id, 
+						'notelp'      => $this->input->post('notelp'),
+						'norekening'  => $this->input->post('norekening'),
+						'gender'      => $this->input->post('gender'),
+						'alamat'      => $this->input->post('alamat'),
+						'warganegara' => $this->input->post('warga'),
+						'kodepos'     => $this->input->post('kodepos'),
+						'kabupaten'   => $this->input->post('kabupaten'),
+						'provinsi'    => $this->input->post('provinsi'));
+
+				$this->tokomodel->gettambahdetail($detailsimpan);
+			}
+
+		}
+
 		redirect(base_url('admin/toko/tabelcustomer'));
 	}
 
@@ -367,11 +427,11 @@ class Toko extends CI_Controller {
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ MENAMPILKAN DATA PADA FORM ~  |
 
-	public function editcustomer() { //CUSTOMER
+	/*public function editcustomer() { //CUSTOMER
 		$id = $this->uri->segment(4);
 		$data['data']  = $this->tokomodel->getedit($id);
 		$this->template->tampilan('admin/edit/editcustomer',$data);
-	}
+	}*/
 
 	public function editkategori() { //KATEGORI
 		$id = $this->uri->segment(4);
@@ -391,9 +451,18 @@ class Toko extends CI_Controller {
 
 	public function hapuscustomer() { //Hapus data CUSTOMER
 		$id = $this->uri->segment(4);
+		$this->tokomodel->gethapusdetail($id);
 		$this->tokomodel->gethapus($id);
 
 		redirect(base_url('admin/toko/tabelcustomer'));
+	}
+
+	public function hapusorder() {
+		$id = $this->uri->segment(4);
+		$this->tokomodel->gethapusorder($id);
+		$this->tokomodel->gethapusdetailorder($id);
+
+		redirect(base_url('admin/toko/order'));
 	}
 
 	public function hapuskategori() { //Hapus data KATEGORI

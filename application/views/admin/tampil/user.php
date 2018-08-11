@@ -38,8 +38,8 @@
                                 <td><?php echo $value['email']; ?></td>
                                 <td><?php echo $value['password']; ?></td>
                                 <td>
-                                    <a href="<?php echo base_url('admin/toko/formuser/').$value['idadmin'];?>" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                    <a href="<?php echo base_url('admin/toko/hapusadmin/').$value['idadmin'];?>" class="btn btn-danger" onclick='return confirm("Yakin mau dihapus???");'><i class="fa fa-trash"></i></a>
+                                    <a href="<?php echo base_url('admin/toko/formuser/').$value['idadmin'];?>" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Edit"><i class="fa fa-edit"></i></a>
+                                    <a href="<?php echo base_url('admin/toko/hapusadmin/').$value['idadmin'];?>" class="btn btn-danger" onclick='return confirm("Yakin mau dihapus???");' data-toggle="tooltip" data-placement="right" title="Hapus"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
 
