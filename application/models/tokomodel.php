@@ -75,8 +75,8 @@ class Tokomodel extends CI_Model {
 		/*$q = $this->db->query('SELECT order.kodeorder,customer.firstname,customer.lastname,customer.title,customer.idcustom,order.tanggal, GROUP_CONCAT(DISTINCT(order.kodeorder)ORDER BY order.kodeorder ASC) AS kodeorder, COUNT(*) AS jumorder FROM `order` JOIN customer ON customer.idcustom=order.idcustom GROUP BY order.idcustom ORDER BY order.tanggal DESC');
 
 		return $q;*/
-		$this->db->select('order.kodeorder,customer.firstname,customer.lastname,customer.title,customer.idcustom,
-							order.tanggal, COUNT(*) AS jumorder');
+		$this->db->select('order.kodeorder,order.status,customer.firstname,customer.lastname,customer.title,
+							customer.idcustom,GROUP_CONCAT(DISTINCT(order.status) SEPARATOR "<strong style=color:red;> | Ada yang </strong>") AS status, COUNT(*) AS jumorder');
 		$this->db->from('order');
 		$this->db->join('customer','customer.idcustom=order.idcustom');
 		$this->db->group_by('order.idcustom');

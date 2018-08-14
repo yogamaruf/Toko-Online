@@ -23,7 +23,7 @@
 					</div>
 					<div class="span7">
 						<h3><?php echo $value['tanggal']; ?></h3>
-						<p>Kode ORDER : <?php echo $value['kodeorder']; ?><br>Jumlah Barang : <?php echo $value['jumbel']; ?><br>Total Bayar : Rp. <?php echo number_format($value['nominal'],0,'.','.'); ?>
+						<p>Kode ORDER : <?php echo $value['kodeorder']; ?><br>Jumlah Produk : <?php echo $value['jumbel']; ?><br>Total Bayar : Rp. <?php echo number_format($value['nominal'],0,'.','.'); ?>
 						</p>
 					</div>
 
