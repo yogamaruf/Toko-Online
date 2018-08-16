@@ -9,7 +9,7 @@
      <!-- FONTAWESOME STYLES-->
     <link href="<?php echo base_url(); ?>assets/backend/assets/css/font-awesome.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
-    <link href="<?php echo base_url(); ?>assets/backend/assets/css/style2.css" rel="stylesheet" />
+    <link href="<?php echo base_url(); ?>assets/backend/assets/css/style3.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
@@ -39,13 +39,13 @@
                                                 <input type="checkbox" /> Remember me
                                             </label>
                                             <span class="pull-right">
-                                                   <a href="#" >Forget password ? </a> 
+                                                   <a href="#" class="a">Forget password ? </a> 
                                             </span>
                                         </div>
                                      
-                                        <center><input type="submit" name="simpan" value="Login" class="btn btn-primary"></center>
+                                        <center><input type="submit" name="simpan" value="Log In" class="btn btn-primary"></center>
                                         <hr />
-                                        Not register ? <a href="<?php echo base_url('admin/login/regis'); ?>" >click here </a> 
+                                        Not register ? <a href="<?php echo base_url('admin/login/regis'); ?>" class="a">click here </a> 
                                 </form>
                             </div>
                            
