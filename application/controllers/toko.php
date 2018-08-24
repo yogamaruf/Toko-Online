@@ -16,10 +16,12 @@ class Toko extends CI_Controller {
 				'title1' => $this->customermodel->gethal($id2)->row_array(),
 				'list'   => $this->customermodel->getkat(),
 				'merk'   => $this->customermodel->getmerk(),
-				'total'  => $this->customermodel->gethitung());
+				'total'  => $this->customermodel->gethitung());// Hitung total bayar belanja
 		
 		$this->template->tampil('customer/daftar',$data);
 	}
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ MENAMBAH JUMLAH QTY PADA TABEL KERANJANG ~  |
 
 	public function incart() {
 		$kode   = $this->uri->segment(3);
@@ -40,12 +42,16 @@ class Toko extends CI_Controller {
 		redirect(base_url('toko/keranjang'));
 	}
 
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ MENGURANGI JUMLAH QTY PADA TABEL KERANJANG ~  |
+
 	public function decart() {
 		$id     = $this->uri->segment(3);
 		$cart   = $this->db->get_where('keranjang',array('idcart' => $id));
 		$jumlah = $this->input->post('angka')-1;
 
-		if ($jumlah==0) {
+		if ($jumlah==0) { // Jika nilai pada kolom qty berjumlah nol maka akan menampilkan 1 (minimal 1)
 			foreach ($cart->result_array() as $key => $value) {
 			$harga  = $value['harga'];
 			$simpan = array(
@@ -75,6 +81,10 @@ class Toko extends CI_Controller {
 		redirect(base_url('toko/keranjang'));
 	}
 
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ PRODUK ~  |
+
 	public function produk() {
 		$data = array(
 				'list'   => $this->customermodel->getkat(),
@@ -82,6 +92,10 @@ class Toko extends CI_Controller {
 				'total'  => $this->customermodel->gethitung());
 		$this->template->tampil('customer/produk',$data);
 	}
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ EDIT AKUN CUSTOMER ~  |
 
 	public function editakun() {
 		$id1 = 5;$id2 = 6;
@@ -96,11 +110,19 @@ class Toko extends CI_Controller {
 		$this->template->tampil('customer/akun/register',$data);
 	}
 
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ REGISTER ~  |
+
 	public function regis() {
 		$this->session->sess_destroy();
 
 		redirect(base_url('toko/editakun'));
 	}
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ FORM LUPA PASSWORD ~  |
 
 	public function cek() {
 		$data = array(
@@ -108,6 +130,10 @@ class Toko extends CI_Controller {
 				'merk'   => $this->customermodel->getmerk());
 		$this->template->tampil('customer/akun/lupa',$data);
 	}
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ NENAMPILKAN DATA ~  |
 
 	public function kontak() {
 		$id = 7;
@@ -127,13 +153,13 @@ class Toko extends CI_Controller {
             redirect(base_url('login'));
         } else {
         	$id = $this->session->userdata('idcustom');
-        	$id = 10;
+        	$id2 = 10;
 			$data = array(
-					'title'  => $this->customermodel->gethal($id)->row_array(),
+					'title'  => $this->customermodel->gethal($id2)->row_array(),
 					'list'   => $this->customermodel->getkat(),
 					'merk'   => $this->customermodel->getmerk(),
 					'data'   => $this->customermodel->getcart($id),
-					'jumlah' => $this->customermodel->getcart());
+					'jumlah' => $this->customermodel->getcart());// Menghitung jumlah produk
 
 			$this->template->tampil('customer/keranjang',$data);
         }
@@ -186,15 +212,19 @@ class Toko extends CI_Controller {
 
             redirect(base_url('login'));
         } else {
-			$id = 14;
+			$id2 = 14;
 			$data = array(
-					'title' => $this->customermodel->gethal($id)->row_array(),
+					'title' => $this->customermodel->gethal($id2)->row_array(),
 					'merk'  => $this->customermodel->getmerk(),
 					'data'  => $this->customermodel->gethistori($id));
 		
 			$this->template->tampil('customer/histori',$data);
 		}
 	}
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ PEMBAYARAN ~  |
 
 	public function konfirm() {
 		$id = $this->session->userdata('idcustom');
@@ -205,9 +235,9 @@ class Toko extends CI_Controller {
 
             redirect(base_url('toko/keranjang'));
 		} else {
-			$id = 13;
+			$id2 = 13;
 			$data = array(
-					'title'  => $this->customermodel->gethal($id)->row_array(),
+					'title'  => $this->customermodel->gethal($id2)->row_array(),
 					'list'   => $this->customermodel->getkat(),
 					'merk'   => $this->customermodel->getmerk(),
 					'data'   => $this->customermodel->getcart($id),
@@ -222,6 +252,10 @@ class Toko extends CI_Controller {
 			$this->template->tampil('customer/konfirmbayar',$data);
 		}
 	}
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ MENAMPILKAN DATA PADA MYACCOUNT ~  |
 
 	public function myprofil() {
 		if ($this->session->userdata('logged')<>1) {
@@ -243,6 +277,10 @@ class Toko extends CI_Controller {
 		}
 	}
 
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ MENAMPILKAN DATA BERDASARKAN MERK, KATEGORI, DAN SEARCH ~  |
+
 	public function detaillist() {
 		$id = $this->uri->segment(3);
 		$produk = $this->customermodel->getproduk($id)->row_array();
@@ -256,6 +294,10 @@ class Toko extends CI_Controller {
 		$this->template->tampil('customer/produk',$data);
 	}
 
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ NENAMPILKAN DETAIL PRODUK ~  |
+
 	public function detailproduk() {
 		$id = $this->uri->segment(3);
 		$data = array(
@@ -266,6 +308,10 @@ class Toko extends CI_Controller {
 		$this->template->tampil('customer/detailproduk',$data);
 	}
 
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ HALAMAN ABOUT ~  |
+
 	public function about() {
 		$id = 8;
 		$data = array(
@@ -273,6 +319,10 @@ class Toko extends CI_Controller {
 				'merk' => $this->customermodel->getmerk());
 		$this->template->tampil('customer/about',$data);
 	}
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ SEARCH ~  |
 
 	public function autocomplete() {
 		if (isset($_GET['term'])) {
@@ -298,6 +348,10 @@ class Toko extends CI_Controller {
 
 		$this->template->tampil('customer/produk',$data);
 	}
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ CHECKOUT ~  |
 
 	public function checkout() {
 		$id = $this->session->userdata('idcustom');
@@ -337,6 +391,10 @@ class Toko extends CI_Controller {
 		redirect(base_url('toko/konfirmasi'));
 	}
 
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ KONFIRMASI PEMBAYARAN ~  |
+
 	public function konfirmasi() {
 		$kode = $this->uri->segment(3);
 		$check = array(
@@ -347,6 +405,10 @@ class Toko extends CI_Controller {
 		$this->template->tampil('customer/konfirmasi',$check);
 	}
 
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ MENGUBAH STATUS ORDER ~  |
+
 	public function selesai() {
 		$id = $this->session->userdata('idcustom');
 		$kode = $this->input->post('kodeorder');
@@ -356,14 +418,12 @@ class Toko extends CI_Controller {
 
 			$data['merk'] = $this->customermodel->getmerk();
 			$this->template->tampil('customer/lunas',$data);
-		} /*else {
-			$this->session->set_flashdata("error","<div class='alert alert-danger alert-dismissable'>
-                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                <strong>Nama atau kode Order salah !!!</strong></div>");
-
-			redirect(base_url('toko/konfirmasi'));
-		}*/
+		}
 	}
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ MENAMPILKAN DATA RE-CONFIRMASI/ TERTUNDA ~  |
 
 	public function tertunda() {
 		$id = $this->session->userdata('idcustom');
@@ -384,6 +444,10 @@ class Toko extends CI_Controller {
 			$this->template->tampil('customer/tertunda',$data);
 		}
 	}
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ MENAMBAH DAN MENGEDIT AKUN ~  |
 
 	public function tambahcustomer() {
 		$idcustom = $this->session->userdata('idcustom');
@@ -458,6 +522,10 @@ class Toko extends CI_Controller {
 		}
 	}
 
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ ADD TO CART ~  |
+
 	public function tambahcart() {
 		if ($this->session->userdata('logged')<>1) {
 			$this->session->set_flashdata("error","<div class='alert alert-danger alert-dismissable'>
@@ -501,6 +569,10 @@ class Toko extends CI_Controller {
 		}
 	}
 
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ HAPUS AKUN ~  |
+
 	public function hapusakun() {
 		$id = $this->session->userdata('idcustom');
 		$this->customermodel->gethapusakun($id);
@@ -509,11 +581,17 @@ class Toko extends CI_Controller {
 		redirect(base_url('login/logout'));
 	}
 
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ HAPUS PRODUK PADA KERANJANG ~  |
+
 	public function hapuscart() {
 		$id = $this->uri->segment(3);
 		$this->customermodel->gethapuscart($id);
 
 		redirect(base_url('toko/keranjang'));
 	}
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
 
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2018 at 04:09 AM
+-- Generation Time: Aug 24, 2018 at 04:54 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -80,7 +80,9 @@ INSERT INTO `checkout` (`idcheck`, `kodeorder`, `idproduk`, `idcustom`, `jumlah`
 (20, 9, 9, 2, 2, 25000, '2018-08-11 09:36:10', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Pajangan', 'MEGA', 2147483647),
 (21, 10, 12, 4, 3, 720000, '2018-08-13 09:17:55', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'MEGA', 2147483647),
 (22, 10, 11, 4, 1, 240000, '2018-08-13 09:17:55', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'MEGA', 2147483647),
-(23, 10, 9, 4, 2, 25000, '2018-08-13 09:17:55', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'MEGA', 2147483647);
+(23, 10, 9, 4, 2, 25000, '2018-08-13 09:17:55', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'MEGA', 2147483647),
+(24, 11, 10, 2, 2, 204640, '2018-08-21 11:10:53', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'k', 'SYARIAH', 2147483647),
+(25, 11, 9, 2, 3, 37500, '2018-08-21 11:10:53', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'k', 'SYARIAH', 2147483647);
 
 -- --------------------------------------------------------
 
@@ -313,7 +315,8 @@ INSERT INTO `order` (`kodeorder`, `idcustom`, `jumbel`, `nominal`, `tanggal`, `s
 (7, 2, 3, 824460, '2018-08-09 11:50:00', 'Lunas'),
 (8, 2, 2, 127320, '2018-08-09 02:12:51', 'Lunas'),
 (9, 2, 1, 25000, '2018-08-11 09:36:10', 'Lunas'),
-(10, 4, 3, 985000, '2018-08-13 09:17:55', 'Lunas');
+(10, 4, 3, 985000, '2018-08-13 09:17:55', 'Lunas'),
+(11, 2, 2, 242140, '2018-08-21 11:10:53', 'Belum bayar');
 
 -- --------------------------------------------------------
 
@@ -435,7 +438,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `checkout`
 --
 ALTER TABLE `checkout`
-  MODIFY `idcheck` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `idcheck` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -489,7 +492,7 @@ ALTER TABLE `merk`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `kodeorder` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `kodeorder` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `produk`

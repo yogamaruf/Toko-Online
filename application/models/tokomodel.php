@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Tokomodel extends CI_Model {
 
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ TAMBAH ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ TAMBAH ~  |
 
 	public function gettambah($simpan) {
 		return $this->db->insert('customer',$simpan);
@@ -29,9 +29,9 @@ class Tokomodel extends CI_Model {
 		return $this->db->insert('produk', $simpan);
 	}
 
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
 
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ TAMPIL ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ TAMPIL ~  |
 
 	public function getcustomer() {
 		return $this->db->order_by('firstname', 'ASC')->get('customer')->result_array();
@@ -72,9 +72,6 @@ class Tokomodel extends CI_Model {
 	}
 
 	public function getorder() {
-		/*$q = $this->db->query('SELECT order.kodeorder,customer.firstname,customer.lastname,customer.title,customer.idcustom,order.tanggal, GROUP_CONCAT(DISTINCT(order.kodeorder)ORDER BY order.kodeorder ASC) AS kodeorder, COUNT(*) AS jumorder FROM `order` JOIN customer ON customer.idcustom=order.idcustom GROUP BY order.idcustom ORDER BY order.tanggal DESC');
-
-		return $q;*/
 		$this->db->select('order.kodeorder,order.status,customer.firstname,customer.lastname,customer.title,
 							customer.idcustom,GROUP_CONCAT(DISTINCT(order.status) SEPARATOR "<strong style=color:red;> | Ada yang </strong>") AS status, COUNT(*) AS jumorder');
 		$this->db->from('order');
@@ -86,9 +83,6 @@ class Tokomodel extends CI_Model {
 	}
 
 	public function getdetailorder($id) {
-		/*$r = $this->db->query('SELECT produk.nama,produk.harga,customer.title,customer.firstname,customer.lastname,checkout.jumlah,checkout.tglorder,checkout.kodeorder, GROUP_CONCAT(DISTINCT(produk.nama) SEPARATOR "<br><hr style=margin:3px;border-color:#ccc;>") AS nama, GROUP_CONCAT(checkout.jumlah SEPARATOR "<br><hr style=margin:3px;border-color:#ccc;>") AS jumlah, GROUP_CONCAT(produk.harga SEPARATOR "<br><hr style=margin:3px;border-color:#ccc;>Rp. ") AS harga FROM checkout JOIN produk ON produk.idproduk=checkout.idproduk JOIN customer ON customer.idcustom=checkout.idcustom GROUP BY checkout.kodeorder ORDER BY checkout.kodeorder DESC');
-
-		return $r;*/
 		$this->db->select('produk.nama,produk.harga,customer.title,customer.firstname,customer.lastname,
 							checkout.jumlah,checkout.tglorder,checkout.kodeorder,order.nominal,order.status, 
 							GROUP_CONCAT(DISTINCT(produk.nama) SEPARATOR "<br><hr style=margin:3px;border-color:#ccc;>") AS nama, 
@@ -126,9 +120,9 @@ class Tokomodel extends CI_Model {
 		return $this->db->limit(14)->get('halaman');
 	}
 
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
 
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ FORM EDIT ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ FORM EDIT ~  |
 
 	public function getedit($id) {
 		return $this->db->get_where('customer',array('idcustom' => $id));
@@ -161,9 +155,9 @@ class Tokomodel extends CI_Model {
 		return $this->db->get('halaman');
 	}
 
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
 
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ EDIT ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ EDIT ~  |
 
 	public function getubah($simpan,$idcustom) {
 		return $this->db->where('idcustom',$idcustom)->update('customer',$simpan);
@@ -201,9 +195,9 @@ class Tokomodel extends CI_Model {
 		return $this->db->where('id',$id)->update('halaman',$konten);
 	}
 
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
 
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ HAPUS ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ HAPUS ~  |
 
 	public function gethapus($id) {
 		return $this->db->where('idcustom',$id)->delete('customer');
@@ -237,6 +231,6 @@ class Tokomodel extends CI_Model {
 		return $this->db->where('idadmin',$id)->delete('admin');
 	}
 
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
 
 }

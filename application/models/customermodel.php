@@ -74,7 +74,7 @@ class Customermodel extends CI_Model {
 	public function gethistori($id) {
 		$this->db->where('idcustom',$id);
 
-		return $this->db->get('order');
+		return $this->db->order_by('kodeorder','DESC')->get('order');
 	}
 
 	public function getheader() {

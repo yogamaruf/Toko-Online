@@ -24,7 +24,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <?php $page  = $this->uri->segment(2);?>
-<?php $login = $this->uri->segment(1);?>
 
 <div class="navbar navbar-inverse navbar-fixed-top">
 
@@ -114,33 +113,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			  		<li <?php if($page == ''){ echo 'class="active"';} ?>>
 			  			<a href="<?php echo base_url('toko/'); ?>">Home</a>
 			  		</li>
-			  		<li <?php if($page == 'daftar'){ echo 'class="active"';} ?>>
+			  		<!--<li <?php if($page == 'daftar'){ echo 'class="active"';} ?>>
 			  			<a href="<?php echo base_url('toko/daftar'); ?>">List View</a>
-			  		</li>
+			  		</li>-->
 			  		<li <?php if($page == 'kolom'){ echo 'class="active"';} ?>>
-			  			<a href="<?php echo base_url('toko/kolom'); ?>">Grid View</a>
+			  			<a href="<?php echo base_url('toko/kolom'); ?>">Daftar Produk</a>
 			  		</li>
-			  		<li <?php if($page == 'tiga'){ echo 'class="active"';} ?>>
-			  			<a href="<?php echo base_url('toko/tiga'); ?>">Three Column</a>
+			  		<li <?php if($page == 'about'){ echo 'class="active"';} ?>>
+			  			<a href="<?php echo base_url('toko/about'); ?>">Tentang</a>
 			  		</li>
-			  		<li <?php if($page == 'empat'){ echo 'class="active"';} ?>>
-			  			<a href="<?php echo base_url('toko/empat'); ?>">Four Column</a>
+			  		<li <?php if($page == 'histori'){ echo 'class="active"';} ?>>
+			  			<a href="<?php echo base_url('toko/histori'); ?>">Riwayat</a>
 			  		</li>
 			  		<li <?php if($page == 'tertunda'){ echo 'class="active"';} ?>>
 			  			<a href="<?php echo base_url('toko/tertunda'); ?>">Tertunda</a>
 			  		</li>
 				</ul>
 
-				<form id="form_search" action="<?php echo base_url('toko/search'); ?>" class="navbar-search pull-left" method="GET">
-
-			  		<input type="text" placeholder="Search" name="title" id="title" class="search-query span2">
-
-				</form>
-
 				<?php if (count($this->session->userdata('idcustom')) == 1) { ?>
 
 					<ul class="nav pull-right">
-						<li><a href="<?php echo base_url('login/keluar'); ?>" onclick="return confirm('Apakah Anda ingin keluar ?');">Logout</a></li>
+						<li><a href="<?php echo base_url('login/keluar'); ?>" onclick="return confirm('Apakah Anda ingin keluar ?');"> Logout</a></li>
 					</ul>
 
 				<?php } else { ?>
@@ -172,6 +165,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</ul>
 
 				<?php } ?>
+
+
+				<form id="form_search" action="<?php echo base_url('toko/search'); ?>" class="navbar-search pull-right" method="GET">
+
+			  		<input type="text" placeholder="Search" name="title" id="title" class="search-query span2">
+
+				</form>
 
 		  	</div>
 

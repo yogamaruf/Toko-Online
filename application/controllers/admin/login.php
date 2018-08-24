@@ -13,6 +13,8 @@ class Login extends CI_Controller {
         $this->load->view('admin/akun/login');
     }
 
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ LOGIN ~  |
+
     public function loginadmin() {
         $login = $this->loginmodel->login($this->input->post('username'), $this->input->post('password'))->num_rows();
 
@@ -35,14 +37,26 @@ class Login extends CI_Controller {
         }
     }
 
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+    
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ LOGOUT ~  |
+
     public function keluar() {
         $this->session->sess_destroy();
         redirect(base_url('admin/login'));
     }
 
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ REGISTER ~  |
+
     public function regis() {
         $this->load->view('admin/akun/register');
     }
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ MENYIMPAN/ MENAMBAH USER ~  |
 
     public function getregister() {
         $simpan = array(
@@ -56,5 +70,7 @@ class Login extends CI_Controller {
 
         redirect(base_url('admin/toko'));
     }
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
 
 }

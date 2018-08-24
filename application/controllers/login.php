@@ -17,6 +17,8 @@ class Login extends CI_Controller {
         $this->template->tampil('customer/akun/login', $data);
     }
 
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ LOGIN ~  |
+
     public function loginmer() {
         $login = $this->loginmodel->logincus($this->input->post('email'), $this->input->post('password'))->num_rows();
 
@@ -40,6 +42,10 @@ class Login extends CI_Controller {
         }
     }
 
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ CHECK E-MAIL ~  |
+
     public function cek() {
         $email = $this->loginmodel->cek($this->input->post('email'))->num_rows();
 
@@ -61,6 +67,10 @@ class Login extends CI_Controller {
         }
     }
 
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ MENYIMPAN PASSWORD BARU~  |
+
     public function lupa() {
         $id = $this->input->post('id');
         $simpan = array(
@@ -72,9 +82,15 @@ class Login extends CI_Controller {
         redirect(base_url('login/'));
     }
 
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ LOGOUT ~  |
+
     public function keluar() {
         $this->session->sess_destroy();
         redirect(base_url('toko'));
     }
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<  ~ END ~  |
 
 }
