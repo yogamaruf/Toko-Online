@@ -117,16 +117,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			  			<a href="<?php echo base_url('toko/daftar'); ?>">List View</a>
 			  		</li>-->
 			  		<li <?php if($page == 'kolom'){ echo 'class="active"';} ?>>
-			  			<a href="<?php echo base_url('toko/kolom'); ?>">Daftar Produk</a>
+			  			<a href="<?php echo base_url('toko/kolom'); ?>">List Product</a>
 			  		</li>
 			  		<li <?php if($page == 'about'){ echo 'class="active"';} ?>>
-			  			<a href="<?php echo base_url('toko/about'); ?>">Tentang</a>
+			  			<a href="<?php echo base_url('toko/about'); ?>">About Us</a>
 			  		</li>
 			  		<li <?php if($page == 'histori'){ echo 'class="active"';} ?>>
-			  			<a href="<?php echo base_url('toko/histori'); ?>">Riwayat</a>
+			  			<a href="<?php echo base_url('toko/histori'); ?>">History</a>
 			  		</li>
 			  		<li <?php if($page == 'tertunda'){ echo 'class="active"';} ?>>
-			  			<a href="<?php echo base_url('toko/tertunda'); ?>">Tertunda</a>
+			  			<a href="<?php echo base_url('toko/tertunda'); ?>">Re-Confirmation</a>
 			  		</li>
 				</ul>
 

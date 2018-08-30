@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 24, 2018 at 04:54 AM
+-- Generation Time: Aug 30, 2018 at 04:18 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.34
 
@@ -41,8 +41,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`idadmin`, `username`, `namalengkap`, `email`, `password`) VALUES
-(1, 'yoga', 'Yoga Ma\'ruf Ramadan', 'yoga@gmail.com', '12345'),
-(3, 'Dina', 'Dina Lestari', 'dinalestari@gmail.com', 'lestari');
+(4, 'admin', 'administrator', 'administrator@gmail.com', 'admin');
 
 -- --------------------------------------------------------
 
@@ -82,7 +81,9 @@ INSERT INTO `checkout` (`idcheck`, `kodeorder`, `idproduk`, `idcustom`, `jumlah`
 (22, 10, 11, 4, 1, 240000, '2018-08-13 09:17:55', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'MEGA', 2147483647),
 (23, 10, 9, 4, 2, 25000, '2018-08-13 09:17:55', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'MEGA', 2147483647),
 (24, 11, 10, 2, 2, 204640, '2018-08-21 11:10:53', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'k', 'SYARIAH', 2147483647),
-(25, 11, 9, 2, 3, 37500, '2018-08-21 11:10:53', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'k', 'SYARIAH', 2147483647);
+(25, 11, 9, 2, 3, 37500, '2018-08-21 11:10:53', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'k', 'SYARIAH', 2147483647),
+(26, 12, 10, 4, 2, 204640, '2018-08-27 09:44:57', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'MEGA', 2147483647),
+(27, 13, 13, 4, 1, 4150000, '2018-08-27 10:39:20', 15585, 'Indonesia', 'Yogyakarta', 'Bantul', 'Kasongan', 'MEGA', 2147483647);
 
 -- --------------------------------------------------------
 
@@ -316,7 +317,9 @@ INSERT INTO `order` (`kodeorder`, `idcustom`, `jumbel`, `nominal`, `tanggal`, `s
 (8, 2, 2, 127320, '2018-08-09 02:12:51', 'Lunas'),
 (9, 2, 1, 25000, '2018-08-11 09:36:10', 'Lunas'),
 (10, 4, 3, 985000, '2018-08-13 09:17:55', 'Lunas'),
-(11, 2, 2, 242140, '2018-08-21 11:10:53', 'Belum bayar');
+(11, 2, 2, 242140, '2018-08-21 11:10:53', 'Lunas'),
+(12, 4, 1, 204640, '2018-08-27 09:44:57', 'Belum bayar'),
+(13, 4, 1, 4150000, '2018-08-27 10:39:19', 'Lunas');
 
 -- --------------------------------------------------------
 
@@ -432,13 +435,13 @@ ALTER TABLE `produk`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `idadmin` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idadmin` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `checkout`
 --
 ALTER TABLE `checkout`
-  MODIFY `idcheck` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `idcheck` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -492,7 +495,7 @@ ALTER TABLE `merk`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `kodeorder` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `kodeorder` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `produk`

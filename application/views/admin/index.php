@@ -74,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a <?php if($page == 'order' || $page == 'detailorder' ){ echo 'class="active-menu"';}?> href="<?php echo base_url('admin/toko/order');?>"><i class="fa fa-line-chart fa-2x"></i> Order </a>
                     </li>	
                     <li>
-                        <a <?php if($page == 'konfig'){ echo 'class="active-menu"';}?> href="<?php echo base_url('admin/toko/konfig');?>"><i class="fa fa-desktop fa-2x"></i> Konfgurasi WEB </a>
+                        <a <?php if($page == 'konfig' || $page == 'editkonfig'){ echo 'class="active-menu"';}?> href="<?php echo base_url('admin/toko/konfig');?>"><i class="fa fa-desktop fa-2x"></i> Konfgurasi WEB </a>
                     </li>		
                 </ul>
             </div>   

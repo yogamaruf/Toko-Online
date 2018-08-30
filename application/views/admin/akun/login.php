@@ -33,15 +33,7 @@
                                         <div class="form-group input-group">
                                             <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
                                             <input type="password" name="password" class="form-control"  placeholder="Your Password" required=""/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="checkbox-inline">
-                                                <input type="checkbox" /> Remember me
-                                            </label>
-                                            <span class="pull-right">
-                                                   <a href="#" class="a">Forget password ? </a> 
-                                            </span>
-                                        </div>
+                                        </div><br>
                                      
                                         <center><input type="submit" name="simpan" value="Log In" class="btn btn-primary"></center>
                                         <hr />

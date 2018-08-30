@@ -46,7 +46,7 @@
                                         <div class="form-group input-group">
                                             <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
                                             <input type="password" name="pass1" class="form-control" placeholder="Retype Password" />
-                                        </div>
+                                        </div><br>
                                      
                                         <input type="submit" name="simpan" value="Register" class="btn btn-primary">
                                         <hr />

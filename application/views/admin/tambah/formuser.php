@@ -25,23 +25,23 @@
                     <input type="hidden" name="idadmin" value="<?php echo !empty($data) ? $data['idadmin'] : '' ?>">
                     <div class="form-group">
                         <label>Nama</label>
-                        <input type="text" class="form-control" name="nama" value="<?php echo !empty($data) ? $data['username'] : '' ?>">
+                        <input type="text" class="form-control" name="nama" value="<?php echo !empty($data) ? $data['username'] : '' ?>" required>
                     </div>
                     <div class="form-group">
                         <label>Nama Lengkap</label>
-                        <input type="text" class="form-control" name="namaleng" value="<?php echo !empty($data) ? $data['namalengkap'] : '' ?>">
+                        <input type="text" class="form-control" name="namaleng" value="<?php echo !empty($data) ? $data['namalengkap'] : '' ?>" required>
                     </div>
                     <div class="form-group">
                         <label>E-mail</label>
-                        <input type="phone" class="form-control" name="email" value="<?php echo !empty($data) ? $data['email'] : '' ?>">
+                        <input type="phone" class="form-control" name="email" value="<?php echo !empty($data) ? $data['email'] : '' ?>" required>
                     </div>
                     <div class="form-group">
                         <label>Kata Kunci</label>
-                        <input type="password" class="form-control" name="pass" id="kunci1" value="<?php echo !empty($data) ? $data['password'] : '' ?>">
+                        <input type="password" class="form-control" name="pass" id="kunci1" value="<?php echo !empty($data) ? $data['password'] : '' ?>" required>
                     </div>
                     <div class="form-group">
                         <label>Ulangi Kata Kunci</label>
-                        <input type="password" class="form-control" name="repass" id="kunci2" onkeyup="cekkunci(); return false;" value="<?php echo !empty($data) ? $data['password'] : '' ?>">
+                        <input type="password" class="form-control" name="repass" id="kunci2" onkeyup="cekkunci(); return false;" value="<?php echo !empty($data) ? $data['password'] : '' ?>" required>
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Simpan" class="btn btn-default">
